@@ -9,7 +9,7 @@ docs:
 	cd docs && make clean && make html
 
 flake8:
-	flake8 --exclude=migrations src
+	flake8 --exclude=migrations src tests
 
 install:
 	pip install -e .[docs,test]

@@ -2,7 +2,9 @@ from setuptools import find_packages, setup
 
 
 install_requires = [
+    'django>=1.8,<=1.10',
     'django-bakery==0.8.10',
+    'wagtail>=1.4,<=1.6',
 ]
 
 docs_require = [
