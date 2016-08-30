@@ -15,7 +15,6 @@ test_require = [
     'pytest==3.0.1',
     'pytest-cov==2.3.1',
     'pytest-django==3.0.0',
-    'tox==2.3.1',
 ]
 
 setup(
