@@ -15,6 +15,11 @@ class WagtailBakeryView(BuildableDetailView):
         response = serve(request, request.path)
         return response
 
+
+    def get_build_path(self, obj):
+        return super(WagtailBakeryView, self).get_build_path(obj)
+
+
     def get_url(self, obj):
         root_path = Site.get_site_root_paths()
         if len(root_path):
@@ -26,11 +31,6 @@ class WagtailBakeryView(BuildableDetailView):
                     return obj.url.replace(root_path, '/', 1)
         return obj.url_path
 
-    def get_content(self):
-        response = self.get(self.request)
-        if hasattr(response, 'render'):
-            response = response.render()
-        return response.content
 
     class Meta:
         abstract = True
@@ -46,4 +46,7 @@ class AllPublishedPagesView(WagtailBakeryView):
             'wagtailbakery.views.AllPublishedPagesView',
         )
     """
-    queryset = Page.objects.public().live()
+    def get_queryset(self):
+        default_site = Site.objects.get(is_default_site=True)
+        root_page = default_site.root_page
+        return Page.objects.descendant_of(root_page, inclusive=True).public().live()
