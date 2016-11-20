@@ -15,10 +15,8 @@ class WagtailBakeryView(BuildableDetailView):
         response = serve(request, request.path)
         return response
 
-
     def get_build_path(self, obj):
         return super(WagtailBakeryView, self).get_build_path(obj)
-
 
     def get_url(self, obj):
         root_path = Site.get_site_root_paths()
@@ -30,7 +28,6 @@ class WagtailBakeryView(BuildableDetailView):
                 if obj.url_path.index(root_path) == 0:
                     return obj.url.replace(root_path, '/', 1)
         return obj.url_path
-
 
     class Meta:
         abstract = True
@@ -49,4 +46,5 @@ class AllPublishedPagesView(WagtailBakeryView):
     def get_queryset(self):
         default_site = Site.objects.get(is_default_site=True)
         root_page = default_site.root_page
-        return Page.objects.descendant_of(root_page, inclusive=True).public().live()
+        return Page.objects.descendant_of(
+            root_page, inclusive=True).public().live()

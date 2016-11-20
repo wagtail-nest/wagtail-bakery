@@ -2,13 +2,11 @@ from setuptools import find_packages, setup
 
 
 install_requires = [
-    'django>=1.8,<=1.10',
-    'django-bakery==0.8.10',
-    'wagtail>=1.4,<=1.6',
+    'django-bakery==0.8.10'
 ]
 
 docs_require = [
-    'sphinx==1.4.6',
+    'sphinx==1.4.6'
 ]
 
 test_require = [
@@ -16,7 +14,7 @@ test_require = [
     'isort==4.2.5',
     'pytest==3.0.1',
     'pytest-cov==2.3.1',
-    'pytest-django==3.0.0',
+    'pytest-django==3.0.0'
 ]
 
 setup(
