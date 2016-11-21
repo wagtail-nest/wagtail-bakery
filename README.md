@@ -20,6 +20,8 @@ pip install wagtail-bakery
 
 Add `bakery` and `wagtailbakery` to your `INSTALLED_APPS`.
 
+If you get an error `DisallowedHost` while running the `manage.py build` command please add `testserver` to your `ALLOWED_HOSTS` settings.
+
 ## Credits
 
 Thanks to [@mhnbcu](https://github.com/mhnbcu/wagtailbakery) for bringing this
