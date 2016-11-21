@@ -44,7 +44,7 @@ def test_wagtail_bakery_view_build_path(page_tree):
 
 
 @pytest.mark.django_db
-def test_all_published_pages(page):
+def test_all_published_pages_for_single_page(page):
     view = AllPublishedPagesView()
     qs = view.get_queryset()
 
@@ -59,6 +59,9 @@ def test_all_published_pages(page):
 
 
 @pytest.mark.django_db
-def test_get_build_path(page):
-    # view = AllPublishedPagesView
-    pass
+def test_all_published_pages_for_multiple_pages(page_tree):
+    view = AllPublishedPagesView()
+    qs = view.get_queryset()
+
+    # Check if all pages in page tree are returned
+    assert qs.count() == 6
