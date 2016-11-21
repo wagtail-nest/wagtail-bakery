@@ -20,9 +20,16 @@ def site():
 
 @pytest.fixture
 def page_tree(page):
-    PageFactory(depth=3, path='000100010001', slug='first')
+    PageFactory(depth=3, path='000100010001', slug='first', numchild=2)
     PageFactory(depth=3, path='000100010002', slug='second')
     PageFactory(depth=3, path='000100010003', slug='third')
+
+    PageFactory(depth=4, path='0001000100010001', slug='first')
+    PageFactory(depth=4, path='0001000100010002', slug='second')
+
+    page.numchild = 3
+    page.save()
+
     return page
 
 

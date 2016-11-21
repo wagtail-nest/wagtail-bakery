@@ -19,7 +19,6 @@ class WagtailBakeryView(BuildableDetailView):
         return super(WagtailBakeryView, self).get_build_path(obj)
 
     def get_url(self, obj):
-        return '/'
         root_path = Site.get_site_root_paths()
         if len(root_path):
             root_path = root_path[0][1]

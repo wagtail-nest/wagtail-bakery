@@ -3,7 +3,7 @@ import pytest
 
 @pytest.mark.django_db
 def test_page(page):
-    # Test if local url is returned when a single site is used
+    # Check if local url is returned when a single site is used
     assert page.url == '/'
 
 
@@ -15,20 +15,27 @@ def test_site(site):
 
 @pytest.mark.django_db
 def test_page_tree(page_tree):
-    descendants = page_tree.get_descendants()
-    assert descendants.count() == 3
+    children = page_tree.get_children()
+    assert children.count() == 3
 
-    # Test if descendants of homepage return correct urls
-    assert descendants[0].url == '/first/'
-    assert descendants[1].url == '/second/'
-    assert descendants[2].url == '/third/'
+    # Check if children of homepage return correct urls
+    assert children[0].url == '/first/'
+    assert children[1].url == '/second/'
+    assert children[2].url == '/third/'
+
+    children = children[0].get_children()
+    assert children.count() == 2
+
+    # Check if children of first child return correct urls
+    assert children[0].url == '/first/first/'
+    assert children[1].url == '/first/second/'
 
 
 @pytest.mark.django_db
 def test_multisite(multisite):
     assert len(multisite) == 3
 
-    # Test if full urls are returned when multiple sites are used
+    # Check if full urls are returned when multiple sites are used
     assert multisite[0].root_page.url == 'http://site_1/'
     assert multisite[1].root_page.url == 'http://site_2/'
     assert multisite[2].root_page.url == 'http://site_3/'
