@@ -17,6 +17,8 @@ A set of helpers for baking your Django Wagtail site out as flat files.
 pip install wagtail-bakery
 ```
 
+Add `bakery` and `wagtailbakery` to your `INSTALLED_APPS`.
+
 ## Credits
 
 Thanks to [@mhnbcu](https://github.com/mhnbcu/wagtailbakery) for bringing this

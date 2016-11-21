@@ -9,15 +9,15 @@ docs:
 	cd docs && make clean && make html
 
 flake8:
-	flake8 --exclude=migrations src tests
+	flake8 src/ tests/
 
 install:
 	pip install -e .[docs,test]
 
 isort:
-	isort --recursive --check-only --diff src tests
+	isort --check-only --diff --recursive src/ tests/
 
 lint: flake8 isort
 
 test:
-	py.test tests
+	python -m py.test tests

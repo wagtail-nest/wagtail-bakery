@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 
 install_requires = [
-    'django-bakery==0.8.10'
+    'django-bakery==0.8.11'
 ]
 
 docs_require = [
@@ -10,11 +10,12 @@ docs_require = [
 ]
 
 test_require = [
-    'flake8==3.0.4',
+    'factory-boy==2.7.0',
+    'flake8==3.2.0',
     'isort==4.2.5',
-    'pytest==3.0.1',
-    'pytest-cov==2.3.1',
-    'pytest-django==3.0.0'
+    'pytest==3.0.4',
+    'pytest-cov==2.4.0',
+    'pytest-django==3.1.1'
 ]
 
 setup(
