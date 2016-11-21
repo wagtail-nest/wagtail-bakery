@@ -19,15 +19,7 @@ class WagtailBakeryView(BuildableDetailView):
         return super(WagtailBakeryView, self).get_build_path(obj)
 
     def get_url(self, obj):
-        root_path = Site.get_site_root_paths()
-        if len(root_path):
-            root_path = root_path[0][1]
-            if obj.url_path == root_path:
-                return '/'
-            elif root_path in obj.url_path:
-                if obj.url_path.index(root_path) == 0:
-                    return obj.url.replace(root_path, '/', 1)
-        return obj.url_path
+        return obj.url
 
     class Meta:
         abstract = True
@@ -35,7 +27,7 @@ class WagtailBakeryView(BuildableDetailView):
 
 class AllPublishedPagesView(WagtailBakeryView):
     """
-    Generates a seprate index.html page for each published wagtail page.
+    Generates a seperate index.html page for each published wagtail page.
 
     Example:
         # File: settings.py
