@@ -54,8 +54,6 @@ class WagtailBakeryView(BuildableDetailView):
         # Make sure the (deeply) directories are created
         os.path.exists(build_path) or os.makedirs(build_path)
 
-        print("Build", build_path)
-
         # Always append index.html at the end of the path
         return os.path.join(build_path, 'index.html')
 
