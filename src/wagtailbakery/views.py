@@ -1,10 +1,8 @@
 import logging
 
-from django.test.client import RequestFactory
 from bakery.views import BuildableDetailView
-from wagtail.wagtailcore.middleware import SiteMiddleware
+from django.core.handlers.base import BaseHandler
 from wagtail.wagtailcore.models import Page, Site
-from wagtail.wagtailcore.views import serve
 
 logger = logging.getLogger(__name__)
 
@@ -15,9 +13,9 @@ class WagtailBakeryView(BuildableDetailView):
     be added to BAKERY_VIEWS setting.
     """
     def get(self, request):
-        site_middleware = SiteMiddleware()
-        site_middleware.process_request(request)
-        response = serve(request, request.path)
+        handler = BaseHandler()
+        handler.load_middleware()
+        response = handler.get_response(request)
         return response
 
     def get_site(self):
