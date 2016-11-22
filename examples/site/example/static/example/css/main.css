@@ -1,0 +1,31 @@
+body {
+    background-color: #333333;
+    color: #ffffff;
+    margin: 0;
+    padding: 100px;
+}
+
+ul.navigation {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.navigation > li {
+    display: inline-block;
+}
+
+ul.navigation > li > a {
+    border: 1px solid #ff574a;
+    border-radius: 4px;
+    padding: 5px 10px;
+}
+
+h1 {
+    color: #43b1b0;
+}
+
+a,a:active,a:link,a:visited {
+    color: #ff574a;
+    text-decoration: none;
+}

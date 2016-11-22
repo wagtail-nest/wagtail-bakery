@@ -1,7 +1,12 @@
+import logging
+
+from django.test.client import RequestFactory
 from bakery.views import BuildableDetailView
 from wagtail.wagtailcore.middleware import SiteMiddleware
 from wagtail.wagtailcore.models import Page, Site
 from wagtail.wagtailcore.views import serve
+
+logger = logging.getLogger(__name__)
 
 
 class WagtailBakeryView(BuildableDetailView):
@@ -9,6 +14,12 @@ class WagtailBakeryView(BuildableDetailView):
     An abstract class that can be inherited to create a buildable view that can
     be added to BAKERY_VIEWS setting.
     """
+    def get(self, request):
+        site_middleware = SiteMiddleware()
+        site_middleware.process_request(request)
+        response = serve(request, request.path)
+        return response
+
     def get_site(self):
         """Return the site were to build the static pages from.
 
@@ -25,6 +36,7 @@ class WagtailBakeryView(BuildableDetailView):
         return super(WagtailBakeryView, self).get_build_path(obj)
 
     def get_url(self, obj):
+        """Return the Wagtail page url instead of Django's get_absolute_url."""
         return obj.url
 
     class Meta:
@@ -45,4 +57,4 @@ class AllPublishedPagesView(WagtailBakeryView):
         site = self.get_site()
         root_page = site.root_page
         descendants = Page.objects.descendant_of(root_page, inclusive=True)
-        return descendants.public().live()
+        return descendants.public().live().specific()

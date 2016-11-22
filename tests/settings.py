@@ -40,6 +40,8 @@ INSTALLED_APPS = [
 
     'bakery',
     'wagtailbakery',
+
+    'tests',
 ]
 
 LANGUAGES = [

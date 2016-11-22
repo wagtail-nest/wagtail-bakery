@@ -3,8 +3,6 @@ import pytest
 from django.conf import settings
 from wagtailbakery.views import AllPublishedPagesView, WagtailBakeryView
 
-from tests.factories.site import SiteFactory
-
 
 @pytest.mark.django_db
 def test_wagtail_bakery_view_get_site(multisite):

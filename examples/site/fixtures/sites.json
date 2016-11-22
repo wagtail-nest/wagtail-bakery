@@ -5,8 +5,8 @@
   "fields": {
     "hostname": "localhost",
     "port": 80,
-    "site_name": null,
-    "root_page": 2,
+    "site_name": "",
+    "root_page": 3,
     "is_default_site": true
   }
 }

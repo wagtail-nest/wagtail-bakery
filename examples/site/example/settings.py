@@ -57,6 +57,8 @@ INSTALLED_APPS = [
 
     'bakery',
     'wagtailbakery',
+
+	'example',
 ]
 
 MIDDLEWARE = [
@@ -132,8 +134,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'public/media')
 
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'public/static')
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
 
 # Wagtail
 # http://docs.wagtail.io/en/v1.6.2/getting_started/integrating_into_django.html
@@ -143,12 +152,6 @@ WAGTAIL_SITE_NAME = 'Example'
 
 # Wagtail bakery
 # https://github.com/moorinteractive/wagtail-bakery
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'public/media')
-
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'public/static')
 
 BUILD_DIR = os.path.join(BASE_DIR, '../build')
 
