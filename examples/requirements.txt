@@ -1,0 +1,3 @@
+django
+wagtail
+git+https://github.com/moorinteractive/wagtail-bakery.git#egg=wagtail-bakery
