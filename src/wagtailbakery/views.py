@@ -47,6 +47,8 @@ class AllPublishedPagesView(WagtailBakeryView):
     """
     Generates a seperate index.html page for each published wagtail page.
 
+    Use this view to export your pages for production.
+
     Example:
         # File: settings.py
         BAKERY_VIEWS = (
@@ -58,3 +60,22 @@ class AllPublishedPagesView(WagtailBakeryView):
         root_page = site.root_page
         descendants = Page.objects.descendant_of(root_page, inclusive=True)
         return descendants.public().live().specific()
+
+
+class AllPagesView(WagtailBakeryView):
+    """
+    Generates a seperate index.html page for each (un)published wagtail page.
+
+    Use this view to export your pages for acceptance/staging environments.
+
+    Example:
+        # File: settings.py
+        BAKERY_VIEWS = (
+            'wagtailbakery.views.AllPublishedPagesView',
+        )
+    """
+    def get_queryset(self):
+        site = self.get_site()
+        root_page = site.root_page
+        descendants = Page.objects.descendant_of(root_page, inclusive=True)
+        return descendants.public().specific()

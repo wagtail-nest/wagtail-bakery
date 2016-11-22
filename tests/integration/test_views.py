@@ -1,7 +1,8 @@
 import pytest
 
 from django.conf import settings
-from wagtailbakery.views import AllPublishedPagesView, WagtailBakeryView
+from wagtailbakery.views import (
+    AllPagesView, AllPublishedPagesView, WagtailBakeryView)
 
 
 @pytest.mark.django_db
@@ -81,3 +82,18 @@ def test_all_published_pages_for_multiple_pages(page_tree):
 
     # Check if all pages in page tree are returned
     assert qs.count() == 6
+
+
+@pytest.mark.django_db
+def test_all_pages_for_single_page(page):
+    view = AllPagesView()
+    qs = view.get_queryset()
+
+    # Check if published page is returned
+    assert qs.filter(id=page.id).exists()
+
+    # Check if there are still unpublished pages returned
+    page.live = False
+    page.save()
+    assert qs.filter(live=False).exists()
+    assert qs.filter(id=page.id).exists()
