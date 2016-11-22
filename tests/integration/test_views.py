@@ -61,6 +61,17 @@ def test_wagtail_bakery_view_build_path(page_tree):
 
 
 @pytest.mark.django_db
+def test_wagtail_bakery_view_build_path_for_multisite(multisite):
+    view = WagtailBakeryView()
+    site = multisite[0]
+    page = site.root_page
+
+    # Check build path for homepage
+    build_path = view.get_build_path(page)
+    assert build_path == '%s/%s/index.html' % (settings.BUILD_DIR, site.hostname)
+
+
+@pytest.mark.django_db
 def test_all_published_pages_for_single_page(page):
     view = AllPublishedPagesView()
     qs = view.get_queryset()
