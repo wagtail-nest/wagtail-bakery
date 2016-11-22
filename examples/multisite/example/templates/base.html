@@ -1,0 +1,25 @@
+{% load static %}
+
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static "example/css/main.css" %}">
+        <title>{{ self.title }}</title>
+    </head>
+    <body>
+        {% block navigation %}
+        <ul class="navigation">
+            {% for item in page.get_site.root_page.get_children %}
+            <li>
+                <a href="{{ item.url }}">{{ item.title }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endblock %}
+        {% block title %}
+        <h1>{{ self.title }}</h1>
+        <h2>{{ request.site.hostname }}</h2>
+        {% endblock %}
+        {% block content %}{% endblock %}
+    </body>
+</html>
