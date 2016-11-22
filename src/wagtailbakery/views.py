@@ -9,12 +9,6 @@ class WagtailBakeryView(BuildableDetailView):
     An abstract class that can be inherited to create a buildable view that can
     be added to BAKERY_VIEWS setting.
     """
-    def get(self, request):
-        middleware = SiteMiddleware()
-        middleware.process_request(request)
-        response = serve(request, request.path)
-        return response
-
     def get_site(self):
         """Return the site were to build the static pages from.
 
