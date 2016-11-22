@@ -1,5 +1,5 @@
-import os
 import logging
+import os
 
 from bakery.views import BuildableDetailView
 from django.conf import settings
@@ -19,7 +19,7 @@ class WagtailBakeryView(BuildableDetailView):
         self.handler.load_middleware()
 
         self.site = self.get_site()
-    
+
         super(WagtailBakeryView, self).__init__(*args, **kwargs)
 
     def get(self, request):
@@ -43,8 +43,6 @@ class WagtailBakeryView(BuildableDetailView):
     def get_build_path(self, obj):
         url = self.get_url(obj)
 
-        print('Get build path for', obj.title)
-
         if url.startswith('http'):
             site = obj.get_site()
             path = obj.relative_url(site)
@@ -55,6 +53,8 @@ class WagtailBakeryView(BuildableDetailView):
 
         # Make sure the (deeply) directories are created
         os.path.exists(build_path) or os.makedirs(build_path)
+
+        print("Build", build_path)
 
         # Always append index.html at the end of the path
         return os.path.join(build_path, 'index.html')

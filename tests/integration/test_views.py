@@ -68,7 +68,8 @@ def test_wagtail_bakery_view_build_path_for_multisite(multisite):
 
     # Check build path for homepage
     build_path = view.get_build_path(page)
-    assert build_path == '%s/%s/index.html' % (settings.BUILD_DIR, site.hostname)
+    assert build_path == '%s/%s/index.html' % (
+        settings.BUILD_DIR, site.hostname)
 
 
 @pytest.mark.django_db
