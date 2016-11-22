@@ -1,8 +1,26 @@
 import pytest
 
 from django.conf import settings
-
 from wagtailbakery.views import AllPublishedPagesView, WagtailBakeryView
+
+from tests.factories.site import SiteFactory
+
+
+@pytest.mark.django_db
+def test_wagtail_bakery_view_get_site(multisite):
+    view = WagtailBakeryView()
+    site = view.get_site()
+
+    # Check if default site is returned
+    assert site.id == multisite[0].id
+
+    # Check if changed default site is returned
+    multisite[0].is_default_site = False
+    multisite[0].save()
+    multisite[1].is_default_site = True
+    multisite[1].save()
+    site = view.get_site()
+    assert site.id == multisite[1].id
 
 
 @pytest.mark.django_db

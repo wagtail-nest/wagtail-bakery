@@ -15,6 +15,18 @@ class WagtailBakeryView(BuildableDetailView):
         response = serve(request, request.path)
         return response
 
+    def get_site(self):
+        """Return the site were to build the static pages from.
+
+        By default this is the site marked as default with `is_default_site`
+        set to `true`.
+
+        Example:
+            def get_site(self):
+                return Site.objects.get(hostname='website.com')
+        """
+        return Site.objects.get(is_default_site=True)
+
     def get_build_path(self, obj):
         return super(WagtailBakeryView, self).get_build_path(obj)
 
@@ -36,7 +48,7 @@ class AllPublishedPagesView(WagtailBakeryView):
         )
     """
     def get_queryset(self):
-        default_site = Site.objects.get(is_default_site=True)
-        root_page = default_site.root_page
-        return Page.objects.descendant_of(
-            root_page, inclusive=True).public().live()
+        site = self.get_site()
+        root_page = site.root_page
+        descendants = Page.objects.descendant_of(root_page, inclusive=True)
+        return descendants.public().live()

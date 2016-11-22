@@ -33,9 +33,10 @@ def test_page_tree(page_tree):
 
 @pytest.mark.django_db
 def test_multisite(multisite):
-    assert len(multisite) == 3
+    assert len(multisite) == 4
 
     # Check if full urls are returned when multiple sites are used
-    assert multisite[0].root_page.url == 'http://site_1/'
+    assert multisite[0].root_page.url == 'http://localhost/'
     assert multisite[1].root_page.url == 'http://site_2/'
     assert multisite[2].root_page.url == 'http://site_3/'
+    assert multisite[3].root_page.url == 'http://site_4/'
