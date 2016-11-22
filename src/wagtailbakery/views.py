@@ -71,7 +71,7 @@ class AllPagesView(WagtailBakeryView):
     Example:
         # File: settings.py
         BAKERY_VIEWS = (
-            'wagtailbakery.views.AllPublishedPagesView',
+            'wagtailbakery.views.AllPagesView',
         )
     """
     def get_queryset(self):
