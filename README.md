@@ -84,7 +84,7 @@ In the [examples](https://github.com/moorinteractive/wagtail-bakery/tree/master/
 
 Create a virtualenv and go to one of the examples, you can use the `Make` command to install all requirements, load fixtures and run the server.
 
-Use as described in the usge section `manage.py build` to build the example out as static files.
+Use as described in the usage section `manage.py build` to build the example out as static files.
 
 ## Troubleshooting
 
