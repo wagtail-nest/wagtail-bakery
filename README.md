@@ -78,6 +78,14 @@ manage.py buildserver
 
 Please see the [documentation](https://wagtail-bakery.readthedocs.io) at for more information how to use Wagtail bakery.
 
+## Examples
+
+In the [examples](https://github.com/moorinteractive/wagtail-bakery/tree/master/examples) directory you can find a Wagtail setup with fixtures for a single site as well as a multisite setup.
+
+Create a virtualenv and go to one of the examples, you can use the `Make` command to install all requirements, load fixtures and run the server.
+
+Use as described in the usge section `manage.py build` to build the example out as static files.
+
 ## Troubleshooting
 
 If you get an `DisallowedHost` error while running the `manage.py build` command, please add `testserver` to your `ALLOWED_HOSTS` settings.
