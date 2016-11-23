@@ -7,6 +7,7 @@ install:
   - pip install coveralls
   - pip install -e .[test]
 script:
-  - python -m py.test --cov=src/wagtailbakery --cov-report=xml tests/
+  - pytest --cov=wagtailbakery --cov-report=xml
+  - flake8 src/
 after_success:
   - coveralls

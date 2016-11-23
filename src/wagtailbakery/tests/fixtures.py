@@ -1,9 +1,8 @@
 import pytest
 
 from wagtail.wagtailcore.models import Page, Site
-
-from tests.factories.page import PageFactory
-from tests.factories.site import SiteFactory
+from wagtailbakery.tests.factories.page import PageFactory
+from wagtailbakery.tests.factories.site import SiteFactory
 
 
 @pytest.fixture
