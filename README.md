@@ -76,7 +76,7 @@ If you want to check how your static website will look like, use the `buildserve
 manage.py buildserver
 ```
 
-Please see the [documentation](https://wagtail-bakery.readthedocs.io) at for more information how to use Wagtail bakery.
+Please see the documentation at [https://wagtail-bakery.readthedocs.io](https://wagtail-bakery.readthedocs.io) for more information how to use Django bakery.
 
 ## Examples
 
