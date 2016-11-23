@@ -15,7 +15,8 @@ test_require = [
     'isort==4.2.5',
     'pytest==3.0.4',
     'pytest-cov==2.4.0',
-    'pytest-django==3.1.1'
+    'pytest-django==3.1.1',
+    'wagtail>=1.7,<1.8',
 ]
 
 setup(

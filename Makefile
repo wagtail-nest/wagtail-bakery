@@ -20,4 +20,4 @@ isort:
 lint: flake8 isort
 
 test:
-	python -m py.test tests
+	python -m py.test tests/
