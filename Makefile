@@ -3,21 +3,22 @@
 all: install clean test lint docs
 
 clean:
-	find . -name '*.pyc' | xargs rm
+	find . -type f -name "*.py[co]" -delete
+	find . -type d -name "__pycache__" -delete
 
 docs:
 	cd docs && make clean && make html
 
 flake8:
-	flake8 src/ tests/
+	flake8 src/
 
 install:
 	pip install -e .[docs,test]
 
 isort:
-	isort --check-only --diff --recursive src/ tests/
+	isort --check-only --diff --recursive src/
 
 lint: flake8 isort
 
 test:
-	python -m py.test tests
+	pytest

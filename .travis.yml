@@ -1,14 +1,13 @@
 sudo: false
 language: python
-matrix:
-  include:
-    - env: TOXENV=py27
-      python: 2.7
-    - env: TOXENV=py35
-      python: 3.5
+python:
+  - "2.7"
+  - "3.5"
 install:
-  - pip install coveralls tox 
+  - pip install coveralls
+  - pip install -e .[test]
 script:
-  - tox -e $TOXENV
+  - pytest --cov=wagtailbakery --cov-report=xml
+  - flake8 src/
 after_success:
   - coveralls
