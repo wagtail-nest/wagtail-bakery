@@ -70,7 +70,7 @@ Build the site out as flat files by running the `build` management command.
 manage.py build
 ```
 
-If you want to check how your static website will look like, use the `buildserver` after you have build your static files once.
+If you want to check how your static website will look like, use the `buildserver` command after you have build your static files once.
 
 ```
 manage.py buildserver
