@@ -7,7 +7,7 @@ clean:
 	find . -type d -name "__pycache__" -delete
 
 docs:
-	cd docs && make clean && make html
+	rm -rf site/ && mkdocs build
 
 flake8:
 	flake8 src/
