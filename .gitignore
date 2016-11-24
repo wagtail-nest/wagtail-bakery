@@ -7,6 +7,6 @@ __pycache__/
 *.egg-info/
 *.py[cod]
 coverage.xml
-docs/build/
+site/
 tests/build/
 tests/public/

@@ -2,11 +2,11 @@ from setuptools import find_packages, setup
 
 
 install_requires = [
-    'django-bakery==0.8.11'
+    'django-bakery==0.8.11',
 ]
 
 docs_require = [
-    'sphinx==1.4.6'
+    'mkdocs',
 ]
 
 test_require = [
