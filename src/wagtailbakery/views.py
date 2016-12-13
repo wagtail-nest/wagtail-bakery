@@ -4,6 +4,7 @@ import os
 from bakery.views import BuildableDetailView
 from django.conf import settings
 from django.core.handlers.base import BaseHandler
+from django.utils.six.moves.urllib.parse import urlparse
 from wagtail.wagtailcore.models import Page, Site
 
 logger = logging.getLogger(__name__)
@@ -44,9 +45,9 @@ class WagtailBakeryView(BuildableDetailView):
         url = self.get_url(obj)
 
         if url.startswith('http'):
-            site = obj.get_site()
-            path = obj.relative_url(site)
-            hostname = obj.get_site().hostname
+            url_parsed = urlparse(url)
+            path = url_parsed.path
+            hostname = url_parsed.hostname
             build_path = os.path.join(settings.BUILD_DIR, hostname, path[1:])
         else:
             build_path = os.path.join(settings.BUILD_DIR, url[1:])
@@ -67,7 +68,7 @@ class WagtailBakeryView(BuildableDetailView):
 
     def build_queryset(self):
         for item in self.get_queryset().all():
-            if item.url is not None:
+            if self.get_url(item) is not None:
                 self.build_object(item)
 
     class Meta:
