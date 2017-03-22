@@ -68,7 +68,9 @@ class WagtailBakeryView(BuildableDetailView):
 
     def build_queryset(self):
         for item in self.get_queryset().all():
-            if self.get_url(item) is not None:
+            url = self.get_url(item)
+            logger.info("Building %s" % url)
+            if url is not None:
                 self.build_object(item)
 
     class Meta:
