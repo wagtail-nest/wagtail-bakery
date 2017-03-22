@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 import os
 
+import environ
+
+env = environ.Env()
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -23,7 +27,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = '_vyer8o8)0jv9xbwmq8vf)9j(*#plkr+pryg*@0j9*tg5p(6ze'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -63,6 +67,9 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -144,6 +151,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' 
+
 # Wagtail
 # http://docs.wagtail.io/en/v1.6.2/getting_started/integrating_into_django.html
 
@@ -153,8 +162,15 @@ WAGTAIL_SITE_NAME = 'Example'
 # Wagtail bakery
 # https://github.com/moorinteractive/wagtail-bakery
 
+ALLOW_BAKERY_AUTO_PUBLISHING = True
+
 BUILD_DIR = os.path.join(BASE_DIR, '../build')
 
 BAKERY_VIEWS = (
     'wagtailbakery.views.AllPublishedPagesView',
 )
+
+AWS_BUCKET_NAME = 'wagtail-bakery'
+
+AWS_ACCESS_KEY_ID = env.str('AWS_ACCESS_KEY_ID', '')
+AWS_SECRET_ACCESS_KEY = env.str('AWS_SECRET_ACCESS_KEY', '')

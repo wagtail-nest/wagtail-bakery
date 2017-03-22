@@ -1,3 +1,4 @@
 django
 wagtail
 git+https://github.com/moorinteractive/wagtail-bakery.git#egg=wagtail-bakery
+whitenoise==3.3.0
