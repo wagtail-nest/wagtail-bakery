@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 import os
 
+import environ
+
+env = environ.Env()
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -143,6 +147,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'public/static')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+
 
 # Wagtail
 # http://docs.wagtail.io/en/v1.6.2/getting_started/integrating_into_django.html

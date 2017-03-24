@@ -2,7 +2,8 @@ from setuptools import find_packages, setup
 
 
 install_requires = [
-    'django-bakery>=0.8.12,<1.0.0',
+    'django-bakery==0.8.14',
+    'wagtail>=1.6',
 ]
 
 docs_require = [
@@ -16,7 +17,7 @@ test_require = [
     'pytest==3.0.5',
     'pytest-cov==2.4.0',
     'pytest-django==3.1.2',
-    'wagtail>=1.7,<1.8',
+    'wagtail==1.9',
 ]
 
 setup(
@@ -41,5 +42,6 @@ setup(
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
     ],
 )

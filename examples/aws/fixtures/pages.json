@@ -1,0 +1,215 @@
+[
+{
+  "model": "example.homepage",
+  "pk": 3,
+  "fields": {
+    "body": "[{\"type\": \"paragraph\", \"value\": \"<p>This is the example page.</p>\"}]"
+  }
+},
+{
+  "model": "example.genericpage",
+  "pk": 4,
+  "fields": {
+    "body": "[{\"type\": \"paragraph\", \"value\": \"<p>This is the about page.</p>\"}]"
+  }
+},
+{
+  "model": "example.genericpage",
+  "pk": 7,
+  "fields": {
+    "body": "[{\"type\": \"paragraph\", \"value\": \"<p>This is the contact page.</p>\"}]"
+  }
+},
+{
+  "model": "example.bloglistpage",
+  "pk": 5,
+  "fields": {
+    "body": "[{\"type\": \"paragraph\", \"value\": \"<p>This is the blog page.</p>\"}]"
+  }
+},
+{
+  "model": "example.blogpostpage",
+  "pk": 6,
+  "fields": {
+    "body": "[{\"type\": \"paragraph\", \"value\": \"<p>This is the example blog post.</p>\"}]"
+  }
+},
+{
+  "model": "wagtailcore.page",
+  "pk": 1,
+  "fields": {
+    "path": "0001",
+    "depth": 1,
+    "numchild": 1,
+    "title": "Root",
+    "slug": "root",
+    "content_type": [
+      "wagtailcore",
+      "page"
+    ],
+    "live": true,
+    "has_unpublished_changes": false,
+    "url_path": "/",
+    "owner": null,
+    "seo_title": "",
+    "show_in_menus": false,
+    "search_description": "",
+    "go_live_at": null,
+    "expire_at": null,
+    "expired": false,
+    "locked": false,
+    "first_published_at": null,
+    "latest_revision_created_at": null
+  }
+},
+{
+  "model": "wagtailcore.page",
+  "pk": 3,
+  "fields": {
+    "path": "00010002",
+    "depth": 2,
+    "numchild": 3,
+    "title": "Example",
+    "slug": "example",
+    "content_type": [
+      "example",
+      "homepage"
+    ],
+    "live": true,
+    "has_unpublished_changes": false,
+    "url_path": "/example/",
+    "owner": [
+      "admin"
+    ],
+    "seo_title": "",
+    "show_in_menus": false,
+    "search_description": "",
+    "go_live_at": null,
+    "expire_at": null,
+    "expired": false,
+    "locked": false,
+    "first_published_at": "2016-11-22T14:58:42.065Z",
+    "latest_revision_created_at": "2016-11-22T14:58:42.054Z"
+  }
+},
+{
+  "model": "wagtailcore.page",
+  "pk": 4,
+  "fields": {
+    "path": "000100020001",
+    "depth": 3,
+    "numchild": 0,
+    "title": "About",
+    "slug": "about",
+    "content_type": [
+      "example",
+      "genericpage"
+    ],
+    "live": true,
+    "has_unpublished_changes": false,
+    "url_path": "/example/about/",
+    "owner": [
+      "admin"
+    ],
+    "seo_title": "",
+    "show_in_menus": false,
+    "search_description": "",
+    "go_live_at": null,
+    "expire_at": null,
+    "expired": false,
+    "locked": false,
+    "first_published_at": "2016-11-22T15:07:30.743Z",
+    "latest_revision_created_at": "2016-11-22T15:07:30.732Z"
+  }
+},
+{
+  "model": "wagtailcore.page",
+  "pk": 5,
+  "fields": {
+    "path": "000100020002",
+    "depth": 3,
+    "numchild": 1,
+    "title": "Blog",
+    "slug": "blog",
+    "content_type": [
+      "example",
+      "bloglistpage"
+    ],
+    "live": true,
+    "has_unpublished_changes": false,
+    "url_path": "/example/blog/",
+    "owner": [
+      "admin"
+    ],
+    "seo_title": "",
+    "show_in_menus": false,
+    "search_description": "",
+    "go_live_at": null,
+    "expire_at": null,
+    "expired": false,
+    "locked": false,
+    "first_published_at": "2016-11-22T15:07:47.773Z",
+    "latest_revision_created_at": "2016-11-22T15:07:47.759Z"
+  }
+},
+{
+  "model": "wagtailcore.page",
+  "pk": 6,
+  "fields": {
+    "path": "0001000200020001",
+    "depth": 4,
+    "numchild": 0,
+    "title": "Example",
+    "slug": "example",
+    "content_type": [
+      "example",
+      "blogpostpage"
+    ],
+    "live": true,
+    "has_unpublished_changes": false,
+    "url_path": "/example/blog/example/",
+    "owner": [
+      "admin"
+    ],
+    "seo_title": "",
+    "show_in_menus": false,
+    "search_description": "",
+    "go_live_at": null,
+    "expire_at": null,
+    "expired": false,
+    "locked": false,
+    "first_published_at": "2016-11-22T15:08:03.287Z",
+    "latest_revision_created_at": "2016-11-22T15:08:03.277Z"
+  }
+},
+{
+  "model": "wagtailcore.page",
+  "pk": 7,
+  "fields": {
+    "path": "000100020003",
+    "depth": 3,
+    "numchild": 0,
+    "title": "Contact",
+    "slug": "contact",
+    "content_type": [
+      "example",
+      "genericpage"
+    ],
+    "live": true,
+    "has_unpublished_changes": false,
+    "url_path": "/example/contact/",
+    "owner": [
+      "admin"
+    ],
+    "seo_title": "",
+    "show_in_menus": false,
+    "search_description": "",
+    "go_live_at": null,
+    "expire_at": null,
+    "expired": false,
+    "locked": false,
+    "first_published_at": "2016-11-22T15:08:17.495Z",
+    "latest_revision_created_at": "2016-11-22T15:08:17.484Z"
+  }
+}
+]

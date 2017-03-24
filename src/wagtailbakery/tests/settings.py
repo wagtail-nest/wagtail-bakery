@@ -113,7 +113,7 @@ USE_TZ = True
 
 WAGTAIL_SITE_NAME = 'Wagtail Bakery'
 
-# Wagtail bakery
-
 BUILD_DIR = os.path.join(BASE_DIR, 'build')
 BAKERY_VIEWS = []
+
+CELERY_ALWAYS_EAGER = True
