@@ -1,5 +1,4 @@
 import factory
-
 from wagtail.wagtailcore.models import Site
 
 

@@ -51,7 +51,8 @@ class WagtailBakeryView(BuildableDetailView):
             hostname = url_parsed.hostname
 
             if getattr(settings, 'BAKERY_MULTISITE', False):
-                build_path = os.path.join(settings.BUILD_DIR, hostname, path[1:])
+                build_path = os.path.join(
+                    settings.BUILD_DIR, hostname, path[1:])
             else:
                 build_path = os.path.join(settings.BUILD_DIR, path[1:])
         else:
