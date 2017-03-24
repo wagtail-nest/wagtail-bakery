@@ -144,6 +144,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
+
 # Wagtail
 # http://docs.wagtail.io/en/v1.6.2/getting_started/integrating_into_django.html
 

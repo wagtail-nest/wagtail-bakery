@@ -1,4 +1,5 @@
 django
 django-celery
+django-environ
 wagtail
 git+https://github.com/moorinteractive/wagtail-bakery.git#egg=wagtail-bakery
