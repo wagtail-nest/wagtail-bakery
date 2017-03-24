@@ -1,6 +1,6 @@
 import pytest
-
 from wagtail.wagtailcore.models import Page, Site
+
 from wagtailbakery.tests.factories.page import PageFactory
 from wagtailbakery.tests.factories.site import SiteFactory
 
