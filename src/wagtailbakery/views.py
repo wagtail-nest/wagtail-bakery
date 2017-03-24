@@ -1,10 +1,14 @@
+import logging
 import os
 
 from bakery.views import BuildableDetailView
 from django.conf import settings
 from django.core.handlers.base import BaseHandler
+from django.test.client import RequestFactory
 from django.utils.six.moves.urllib.parse import urlparse
 from wagtail.wagtailcore.models import Page, Site
+
+logger = logging.getLogger(__name__)
 
 
 class WagtailBakeryView(BuildableDetailView):
@@ -19,6 +23,7 @@ class WagtailBakeryView(BuildableDetailView):
         super(WagtailBakeryView, self).__init__(*args, **kwargs)
 
     def get(self, request):
+        site = Site.find_for_request(request)
         response = self.handler.get_response(request)
         return response
 
@@ -53,6 +58,19 @@ class WagtailBakeryView(BuildableDetailView):
     def get_path(self, obj):
         """Return Wagtail path to page."""
         return obj.path
+
+    def build_object(self, obj):
+        """
+        Build wagtail page and set SERVER_NAME to retrieve corresponding site
+        object.
+        """
+        site = obj.get_site()
+        logger.debug("Building %s" % obj)
+        self.request = RequestFactory(
+            SERVER_NAME=site.hostname).get(self.get_url(obj))
+        self.set_kwargs(obj)
+        path = self.get_build_path(obj)
+        self.build_file(path, self.get_content())
 
     def build_queryset(self):
         for item in self.get_queryset().all():
