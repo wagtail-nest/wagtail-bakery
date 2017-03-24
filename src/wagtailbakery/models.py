@@ -1,4 +1,5 @@
-from bakery.models import BuildableModel
+from django.core.management import call_command
+from bakery.models import AutoPublishingBuildableModel, BuildableModel
 
 from wagtailbakery.views import WagtailBakeryView
 
@@ -17,14 +18,20 @@ class BuildableWagtailBakeryModel(BuildableModel):
         abstract = True
 
 
-class AutoPublishingWagtailBakeryModel(BuildableWagtailBakeryModel):
+class AutoPublishingWagtailBakeryModel(AutoPublishingBuildableModel):
     """
     Auto publishing Wagtail bakery page model mixin class.
     """
+    detail_views = (WagtailBakeryView,)
     publication_status_field = 'live'
 
     def save(self, *args, **kwargs):
+        
         super(AutoPublishingWagtailBakeryModel, self).save(*args, **kwargs)
+
+    def _build_related(self):
+        # TODO: Build related pages with get_static_site_paths
+        pass
 
     class Meta:
         abstract = True

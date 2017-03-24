@@ -3,8 +3,10 @@ from wagtail.wagtailcore.fields import StreamField
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel
 
+from wagtailbakery.models import AutoPublishingWagtailBakeryModel
 
-class AbstractExamplePage(Page):
+
+class AbstractExamplePage(Page, AutoPublishingWagtailBakeryModel):
     body = StreamField([
         ('paragraph', blocks.RichTextBlock())
     ])

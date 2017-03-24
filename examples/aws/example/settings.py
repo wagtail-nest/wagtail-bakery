@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'modelcluster',
     'taggit',
 
+    'djcelery',
     'bakery',
     'wagtailbakery',
 
@@ -162,8 +163,21 @@ WAGTAIL_SITE_NAME = 'Example'
 # Wagtail bakery
 # https://github.com/moorinteractive/wagtail-bakery
 
+ALLOW_BAKERY_AUTO_PUBLISHING = True
+
 BUILD_DIR = os.path.join(BASE_DIR, '../build')
 
 BAKERY_VIEWS = (
     'wagtailbakery.views.AllPublishedPagesView',
 )
+
+AWS_BUCKET_NAME = 'wagtail-bakery'
+
+AWS_ACCESS_KEY_ID = env.str('AWS_ACCESS_KEY_ID', '')
+AWS_SECRET_ACCESS_KEY = env.str('AWS_SECRET_ACCESS_KEY', '')
+
+
+# Django-celery
+# http://docs.celeryproject.org/en/latest/
+
+CELERY_ALWAYS_EAGER = True
