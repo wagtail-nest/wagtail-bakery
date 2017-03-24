@@ -19,6 +19,7 @@ class AbstractExamplePage(Page, AutoPublishingWagtailBakeryModel):
     class Meta:
         abstract = True
 
+
 class HomePage(AbstractExamplePage):
     pass
 

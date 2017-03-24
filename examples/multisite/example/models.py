@@ -17,6 +17,7 @@ class AbstractExamplePage(Page):
     class Meta:
         abstract = True
 
+
 class HomePage(AbstractExamplePage):
     pass
 

@@ -7,8 +7,6 @@ from django.core.handlers.base import BaseHandler
 from django.utils.six.moves.urllib.parse import urlparse
 from wagtail.wagtailcore.models import Page, Site
 
-logging.basicConfig(level=logging.INFO)
-
 logger = logging.getLogger(__name__)
 
 
