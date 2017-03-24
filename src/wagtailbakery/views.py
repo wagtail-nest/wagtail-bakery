@@ -56,7 +56,6 @@ class WagtailBakeryView(BuildableDetailView):
                 build_path = os.path.join(settings.BUILD_DIR, path[1:])
         else:
             # Single site has relative urls
-            print(url)
             build_path = os.path.join(settings.BUILD_DIR, url[1:])
 
         # Make sure the (deeply) directories are created
