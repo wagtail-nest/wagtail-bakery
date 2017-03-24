@@ -38,6 +38,12 @@ INSTALLED_APPS = (
 
 ## Configuration
 
+Define wether you want to build multiple sitse or the default site (see examples for impact on directory output), by default this settings is to to `False`.
+
+```python
+BAKERY_MULTISITE = True
+```
+
 Add the build directory where you want to be the site be built as flat files.
 
 ```python
@@ -85,6 +91,26 @@ In the [examples](https://github.com/moorinteractive/wagtail-bakery/tree/master/
 Create a virtualenv and go to one of the examples, you can use the `Make` command to install all requirements, load fixtures and run the server.
 
 As described in the usage section, use `manage.py build` to build out the example as static files.
+
+**Build output with `BAKERY_MULTISITE=True`**:
+
+```
+build/example.com/index.html
+build/example.com/about/index.html
+build/example.com/blog/index.html
+build/example.com/blog/example/index.html
+build/static/
+```
+
+**Build output with `BAKERY_MULTISITE=False` (default)**:
+
+```
+build/index.html
+build/about/index.html
+build/blog/index.html
+build/blog/example/index.html
+build/static/
+```
 
 ## Troubleshooting
 

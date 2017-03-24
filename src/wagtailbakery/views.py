@@ -5,7 +5,7 @@ from bakery.views import BuildableDetailView
 from django.conf import settings
 from django.core.handlers.base import BaseHandler
 from django.utils.six.moves.urllib.parse import urlparse
-from wagtail.wagtailcore.models import Page, Site
+from wagtail.wagtailcore.models import Site
 
 logger = logging.getLogger(__name__)
 
@@ -45,11 +45,18 @@ class WagtailBakeryView(BuildableDetailView):
         url = self.get_url(obj)
 
         if url.startswith('http'):
+            # Multisite has absolute urls
             url_parsed = urlparse(url)
             path = url_parsed.path
             hostname = url_parsed.hostname
-            build_path = os.path.join(settings.BUILD_DIR, hostname, path[1:])
+
+            if getattr(settings, 'BAKERY_MULTISITE', False):
+                build_path = os.path.join(settings.BUILD_DIR, hostname, path[1:])
+            else:
+                build_path = os.path.join(settings.BUILD_DIR, path[1:])
         else:
+            # Single site has relative urls
+            print(url)
             build_path = os.path.join(settings.BUILD_DIR, url[1:])
 
         # Make sure the (deeply) directories are created
@@ -92,12 +99,16 @@ class AllPublishedPagesView(WagtailBakeryView):
         )
     """
     def get_queryset(self):
-        return Page.objects.filter(depth__gt=1).public().live().specific()
+        site = self.get_site()
+        pages = site.root_page.get_descendants(
+            inclusive=True).public().live().specific()
+        return pages
 
 
 class AllPagesView(WagtailBakeryView):
     """
-    Generates a seperate index.html page for each (un)published wagtail page.
+    Generates a seperate index.html page for each (latest revision) wagtail
+    page.
 
     Use this view to export your pages for acceptance/staging environments.
 
@@ -108,4 +119,7 @@ class AllPagesView(WagtailBakeryView):
         )
     """
     def get_queryset(self):
-        return Page.objects.filter(depth__gt=1).public().specific()
+        site = self.get_site()
+        pages = site.root_page.get_descendants(
+            inclusive=True).public().specific()
+        return pages
