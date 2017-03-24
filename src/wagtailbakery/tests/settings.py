@@ -2,9 +2,7 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-ALLOWED_HOSTS = [
-    'testserver'
-]
+ALLOWED_HOSTS = []
 
 DATABASES = {
     'default': {

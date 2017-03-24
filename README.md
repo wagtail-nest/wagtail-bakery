@@ -114,9 +114,7 @@ build/static/
 
 ## Troubleshooting
 
-If you get an `DisallowedHost` error while running the `manage.py build` command, please add `testserver` to your `ALLOWED_HOSTS` settings.
-
-For more issues [please submit an issue](https://github.com/moorinteractive/wagtail-bakery/issues/new) on GitHub.
+For issues [please submit an issue](https://github.com/moorinteractive/wagtail-bakery/issues/new) on GitHub.
 
 ## Credits
 

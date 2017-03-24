@@ -6,23 +6,6 @@ from wagtailbakery.views import (AllPagesView, AllPublishedPagesView,
 
 
 @pytest.mark.django_db
-def test_wagtail_bakery_view_get_site(multisite):
-    view = WagtailBakeryView()
-    site = view.get_site()
-
-    # Check if default site is returned
-    assert site.id == multisite[0].id
-
-    # Check if changed default site is returned
-    multisite[0].is_default_site = False
-    multisite[0].save()
-    multisite[1].is_default_site = True
-    multisite[1].save()
-    site = view.get_site()
-    assert site.id == multisite[1].id
-
-
-@pytest.mark.django_db
 def test_wagtail_bakery_view_get_url(page_tree):
     view = WagtailBakeryView()
 
@@ -68,8 +51,8 @@ def test_wagtail_bakery_view_build_path_for_multisite(multisite):
 
     # Check build path for homepage
     build_path = view.get_build_path(page)
-    assert build_path == '%s/%s/index.html' % (
-        settings.BUILD_DIR, site.hostname)
+    assert build_path == '%s/index.html' % (
+        settings.BUILD_DIR)
 
 
 @pytest.mark.django_db

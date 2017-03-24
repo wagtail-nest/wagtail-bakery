@@ -23,7 +23,6 @@ class WagtailBakeryView(BuildableDetailView):
         super(WagtailBakeryView, self).__init__(*args, **kwargs)
 
     def get(self, request):
-        site = Site.find_for_request(request)
         response = self.handler.get_response(request)
         return response
 
