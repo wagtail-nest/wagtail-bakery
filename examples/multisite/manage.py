@@ -1,6 +1,9 @@
 #!/usr/bin/env python
+import logging
 import os
 import sys
+
+logging.basicConfig(level=logging.DEBUG)
 
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "example.settings")

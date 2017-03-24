@@ -1,13 +1,10 @@
-import logging
 import os
 
 from bakery.views import BuildableDetailView
 from django.conf import settings
 from django.core.handlers.base import BaseHandler
 from django.utils.six.moves.urllib.parse import urlparse
-from wagtail.wagtailcore.models import Site
-
-logger = logging.getLogger(__name__)
+from wagtail.wagtailcore.models import Page, Site
 
 
 class WagtailBakeryView(BuildableDetailView):
@@ -19,27 +16,11 @@ class WagtailBakeryView(BuildableDetailView):
         self.handler = BaseHandler()
         self.handler.load_middleware()
 
-        self.site = self.get_site()
-
         super(WagtailBakeryView, self).__init__(*args, **kwargs)
 
     def get(self, request):
         response = self.handler.get_response(request)
         return response
-
-    def get_site(self):
-        """Return the site were to build the static pages from.
-
-        By default this is the site marked as default with `is_default_site`
-        set to `true`.
-
-        In case of a multisite setup this site object will be ignored.
-
-        Example:
-            def get_site(self):
-                return Site.objects.get(hostname='website.com')
-        """
-        return Site.objects.get(is_default_site=True)
 
     def get_build_path(self, obj):
         url = self.get_url(obj)
@@ -76,33 +57,11 @@ class WagtailBakeryView(BuildableDetailView):
     def build_queryset(self):
         for item in self.get_queryset().all():
             url = self.get_url(item)
-
-            logger.info("Building %s" % url)
-
             if url is not None:
                 self.build_object(item)
 
     class Meta:
         abstract = True
-
-
-class AllPublishedPagesView(WagtailBakeryView):
-    """
-    Generates a seperate index.html page for each published wagtail page.
-
-    Use this view to export your pages for production.
-
-    Example:
-        # File: settings.py
-        BAKERY_VIEWS = (
-            'wagtailbakery.views.AllPublishedPagesView',
-        )
-    """
-    def get_queryset(self):
-        site = self.get_site()
-        pages = site.root_page.get_descendants(
-            inclusive=True).public().live().specific()
-        return pages
 
 
 class AllPagesView(WagtailBakeryView):
@@ -119,7 +78,25 @@ class AllPagesView(WagtailBakeryView):
         )
     """
     def get_queryset(self):
-        site = self.get_site()
-        pages = site.root_page.get_descendants(
-            inclusive=True).public().specific()
-        return pages
+        if getattr(settings, 'BAKERY_MULTISITE', False):
+            return Page.objects.all().public()
+        else:
+            site = Site.objects.get(is_default_site=True)
+            return site.root_page.get_descendants(inclusive=True).public()
+
+
+class AllPublishedPagesView(AllPagesView):
+    """
+    Generates a seperate index.html page for each published wagtail page.
+
+    Use this view to export your pages for production.
+
+    Example:
+        # File: settings.py
+        BAKERY_VIEWS = (
+            'wagtailbakery.views.AllPublishedPagesView',
+        )
+    """
+    def get_queryset(self):
+        pages = super(AllPublishedPagesView, self).get_queryset()
+        return pages.live()

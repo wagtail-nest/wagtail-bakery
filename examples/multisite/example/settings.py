@@ -156,7 +156,7 @@ WAGTAIL_SITE_NAME = 'Example'
 
 BUILD_DIR = os.path.join(BASE_DIR, '../build')
 
-BAKERY_MULTISITE = False
+BAKERY_MULTISITE = True
 
 BAKERY_VIEWS = (
     'wagtailbakery.views.AllPublishedPagesView',
