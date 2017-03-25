@@ -38,7 +38,7 @@ INSTALLED_APPS = (
 
 ## Configuration
 
-Define wether you want to build multiple sitse or the default site (see examples for impact on directory output), by default this settings is to to `False`.
+Define whether you want to build multiple sites or the default site (see examples for impact on directory output), by default this settings is `False`.
 
 ```python
 BAKERY_MULTISITE = True
