@@ -1,0 +1,24 @@
+[
+{
+  "model": "wagtailcore.site",
+  "pk": 1,
+  "fields": {
+    "hostname": "example.com",
+    "port": 80,
+    "site_name": "",
+    "root_page": 3,
+    "is_default_site": true
+  }
+},
+{
+  "model": "wagtailcore.site",
+  "pk": 2,
+  "fields": {
+    "hostname": "domain.com",
+    "port": 80,
+    "site_name": "",
+    "root_page": 8,
+    "is_default_site": false
+  }
+}
+]

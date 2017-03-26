@@ -24,6 +24,7 @@ class WagtailBakeryView(BuildableDetailView):
 
     def get(self, request):
         response = self.handler.get_response(request)
+        # TODO: Render redirect.html template for the url
         return response
 
     def get_build_path(self, obj):
