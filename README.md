@@ -6,7 +6,6 @@ A set of helpers for baking your Django Wagtail site out as flat files.
 [![Build Status](https://travis-ci.org/moorinteractive/wagtail-bakery.svg?branch=master)](https://travis-ci.org/moorinteractive/wagtail-bakery)
 [![Coverage Status](https://coveralls.io/repos/github/moorinteractive/wagtail-bakery/badge.svg?branch=master)](https://coveralls.io/github/moorinteractive/wagtail-bakery?branch=master)
 
-* Documentation: [https://wagtail-bakery.readthedocs.io](https://wagtail-bakery.readthedocs.io)
 * Issues: [https://github.com/moorinteractive/wagtail-bakery/issues](https://github.com/moorinteractive/wagtail-bakery/issues)
 * Testing: [https://travis-ci.org/moorinteractive/wagtail-bakery](https://travis-ci.org/moorinteractive/wagtail-bakery)
 * Coverage: [https://coveralls.io/github/moorinteractive/wagtail-bakery](https://coveralls.io/github/moorinteractive/wagtail-bakery)

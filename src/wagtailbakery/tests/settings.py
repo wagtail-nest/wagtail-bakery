@@ -38,6 +38,7 @@ INSTALLED_APPS = [
 
     'bakery',
     'wagtailbakery',
+    'wagtailbakery.tests',
 ]
 
 LANGUAGES = [
@@ -112,6 +113,8 @@ USE_TZ = True
 WAGTAIL_SITE_NAME = 'Wagtail Bakery'
 
 BUILD_DIR = os.path.join(BASE_DIR, 'build')
-BAKERY_VIEWS = []
+BAKERY_VIEWS = (
+    'wagtailbakery.views.AllPagesView',
+)
 
 CELERY_ALWAYS_EAGER = True

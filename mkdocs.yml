@@ -1,7 +1,0 @@
-site_name: Wagtail-bakery
-site_description: A set of helpers for baking your Django Wagtail site out as flat files
-repo_url: https://github.com/moorinteractive/wagtail-bakery
-pages:
-  - 'Home': index.md
-  - 'Getting Started': getting_started.md
-theme: readthedocs
