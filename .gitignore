@@ -9,5 +9,5 @@ __pycache__/
 *.py[cod]
 coverage.xml
 site/
-tests/build/
-tests/public/
+src/wagtailbakery/build/
+src/wagtailbakery/tests/public/
