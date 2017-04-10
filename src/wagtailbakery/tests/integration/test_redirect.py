@@ -27,4 +27,3 @@ def test_page_has_redirect_response(site):
     # Check if meta tag is present
     content = open(os.path.join(settings.BUILD_DIR, 'index.html')).read()
     assert '<meta http-equiv="refresh" content="1; url=http://www.example.com/">' in content # noqa
-
