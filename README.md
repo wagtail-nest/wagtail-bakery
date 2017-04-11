@@ -22,7 +22,7 @@ Wagtail-bakery is built on top of [Django bakery](https://github.com/datadesk/dj
 ## Installation
 
 ```
-pip install git+https://github.com/moorinteractive/wagtail-bakery.git#egg=wagtail-bakery
+pip install wagtail-bakery
 ```
 
 Add `bakery` and `wagtailbakery` to your `INSTALLED_APPS` setting.
