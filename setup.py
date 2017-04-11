@@ -28,8 +28,8 @@ setup(
     package_dir={'': 'src'},
     packages=find_packages('src'),
     include_package_data=True,
-    zif_safe=False,
-    classifier=[
+    zip_safe=False,
+    classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
         'Operating System :: Unix',
