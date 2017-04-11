@@ -5,7 +5,7 @@ from bakery.views import BuildableDetailView
 from django.conf import settings
 from django.core.handlers.base import BaseHandler
 from django.http import HttpResponseRedirect
-from django.template.loader import render_to_string
+from django.shortcuts import render
 from django.test.client import RequestFactory
 from django.utils.six.moves.urllib.parse import urlparse
 from wagtail.wagtailcore.models import Page, Site
@@ -45,8 +45,9 @@ class WagtailBakeryView(BuildableDetailView):
             'self': obj,
             'redirect_url': response.url,
         }
-        return response.make_bytes(render_to_string(
-            'wagtailbakery/redirect.html', context, self.request))
+        content = render(
+            self.request, 'wagtailbakery/redirect.html', context).content
+        return response.make_bytes(content)
 
     def get_build_path(self, obj):
         url = self.get_url(obj)

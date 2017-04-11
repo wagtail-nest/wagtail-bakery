@@ -35,3 +35,5 @@ script:
   - tox -e $TOXENV
 after_success:
   - coveralls
+notifications:
+  email: false
