@@ -3,6 +3,7 @@ from setuptools import find_packages, setup
 
 install_requires = [
     'django-bakery==0.9.2',
+    'six>=1.10.0',
     'wagtail>=1.6',
 ]
 
