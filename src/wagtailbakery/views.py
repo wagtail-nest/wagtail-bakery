@@ -30,17 +30,23 @@ class WagtailBakeryView(BuildableDetailView):
 
     def get_content(self, obj):
         response = self.get(self.request)
-        # Render HttpResponseRedirect.
         if isinstance(response, HttpResponseRedirect):
-            context = {
-                'self': obj,
-                'redirect_url': response.url,
-            }
-            return response.make_bytes(render_to_string(
-                'wagtailbakery/redirect.html', context, self.request))
-        # Render default HttpResponse from Wagtail Page.
-        content = response.render().content
-        return content
+            return self.get_redirect_content(response, obj)
+        if hasattr(response, 'render'):
+            return response.render().content
+        if hasattr(response, 'content'):
+            return response.content
+        raise AttributeError(
+            "'%s' object has no attribute 'render' or 'content'" % response)
+
+    def get_redirect_content(self, response, obj):
+        context = {
+            'page': obj,
+            'self': obj,
+            'redirect_url': response.url,
+        }
+        return response.make_bytes(render_to_string(
+            'wagtailbakery/redirect.html', context, self.request))
 
     def get_build_path(self, obj):
         url = self.get_url(obj)
