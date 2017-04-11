@@ -16,4 +16,4 @@ isort:
 lint: flake8 isort
 
 test:
-	pytest
+	py.test

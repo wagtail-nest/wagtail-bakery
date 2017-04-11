@@ -38,7 +38,7 @@ INSTALLED_APPS = [
 
     'bakery',
     'wagtailbakery',
-    'wagtailbakery.tests',
+    'tests',
 ]
 
 LANGUAGES = [
@@ -73,7 +73,7 @@ PASSWORD_HASHERS = (
     'django.contrib.auth.hashers.MD5PasswordHasher',
 )
 
-ROOT_URLCONF = 'wagtailbakery.tests.urls'
+ROOT_URLCONF = 'tests.urls'
 
 SECRET_KEY = '7b&ova34-9b(dj$gevm65$lc!m3#^#g1z*v#gv-g8k0wlo7#l8'
 

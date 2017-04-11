@@ -1,0 +1,9 @@
+exclude *
+recursive-exclude * *
+
+include MANIFEST.in
+include setup.cfg
+include setup.py
+include README.md
+
+recursive-include src/wagtailbakery *.html *.py

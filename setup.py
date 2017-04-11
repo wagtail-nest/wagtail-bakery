@@ -7,14 +7,13 @@ install_requires = [
     'wagtail>=1.6',
 ]
 
-test_require = [
+test_requires = [
     'factory-boy==2.8.1',
     'flake8==3.2.1',
     'isort==4.2.5',
     'pytest==3.0.5',
     'pytest-cov==2.4.0',
     'pytest-django==3.1.2',
-    'wagtail==1.9',
 ]
 
 setup(
@@ -24,10 +23,12 @@ setup(
     author='Rob Moorman',
     author_email='rob@moori.nl',
     install_requires=install_requires,
-    extras_require={'test': test_require},
+    tests_require=test_requires,
+    extras_require={'test': test_requires},
     package_dir={'': 'src'},
     packages=find_packages('src'),
     include_package_data=True,
+    zif_safe=False,
     classifier=[
         'Environment :: Web Environment',
         'Framework :: Django',

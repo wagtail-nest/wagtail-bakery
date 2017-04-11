@@ -1,24 +1,24 @@
 import pytest
-from wagtail.wagtailcore.models import Page, Site
-
-from wagtailbakery.tests.factories.page import PageFactory
-from wagtailbakery.tests.factories.site import SiteFactory
 
 
 @pytest.fixture
 def page():
+    from wagtail.wagtailcore.models import Page
     page = Page.objects.get(slug='home')
     return page
 
 
 @pytest.fixture
 def site():
+    from wagtail.wagtailcore.models import Site
     site = Site.objects.get(is_default_site=True)
     return site
 
 
 @pytest.fixture
 def page_tree(page):
+    from tests.factories.page import PageFactory
+
     PageFactory(depth=3, path='000100010001', slug='first', numchild=2)
     PageFactory(depth=3, path='000100010002', slug='second')
     PageFactory(depth=3, path='000100010003', slug='third')
@@ -34,6 +34,9 @@ def page_tree(page):
 
 @pytest.fixture
 def multisite(site):
+    from tests.factories.page import PageFactory
+    from tests.factories.site import SiteFactory
+
     page_2 = PageFactory(path='00010003', slug='page-2')
     site_2 = SiteFactory(
         hostname='site_2', is_default_site=False, root_page=page_2)
