@@ -81,8 +81,6 @@ If you want to check how your static website will look, use the `buildserver` co
 manage.py buildserver
 ```
 
-Please see the documentation at [https://wagtail-bakery.readthedocs.io](https://wagtail-bakery.readthedocs.io) for more information how to use Django bakery.
-
 ## Examples
 
 In the [examples](https://github.com/moorinteractive/wagtail-bakery/tree/master/examples) directory you can find a Wagtail setup with fixtures for a single site as well as a multisite setup.
