@@ -2,12 +2,8 @@ from setuptools import find_packages, setup
 
 
 install_requires = [
-    'django-bakery==0.8.14',
+    'django-bakery==0.9.2',
     'wagtail>=1.6',
-]
-
-docs_require = [
-    'mkdocs',
 ]
 
 test_require = [
@@ -27,10 +23,7 @@ setup(
     author='Rob Moorman',
     author_email='rob@moori.nl',
     install_requires=install_requires,
-    extras_require={
-        'docs': docs_require,
-        'test': test_require,
-    },
+    extras_require={'test': test_require},
     package_dir={'': 'src'},
     packages=find_packages('src'),
     include_package_data=True,

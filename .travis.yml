@@ -1,14 +1,38 @@
 sudo: false
 language: python
-python:
-  - "2.7"
-  - "3.5"
-  - "3.6"
+matrix:
+  include:
+    - python: 2.7
+      env: TOXENV=py27-django18
+    - python: 2.7
+      env: TOXENV=py27-django19
+    - python: 2.7
+      env: TOXENV=py27-django110
+    - python: 2.7
+      env: TOXENV=py27-django111
+    - python: 3.5
+      env: TOXENV=py35-django18
+    - python: 3.5
+      env: TOXENV=py35-django19
+    - python: 3.5
+      env: TOXENV=py35-django110
+    - python: 3.5
+      env: TOXENV=py35-django111
+    - python: 3.6
+      env: TOXENV=py36-django18
+    - python: 3.6
+      env: TOXENV=py36-django19
+    - python: 3.6
+      env: TOXENV=py36-django110
+    - python: 3.6
+      env: TOXENV=py36-django111
+cache:
+  directories:
+    - $HOME/.cache/pip
 install:
-  - pip install coveralls
+  - pip install coveralls tox
   - pip install -e .[test]
 script:
-  - pytest --cov=wagtailbakery --cov-report=xml
-  - flake8 src/
+  - tox -e $TOXENV
 after_success:
   - coveralls
