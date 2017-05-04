@@ -115,6 +115,7 @@ WAGTAIL_SITE_NAME = 'Wagtail Bakery'
 BUILD_DIR = os.path.join(BASE_DIR, 'build')
 BAKERY_VIEWS = (
     'wagtailbakery.views.AllPagesView',
+    'wagtailbakery.views.AllRedirectsView',
 )
 
 CELERY_ALWAYS_EAGER = True

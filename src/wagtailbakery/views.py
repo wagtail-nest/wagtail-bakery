@@ -9,6 +9,7 @@ from django.shortcuts import render
 from django.test.client import RequestFactory
 from django.utils.six.moves.urllib.parse import urlparse
 from wagtail.wagtailcore.models import Page, Site
+from wagtail.wagtailredirects.models import Redirect
 
 logger = logging.getLogger(__name__)
 
@@ -77,10 +78,6 @@ class WagtailBakeryView(BuildableDetailView):
         """Return Wagtail page url instead of Django's get_absolute_url."""
         return obj.url
 
-    def get_path(self, obj):
-        """Return Wagtail path to page."""
-        return obj.path
-
     def build_object(self, obj):
         """
         Build wagtail page and set SERVER_NAME to retrieve corresponding site
@@ -140,3 +137,24 @@ class AllPublishedPagesView(AllPagesView):
     def get_queryset(self):
         pages = super(AllPublishedPagesView, self).get_queryset()
         return pages.live()
+
+
+class AllRedirectsView(WagtailBakeryView):
+    """
+    Generates a seperate index.html redirect page for each wagtail redirect.
+
+    Example:
+        # File: settings.py
+        BAKERY_VIEWS = (
+            'wagtailbakery.views.AllRedirectsView',
+        )
+    """
+    def get_url(self, obj):
+        return obj.old_path
+
+    def get_queryset(self):
+        if getattr(settings, 'BAKERY_MULTISITE', False):
+            return Redirect.objects.all()
+        else:
+            site = Site.objects.get(is_default_site=True)
+            return Redirect.objects.filter(site=site)

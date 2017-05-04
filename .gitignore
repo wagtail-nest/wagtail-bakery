@@ -8,6 +8,7 @@ __pycache__/
 *.egg-info/
 *.py[cod]
 coverage.xml
+build/
 site/
 src/wagtailbakery/build/
 src/wagtailbakery/tests/public/

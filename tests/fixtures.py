@@ -50,3 +50,14 @@ def multisite(site):
         hostname='site_4', is_default_site=False, root_page=page_4)
 
     return [site, site_2, site_3, site_4]
+
+
+@pytest.fixture
+def redirect(page, site):
+    from tests.factories.redirect import RedirectFactory
+
+    site.root_page = page
+    site.save()
+
+    redirect = RedirectFactory(redirect_page=page, site=site)
+    return redirect

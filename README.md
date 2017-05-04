@@ -17,6 +17,7 @@ Wagtail-bakery is built on top of [Django bakery](https://github.com/datadesk/dj
 * Single management command that will build your Wagtail site out as flat files
 * Support for multisite, [theming](https://github.com/moorinteractive/wagtail-themes) and [multilingual](http://docs.wagtail.io/en/latest/advanced_topics/i18n/index.html) setup
 * Support for `i18n_patterns`
+* Support for redirects
 * Ready to use Wagtail Buildable views to build all your (un)published pages at once (no extra code required!)
 
 ## Installation
@@ -64,6 +65,14 @@ Build all published and unpublished public pages (use for staging/acceptance).
 ```python
 BAKERY_VIEWS = (
 	'wagtailbakery.views.AllPagesView',
+)
+```
+
+Build all redirects.
+
+```python
+BAKERY_VIEWS = (
+	'wagtailbakery.views.AllRedirectsView',
 )
 ```
 
