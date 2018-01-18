@@ -17,6 +17,7 @@ Wagtail-bakery is built on top of [Django bakery](https://github.com/datadesk/dj
 * Single management command that will build your Wagtail site out as flat files
 * Support for multisite, [theming](https://github.com/moorinteractive/wagtail-themes) and [multilingual](http://docs.wagtail.io/en/latest/advanced_topics/i18n/index.html) setup
 * Support for `i18n_patterns`
+* Support for generating a static API
 * Ready to use Wagtail Buildable views to build all your (un)published pages at once (no extra code required!)
 
 ## Installation
@@ -66,6 +67,17 @@ BAKERY_VIEWS = (
 	'wagtailbakery.views.AllPagesView',
 )
 ```
+
+To build a static pages API, use the following views:
+
+```python
+BAKERY_VIEWS = (
+	'wagtailbakery.api_views.PagesAPIDetailView',
+	'wagtailbakery.api_views.PagesAPIListingView',
+	'wagtailbakery.api_views.TypedPagesAPIListingView',
+)
+
+The API views use Wagtail's V2 API module. To configure the data that is rendered by these views, please refer to Wagtail's [V2 API configuration guide](http://docs.wagtail.io/en/stable/advanced_topics/api/v2/configuration.html).
 
 ## Usage
 
