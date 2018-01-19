@@ -67,7 +67,7 @@ BAKERY_VIEWS = (
 )
 ```
 
-To build a static pages API, use the following views:
+To build static JSON files representing your site's API, use the following views:
 
 ```python
 BAKERY_VIEWS = (
@@ -75,6 +75,7 @@ BAKERY_VIEWS = (
 	'wagtailbakery.api_views.PagesAPIListingView',
 	'wagtailbakery.api_views.TypedPagesAPIListingView',
 )
+```
 
 The API views use Wagtail's V2 API module. To configure the data that is rendered by these views, please refer to Wagtail's [V2 API configuration guide](http://docs.wagtail.io/en/stable/advanced_topics/api/v2/configuration.html).
 
