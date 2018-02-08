@@ -98,7 +98,7 @@ def test_wagtail_bakery_pages_api_listing_view_content(page_tree):
     view = PagesAPIListingView()
 
     # Check content
-    content = json.loads(view.get_content(0).decode('UTF-8')[0])
+    content = json.loads(view.get_content(0)[0].decode('UTF-8'))
     assert set(content.keys()) == {'meta', 'items'}
     assert set(content['meta'].keys()) == {'total_count'}
 
