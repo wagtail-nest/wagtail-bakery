@@ -46,7 +46,7 @@ def test_wagtail_bakery_pages_api_detail_view_content(page_tree):
     view = PagesAPIDetailView()
 
     # Check content for homepage
-    content = json.loads(view.get_content(page_tree))
+    content = json.loads(view.get_content(page_tree).decode('UTF-8'))
     assert set(content.keys()) == DEFAULT_PAGE_FIELDS
     assert set(content['meta'].keys()) == DEFAULT_PAGE_META_FIELDS.union({'parent'})
     assert content['id'] == 2
@@ -54,7 +54,7 @@ def test_wagtail_bakery_pages_api_detail_view_content(page_tree):
 
     # Check content for first child page
     child_page = page_tree.get_descendants().first()
-    content = json.loads(view.get_content(child_page))
+    content = json.loads(view.get_content(child_page).decode('UTF-8'))
     assert set(content.keys()) == DEFAULT_PAGE_FIELDS
     assert set(content['meta'].keys()) == DEFAULT_PAGE_META_FIELDS.union({'parent'})
     assert content['id'] == 3
@@ -62,7 +62,7 @@ def test_wagtail_bakery_pages_api_detail_view_content(page_tree):
 
     # Check content of the first grandchild page
     grandchild_page = child_page.get_descendants().first()
-    content = json.loads(view.get_content(grandchild_page))
+    content = json.loads(view.get_content(grandchild_page).decode('UTF-8'))
     assert set(content.keys()) == DEFAULT_PAGE_FIELDS
     assert set(content['meta'].keys()) == DEFAULT_PAGE_META_FIELDS.union({'parent'})
     assert content['id'] == 6
@@ -98,7 +98,7 @@ def test_wagtail_bakery_pages_api_listing_view_content(page_tree):
     view = PagesAPIListingView()
 
     # Check content
-    content = json.loads(view.get_content(0)[0])
+    content = json.loads(view.get_content(0)[0].decode('UTF-8'))
     assert set(content.keys()) == {'meta', 'items'}
     assert set(content['meta'].keys()) == {'total_count'}
 
@@ -141,7 +141,7 @@ def test_wagtail_bakery_typed_pages_api_listing_view_content(page_tree):
     ))
 
     # Check content
-    content = json.loads(view.get_content(EventPage, 0)[0])
+    content = json.loads(view.get_content(EventPage, 0)[0].decode('UTF-8'))
     assert set(content.keys()) == {'meta', 'items'}
     assert set(content['meta'].keys()) == {'total_count'}
 
