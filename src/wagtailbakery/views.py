@@ -8,7 +8,11 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.test.client import RequestFactory
 from django.utils.six.moves.urllib.parse import urlparse
-from wagtail.wagtailcore.models import Page, Site
+import wagtail
+if wagtail.VERSION >= (2, 0):
+    from wagtail.core.models import Page, Site
+else:
+    from wagtail.wagtailcore.models import Page, Site
 
 logger = logging.getLogger(__name__)
 
