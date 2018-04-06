@@ -9,7 +9,7 @@ import wagtail
 if wagtail.VERSION >= (2, 0):
     from wagtail.core.models import Page, Site
 else:
-    from wagtail.wagtailcore.models import Page, Site
+    from wagtail.core.models import Page, Site
 
 from wagtail.api.v2.endpoints import PagesAPIEndpoint
 from wagtail.api.v2.router import WagtailAPIRouter

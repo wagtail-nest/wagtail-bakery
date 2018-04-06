@@ -3,14 +3,14 @@ import pytest
 
 @pytest.fixture
 def page():
-    from wagtail.wagtailcore.models import Page
+    from wagtail.core.models import Page
     page = Page.objects.get(slug='home')
     return page
 
 
 @pytest.fixture
 def site():
-    from wagtail.wagtailcore.models import Site
+    from wagtail.core.models import Site
     site = Site.objects.get(is_default_site=True)
     return site
 

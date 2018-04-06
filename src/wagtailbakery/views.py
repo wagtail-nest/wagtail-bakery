@@ -12,7 +12,7 @@ import wagtail
 if wagtail.VERSION >= (2, 0):
     from wagtail.core.models import Page, Site
 else:
-    from wagtail.wagtailcore.models import Page, Site
+    from wagtail.core.models import Page, Site
 
 logger = logging.getLogger(__name__)
 

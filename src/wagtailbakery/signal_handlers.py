@@ -2,7 +2,7 @@ import wagtail
 if wagtail.VERSION >= (2, 0):
     from wagtail.core.signals import page_published, page_unpublished
 else:
-    from wagtail.wagtailcore.signals import page_published, page_unpublished
+    from wagtail.core.signals import page_published, page_unpublished
 
 
 def handle_publish(sender, instance, **kwargs):
