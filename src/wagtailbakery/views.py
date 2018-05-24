@@ -92,8 +92,9 @@ class WagtailBakeryView(BuildableDetailView):
         """
         site = obj.get_site()
         logger.debug("Building %s" % obj)
+        secure_request = site.port == 443 or getattr(settings, 'SECURE_SSL_REDIRECT', False)
         self.request = RequestFactory(
-            SERVER_NAME=site.hostname).get(self.get_url(obj))
+            SERVER_NAME=site.hostname).get(self.get_url(obj), secure=secure_request)
         self.set_kwargs(obj)
         path = self.get_build_path(obj)
         self.build_file(path, self.get_content(obj))
