@@ -1,5 +1,51 @@
 import os
 
+import wagtail
+
+
+def _wagtail_apps():
+    if wagtail.VERSION >= (2, 0):
+        return [
+            'wagtail.contrib.forms',
+            'wagtail.contrib.redirects',
+            'wagtail.embeds',
+            'wagtail.sites',
+            'wagtail.users',
+            'wagtail.snippets',
+            'wagtail.documents',
+            'wagtail.images',
+            'wagtail.search',
+            'wagtail.admin',
+            'wagtail.core',
+        ]
+    else:
+        return [
+            'wagtail.wagtailforms',
+            'wagtail.wagtailredirects',
+            'wagtail.wagtailembeds',
+            'wagtail.wagtailsites',
+            'wagtail.wagtailusers',
+            'wagtail.wagtailsnippets',
+            'wagtail.wagtaildocs',
+            'wagtail.wagtailimages',
+            'wagtail.wagtailsearch',
+            'wagtail.wagtailadmin',
+            'wagtail.wagtailcore',
+        ]
+
+def _wagtail_middleware():
+    if wagtail.VERSION >= (2, 0):
+        return [
+            'wagtail.core.middleware.SiteMiddleware',
+            'wagtail.redirects.middleware.RedirectMiddleware',
+        ]
+    else:
+        return [
+            'wagtail.wagtailcore.middleware.SiteMiddleware',
+            'wagtail.wagtailredirects.middleware.RedirectMiddleware',
+        ]
+
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 ALLOWED_HOSTS = []
@@ -21,17 +67,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'wagtail.wagtailforms',
-    'wagtail.wagtailredirects',
-    'wagtail.wagtailembeds',
-    'wagtail.wagtailsites',
-    'wagtail.wagtailusers',
-    'wagtail.wagtailsnippets',
-    'wagtail.wagtaildocs',
-    'wagtail.wagtailimages',
-    'wagtail.wagtailsearch',
-    'wagtail.wagtailadmin',
-    'wagtail.wagtailcore',
+] + _wagtail_apps() + [
 
     'modelcluster',
     'taggit',
@@ -65,9 +101,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'wagtail.wagtailcore.middleware.SiteMiddleware',
-    'wagtail.wagtailredirects.middleware.RedirectMiddleware',
-]
+] + _wagtail_middleware()
 
 PASSWORD_HASHERS = (
     'django.contrib.auth.hashers.MD5PasswordHasher',

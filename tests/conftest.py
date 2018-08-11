@@ -1,12 +1,51 @@
 import os
 
 from django.conf import settings
+import wagtail
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 pytest_plugins = 'tests.fixtures'
 
 def pytest_configure():
+    if wagtail.VERSION >= (2, 0):
+        wagtail_apps = [
+            'wagtail.contrib.forms',
+            'wagtail.contrib.redirects',
+            'wagtail.embeds',
+            'wagtail.sites',
+            'wagtail.users',
+            'wagtail.snippets',
+            'wagtail.documents',
+            'wagtail.images',
+            'wagtail.search',
+            'wagtail.admin',
+            'wagtail.core',
+        ]
+        wagtail_middleware = [
+            'wagtail.core.middleware.SiteMiddleware',
+            'wagtail.redirects.middleware.RedirectMiddleware',
+        ]
+    else:
+        wagtail_apps = [
+            'wagtail.wagtailforms',
+            'wagtail.wagtailredirects',
+            'wagtail.wagtailembeds',
+            'wagtail.wagtailsites',
+            'wagtail.wagtailusers',
+            'wagtail.wagtailsnippets',
+            'wagtail.wagtaildocs',
+            'wagtail.wagtailimages',
+            'wagtail.wagtailsearch',
+            'wagtail.wagtailadmin',
+            'wagtail.wagtailcore',
+        ]
+        wagtail_middleware = [
+            'wagtail.wagtailcore.middleware.SiteMiddleware',
+            'wagtail.wagtailredirects.middleware.RedirectMiddleware',
+        ]
+
     settings.configure(
         DATABASES={
             'default': {
@@ -22,17 +61,7 @@ def pytest_configure():
             'django.contrib.messages',
             'django.contrib.staticfiles',
 
-            'wagtail.wagtailforms',
-            'wagtail.wagtailredirects',
-            'wagtail.wagtailembeds',
-            'wagtail.wagtailsites',
-            'wagtail.wagtailusers',
-            'wagtail.wagtailsnippets',
-            'wagtail.wagtaildocs',
-            'wagtail.wagtailimages',
-            'wagtail.wagtailsearch',
-            'wagtail.wagtailadmin',
-            'wagtail.wagtailcore',
+        ] + wagtail_apps + [
 
             'modelcluster',
             'taggit',
@@ -51,9 +80,7 @@ def pytest_configure():
             'django.contrib.auth.middleware.AuthenticationMiddleware',
             'django.contrib.messages.middleware.MessageMiddleware',
             'django.middleware.clickjacking.XFrameOptionsMiddleware',
-            'wagtail.wagtailcore.middleware.SiteMiddleware',
-            'wagtail.wagtailredirects.middleware.RedirectMiddleware',
-        ],
+        ] + wagtail_middleware,
         ROOT_URLCONF='tests.urls',
         ALLOWED_HOSTS='*',
         TEMPLATES=[
