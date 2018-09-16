@@ -4,8 +4,8 @@ from __future__ import unicode_literals
 
 from django.db import migrations, models
 import django.db.models.deletion
-import wagtail.wagtailcore.blocks
-import wagtail.wagtailcore.fields
+import wagtail.core.blocks
+import wagtail.core.fields
 
 
 class Migration(migrations.Migration):
@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
             name='BlogListPage',
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('body', wagtail.wagtailcore.fields.StreamField([(b'paragraph', wagtail.wagtailcore.blocks.RichTextBlock())])),
+                ('body', wagtail.core.fields.StreamField([(b'paragraph', wagtail.core.blocks.RichTextBlock())])),
             ],
             options={
                 'abstract': False,
@@ -32,7 +32,7 @@ class Migration(migrations.Migration):
             name='BlogPostPage',
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('body', wagtail.wagtailcore.fields.StreamField([(b'paragraph', wagtail.wagtailcore.blocks.RichTextBlock())])),
+                ('body', wagtail.core.fields.StreamField([(b'paragraph', wagtail.core.blocks.RichTextBlock())])),
             ],
             options={
                 'abstract': False,
@@ -43,7 +43,7 @@ class Migration(migrations.Migration):
             name='GenericPage',
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('body', wagtail.wagtailcore.fields.StreamField([(b'paragraph', wagtail.wagtailcore.blocks.RichTextBlock())])),
+                ('body', wagtail.core.fields.StreamField([(b'paragraph', wagtail.core.blocks.RichTextBlock())])),
             ],
             options={
                 'abstract': False,
@@ -54,7 +54,7 @@ class Migration(migrations.Migration):
             name='HomePage',
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('body', wagtail.wagtailcore.fields.StreamField([(b'paragraph', wagtail.wagtailcore.blocks.RichTextBlock())])),
+                ('body', wagtail.core.fields.StreamField([(b'paragraph', wagtail.core.blocks.RichTextBlock())])),
             ],
             options={
                 'abstract': False,
