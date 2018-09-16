@@ -1,5 +1,9 @@
 import factory
-from wagtail.wagtailcore.models import Page
+import wagtail
+if wagtail.VERSION >= (2, 0):
+    from wagtail.core.models import Page
+else:
+    from wagtail.wagtailcore.models import Page
 
 
 class PageFactory(factory.DjangoModelFactory):

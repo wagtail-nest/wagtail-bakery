@@ -3,16 +3,22 @@ import pytest
 
 @pytest.fixture
 def page():
-    from wagtail.wagtailcore.models import Page
-    page = Page.objects.get(slug='home')
-    return page
+    import wagtail
+    if wagtail.VERSION >= (2, 0):
+        from wagtail.core.models import Page
+    else:
+        from wagtail.wagtailcore.models import Page
+    return Page.objects.get(slug='home')
 
 
 @pytest.fixture
 def site():
-    from wagtail.wagtailcore.models import Site
-    site = Site.objects.get(is_default_site=True)
-    return site
+    import wagtail
+    if wagtail.VERSION >= (2, 0):
+        from wagtail.core.models import Site
+    else:
+        from wagtail.wagtailcore.models import Site
+    return Site.objects.get(is_default_site=True)
 
 
 @pytest.fixture
