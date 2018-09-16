@@ -152,7 +152,7 @@ WAGTAIL_SITE_NAME = 'Example'
 
 
 # Wagtail bakery
-# https://github.com/moorinteractive/wagtail-bakery
+# https://github.com/wagtail/wagtail-bakery
 
 BUILD_DIR = os.path.join(BASE_DIR, '../build')
 
