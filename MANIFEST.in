@@ -1,9 +1,11 @@
 exclude *
 recursive-exclude * *
 
+include CHANGELOG.md
+include LICENSE
 include MANIFEST.in
+include README.md
 include setup.cfg
 include setup.py
-include README.md
 
 recursive-include src/wagtailbakery *.html *.py
