@@ -25,7 +25,7 @@ def pytest_configure():
         ]
         wagtail_middleware = [
             'wagtail.core.middleware.SiteMiddleware',
-            'wagtail.redirects.middleware.RedirectMiddleware',
+            'wagtail.contrib.redirects.middleware.RedirectMiddleware',
         ]
     else:
         wagtail_apps = [
