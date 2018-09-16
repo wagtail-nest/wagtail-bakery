@@ -2,11 +2,11 @@
 
 A set of helpers for baking your Django Wagtail site out as flat files.
 
-[![Build Status](https://travis-ci.org/moorinteractive/wagtail-bakery.svg?branch=master)](https://travis-ci.org/moorinteractive/wagtail-bakery)
+[![Build Status](https://travis-ci.org/wagtail/wagtail-bakery.svg?branch=master)](https://travis-ci.org/wagtail/wagtail-bakery)
 [![Coverage Status](https://coveralls.io/repos/github/moorinteractive/wagtail-bakery/badge.svg?branch=master)](https://coveralls.io/github/moorinteractive/wagtail-bakery?branch=master)
 
-* Issues: [https://github.com/moorinteractive/wagtail-bakery/issues](https://github.com/moorinteractive/wagtail-bakery/issues)
-* Testing: [https://travis-ci.org/moorinteractive/wagtail-bakery](https://travis-ci.org/moorinteractive/wagtail-bakery)
+* Issues: [https://github.com/wagtail/wagtail-bakery/issues](https://github.com/wagtail/wagtail-bakery/issues)
+* Testing: [https://travis-ci.org/wagtail/wagtail-bakery](https://travis-ci.org/wagtail/wagtail-bakery)
 * Coverage: [https://coveralls.io/github/moorinteractive/wagtail-bakery](https://coveralls.io/github/moorinteractive/wagtail-bakery)
 
 Wagtail-bakery is built on top of [Django bakery](https://github.com/datadesk/django-bakery). Please read their [documentation](https://django-bakery.readthedocs.io/en/latest/) for detailed configuration and how to build default Django flat files. Yes. Wagtail-bakery is not limited to build Wagtail pages specifically, mixed content is possible!
@@ -95,7 +95,7 @@ manage.py buildserver
 
 ## Examples
 
-In the [examples](https://github.com/moorinteractive/wagtail-bakery/tree/master/examples) directory you can find a Wagtail setup with fixtures for a single site as well as a multisite setup.
+In the [examples](https://github.com/wagtail/wagtail-bakery/tree/master/examples) directory you can find a Wagtail setup with fixtures for a single site as well as a multisite setup.
 
 Create a virtualenv and go to one of the examples, you can use the `Make` command to install all requirements, load fixtures and run the server.
 
@@ -123,7 +123,7 @@ build/static/
 
 ## Troubleshooting
 
-For issues [please submit an issue](https://github.com/moorinteractive/wagtail-bakery/issues/new) on GitHub.
+For issues [please submit an issue](https://github.com/wagtail/wagtail-bakery/issues/new) on GitHub.
 
 ## Credits
 
