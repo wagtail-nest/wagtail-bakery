@@ -1,7 +1,7 @@
 import logging
 import os
 
-from bakery.views import BuildableDetailView
+from bakery.views import BuildableDetailView, BuildableMixin
 from django.conf import settings
 from django.core.handlers.base import BaseHandler
 from django.http import HttpResponseRedirect
@@ -10,8 +10,10 @@ from django.test.client import RequestFactory
 from django.utils.six.moves.urllib.parse import urlparse
 import wagtail
 if wagtail.VERSION >= (2, 0):
+    from wagtail.contrib.sitemaps.views import sitemap
     from wagtail.core.models import Page, Site
 else:
+    from wagtail.contrib.wagtailsitemaps.views import sitemap
     from wagtail.wagtailcore.models import Page, Site
 
 logger = logging.getLogger(__name__)
@@ -144,3 +146,21 @@ class AllPublishedPagesView(AllPagesView):
     def get_queryset(self):
         pages = super(AllPublishedPagesView, self).get_queryset()
         return pages.live()
+
+
+class SitemapBuildableView(BuildableMixin):
+
+    build_path = 'sitemap.xml'
+
+    def build(self):
+        self.request = self.create_request(self.build_path)
+        path = os.path.join(settings.BUILD_DIR, self.build_path)
+        self.prep_directory(self.build_path)
+        self.build_file(path, self.get_content())
+
+    @property
+    def build_method(self):
+        return self.build
+
+    def get_content(self):
+        return sitemap(self.request).render().content

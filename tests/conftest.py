@@ -59,6 +59,7 @@ def pytest_configure():
             'django.contrib.contenttypes',
             'django.contrib.sessions',
             'django.contrib.messages',
+            'django.contrib.sitemaps',
             'django.contrib.staticfiles',
 
         ] + wagtail_apps + [
@@ -107,6 +108,7 @@ def pytest_configure():
         BUILD_DIR=os.path.join(BASE_DIR, 'build'),
         BAKERY_VIEWS=(
             'wagtailbakery.views.AllPagesView',
+            'wagtailbakery.views.SitemapBuildableView',
         ),
         CELERY_ALWAYS_EAGER=True,
     )

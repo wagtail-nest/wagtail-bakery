@@ -2,7 +2,7 @@ import pytest
 from django.conf import settings
 
 from wagtailbakery.views import (AllPagesView, AllPublishedPagesView,
-                                 WagtailBakeryView)
+                                 WagtailBakeryView, SitemapBuildableView)
 
 
 @pytest.mark.django_db
@@ -92,3 +92,16 @@ def test_all_pages_for_single_page(page):
     page.save()
     assert qs.filter(live=False).exists()
     assert qs.filter(id=page.id).exists()
+
+
+@pytest.mark.django_db
+def test_sitemap(page):
+    view = SitemapBuildableView()
+    view.request = view.create_request(view.build_path)
+
+    content = view.get_content()
+
+    assert ('<?xml version="1.0" encoding="UTF-8"?>\n'
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+            '<url><loc>{}</loc></url>\n'
+            '</urlset>\n').format(page.get_full_url()) == content.decode()
