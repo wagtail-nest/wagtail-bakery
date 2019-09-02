@@ -79,7 +79,7 @@ class WagtailBakeryView(BuildableDetailView):
 
     def get_url(self, obj):
         """Return Wagtail page url instead of Django's get_absolute_url."""
-        return obj.url
+        return obj.specific.url
 
     def get_path(self, obj):
         """Return Wagtail path to page."""
