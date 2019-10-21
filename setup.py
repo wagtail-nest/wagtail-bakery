@@ -4,7 +4,7 @@ with open('README.md', 'r') as fh:
     long_description = fh.read()
 
 install_requires = [
-    'django-bakery==0.12.3',
+    'django-bakery~=0.12.7',
     'six>=1.10.0',
     'wagtail>=1.6',
 ]
