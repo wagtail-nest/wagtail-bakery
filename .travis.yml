@@ -3,15 +3,29 @@ language: python
 matrix:
   include:
     - python: 3.5
-      env: TOXENV=py35-django22
+      env: TOXENV=py35-django22-wagtail27
     - python: 3.6
-      env: TOXENV=py36-django22
+      env: TOXENV=py36-django22-wagtail27
     - python: 3.7
-      env: TOXENV=py37-django20
+      env: TOXENV=py37-django20-wagtail26
     - python: 3.7
-      env: TOXENV=py37-django21
+      env: TOXENV=py37-django20-wagtail27
     - python: 3.7
-      env: TOXENV=py37-django22
+      env: TOXENV=py37-django21-wagtail26
+    - python: 3.7
+      env: TOXENV=py37-django21-wagtail27
+    - python: 3.7
+      env: TOXENV=py37-django22-wagtail26
+    - python: 3.7
+      env: TOXENV=py37-django22-wagtail27
+  allow_failures:
+    # Wagtail 2.7rc1 has an issue with static files,
+    # se https://github.com/wagtail/wagtail/issues/5632
+    - env: TOXENV=py35-django22-wagtail27
+    - env: TOXENV=py36-django22-wagtail27
+    - env: TOXENV=py37-django20-wagtail27
+    - env: TOXENV=py37-django21-wagtail27
+    - env: TOXENV=py37-django22-wagtail27
 cache:
   directories:
     - $HOME/.cache/pip
