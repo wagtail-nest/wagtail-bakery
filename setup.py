@@ -10,12 +10,12 @@ install_requires = [
 ]
 
 test_requires = [
-    'factory-boy==2.8.1',
-    'flake8==3.2.1',
-    'isort==4.2.5',
-    'pytest==3.0.5',
-    'pytest-cov==2.4.0',
-    'pytest-django==3.1.2',
+    'factory-boy',
+    'flake8',
+    'isort',
+    'pytest',
+    'pytest-cov',
+    'pytest-django',
 ]
 
 setup(
