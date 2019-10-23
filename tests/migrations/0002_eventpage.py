@@ -4,10 +4,7 @@ from __future__ import unicode_literals
 
 from django.db import migrations, models
 import wagtail
-if wagtail.VERSION >= (2, 0):
-    from wagtail.contrib.routable_page.models import RoutablePageMixin
-else:
-    from wagtail.contrib.wagtailroutablepage.models import RoutablePageMixin
+from wagtail.contrib.routable_page.models import RoutablePageMixin
 
 
 class Migration(migrations.Migration):
