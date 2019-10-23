@@ -5,15 +5,10 @@ import json
 from bakery.views import BuildableMixin
 from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
-import wagtail
-if wagtail.VERSION >= (2, 0):
-    from wagtail.core.models import Page, Site
-else:
-    from wagtail.wagtailcore.models import Page, Site
-
 from wagtail.api.v2.endpoints import PagesAPIEndpoint
 from wagtail.api.v2.router import WagtailAPIRouter
 from wagtail.api.v2.pagination import WagtailPagination
+from wagtail.core.models import Page, Site
 
 
 logger = logging.getLogger(__name__)

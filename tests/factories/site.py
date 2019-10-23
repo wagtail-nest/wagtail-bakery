@@ -1,9 +1,5 @@
 import factory
-import wagtail
-if wagtail.VERSION >= (2, 0):
-    from wagtail.core.models import Site
-else:
-    from wagtail.wagtailcore.models import Site
+from wagtail.core.models import Site
 
 
 class SiteFactory(factory.DjangoModelFactory):
