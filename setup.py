@@ -6,16 +6,16 @@ with open('README.md', 'r') as fh:
 install_requires = [
     'django-bakery~=0.12.7',
     'six>=1.10.0',
-    'wagtail>=1.6',
+    'wagtail>=2.6',
 ]
 
 test_requires = [
-    'factory-boy==2.8.1',
-    'flake8==3.2.1',
-    'isort==4.2.5',
-    'pytest==3.0.5',
-    'pytest-cov==2.4.0',
-    'pytest-django==3.1.2',
+    'factory-boy',
+    'flake8',
+    'isort',
+    'pytest',
+    'pytest-cov',
+    'pytest-django',
 ]
 
 setup(
@@ -38,14 +38,11 @@ setup(
         'Environment :: Web Environment',
         'Framework :: Django',
         'Framework :: Wagtail',
-        'Framework :: Wagtail :: 1',
         'Framework :: Wagtail :: 2',
         'Operating System :: Unix',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
     ],
 )
