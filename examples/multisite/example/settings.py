@@ -58,7 +58,7 @@ INSTALLED_APPS = [
     'bakery',
     'wagtailbakery',
 
-	'example',
+    'example',
 ]
 
 MIDDLEWARE = [

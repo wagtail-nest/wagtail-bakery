@@ -1,6 +1,7 @@
 import factory
 from wagtail.core.models import Page
 
+
 class PageFactory(factory.DjangoModelFactory):
     depth = 2
     numchild = 0

@@ -1,15 +1,13 @@
+import json
 import logging
 import os
-import json
 
 from bakery.views import BuildableMixin
 from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
 from wagtail.api.v2.endpoints import PagesAPIEndpoint
 from wagtail.api.v2.router import WagtailAPIRouter
-from wagtail.api.v2.pagination import WagtailPagination
 from wagtail.core.models import Page, Site
-
 
 logger = logging.getLogger(__name__)
 
@@ -110,6 +108,7 @@ class APIDetailView(BuildableMixin):
             return response.render().content
 
         handle_api_error(response)
+
 
 class PagesAPIDetailView(APIDetailView):
     """

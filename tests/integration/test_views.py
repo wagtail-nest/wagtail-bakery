@@ -1,8 +1,7 @@
 import pytest
 from django.conf import settings
 
-from wagtailbakery.views import (AllPagesView, AllPublishedPagesView,
-                                 WagtailBakeryView)
+from wagtailbakery.views import AllPagesView, AllPublishedPagesView, WagtailBakeryView
 
 
 @pytest.mark.django_db
