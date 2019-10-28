@@ -18,6 +18,10 @@ matrix:
       env: TOXENV=py37-django22-wagtail26
     - python: 3.7
       env: TOXENV=py37-django22-wagtail27
+    # Only testing Django 2.2 & Wagtail 2.7 (instead of all Django/Wagtail combinations)
+    # against Python 3.8 as Django<=2.2 doesn't officially support Python 3.8
+    - python: 3.8
+      env: TOXENV=py38-django22-wagtail27
 cache:
   directories:
     - $HOME/.cache/pip
