@@ -1,11 +1,11 @@
 import json
 
 import pytest
-from django.conf import settings
 
-from wagtailbakery.api_views import PagesAPIDetailView, PagesAPIListingView, TypedPagesAPIListingView
+from wagtailbakery.api_views import (
+    PagesAPIDetailView, PagesAPIListingView, TypedPagesAPIListingView)
+
 from ..models import EventPage
-
 
 DEFAULT_PAGE_FIELDS = {'id', 'meta', 'title'}
 DEFAULT_PAGE_META_FIELDS = {'type', 'show_in_menus', 'search_description', 'first_published_at', 'slug', 'html_url', 'seo_title'}
@@ -85,8 +85,6 @@ def test_wagtail_bakery_pages_api_listing_view():
 @pytest.mark.django_db
 def test_wagtail_bakery_pages_api_listing_view_build_path_for_multisite(multisite):
     view = PagesAPIListingView()
-    site = multisite[0]
-    page = site.root_page
 
     # Check build path for homepage
     build_path = view.get_build_path(0)
@@ -123,8 +121,6 @@ def test_wagtail_bakery_typed_pages_api_listing_view():
 @pytest.mark.django_db
 def test_wagtail_bakery_typed_pages_api_listing_view_build_path_for_multisite(multisite):
     view = TypedPagesAPIListingView()
-    site = multisite[0]
-    page = site.root_page
 
     # Check build path for homepage
     build_path = view.get_build_path(EventPage, 0)

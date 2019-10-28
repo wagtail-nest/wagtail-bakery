@@ -2,10 +2,10 @@ import os
 
 from django.conf import settings
 
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 pytest_plugins = 'tests.fixtures'
+
 
 def pytest_configure():
     wagtail_apps = [
