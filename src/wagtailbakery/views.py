@@ -145,17 +145,29 @@ class AllPublishedPagesView(AllPagesView):
 
 class SitemapBuildableView(BuildableMixin):
 
-    build_path = 'sitemap.xml'
-
-    def build(self):
-        self.request = self.create_request(self.build_path)
-        path = os.path.join(settings.BUILD_DIR, self.build_path)
-        self.prep_directory(self.build_path)
-        self.build_file(path, self.get_content())
+    sitemap_path = 'sitemap.xml'
 
     @property
     def build_method(self):
-        return self.build
+        return self.build_queryset
+
+    def build_queryset(self):
+        for site in Site.objects.all():
+            self.build_object(site)
+
+    def build_object(self, obj):
+        build_path = self.get_build_path(obj)
+        self.request = self.create_request(build_path)
+        self.prep_directory(build_path)
+
+        path = os.path.join(settings.BUILD_DIR, build_path)
+        self.build_file(path, self.get_content())
+
+    def get_build_path(self, obj):
+        if getattr(settings, 'BAKERY_MULTISITE', False):
+            return os.path.join(obj.hostname, self.sitemap_path)
+        else:
+            return self.sitemap_path
 
     def get_content(self):
         return sitemap(self.request).render().content

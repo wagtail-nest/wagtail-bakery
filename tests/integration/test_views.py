@@ -95,9 +95,9 @@ def test_all_pages_for_single_page(page):
 
 
 @pytest.mark.django_db
-def test_sitemap(page):
+def test_sitemap_content(page):
     view = SitemapBuildableView()
-    view.request = view.create_request(view.build_path)
+    view.request = view.create_request(view.sitemap_path)
 
     content = view.get_content()
 
@@ -105,3 +105,32 @@ def test_sitemap(page):
             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
             '<url><loc>{}</loc></url>\n'
             '</urlset>\n').format(page.get_full_url()) == content.decode()
+
+
+@pytest.mark.django_db
+def test_sitemap_build_path_for_single_site(settings, site):
+    settings.BAKERY_MULTISITE = False
+    view = SitemapBuildableView()
+
+    build_path = view.get_build_path(site)
+    expected_build_path = view.sitemap_path
+
+    assert build_path == expected_build_path
+
+
+@pytest.mark.django_db
+def test_sitemap_build_path_for_multiple_sites(settings, multisite):
+    settings.BAKERY_MULTISITE = True
+    view = SitemapBuildableView()
+
+    build_paths = []
+    expected_build_paths = []
+
+    for site in multisite:
+        build_paths.append(view.get_build_path(site))
+
+        expected_build_paths.append("{hostname}/{sitemap_path}".format(
+            hostname=site.hostname, sitemap_path=view.sitemap_path
+        ))
+
+    assert build_paths == expected_build_paths
