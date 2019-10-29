@@ -22,4 +22,4 @@ def test_page_has_multiple_routes(site):
 
     # Build static files
     management.call_command('build', '--skip-static', '--skip-media')
-    assert os.path.exists(os.path.join(settings.BUILD_DIR, 'index.html'))
+    assert os.path.exists(os.path.join(settings.BUILD_DIR, 'eventpage', 'page', 'index.html'))
