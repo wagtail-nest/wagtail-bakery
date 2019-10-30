@@ -95,16 +95,38 @@ def test_all_pages_for_single_page(page):
 
 
 @pytest.mark.django_db
-def test_sitemap_content(page):
+def test_sitemap_content_for_single_site(settings, site):
     view = SitemapBuildableView()
     view.request = view.create_request(view.sitemap_path)
 
-    content = view.get_content()
+    content = view.get_content().decode()
+    expected_content = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        '<url><loc>{}</loc></url>\n'
+        '</urlset>\n'
+    ).format(site.root_page.get_full_url())
 
-    assert ('<?xml version="1.0" encoding="UTF-8"?>\n'
+    assert content == expected_content
+
+@pytest.mark.django_db
+def test_sitemap_content_for_multiple_sites(settings, multisite):
+    settings.BAKERY_MULTISITE = True
+    view = SitemapBuildableView()
+
+    for site in multisite:
+        build_path = view.get_build_path(site)
+        view.request = view.create_request(build_path)
+
+        content = view.get_content().decode()
+        expected_content = (
+            '<?xml version="1.0" encoding="UTF-8"?>\n'
             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
             '<url><loc>{}</loc></url>\n'
-            '</urlset>\n').format(page.get_full_url()) == content.decode()
+            '</urlset>\n'
+        ).format(site.root_page.get_full_url())
+
+        assert content == expected_content
 
 
 @pytest.mark.django_db
