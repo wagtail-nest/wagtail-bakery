@@ -157,7 +157,7 @@ class SitemapBuildableView(BuildableMixin):
 
     def build_object(self, obj):
         build_path = self.get_build_path(obj)
-        self.request = self.create_request(build_path)
+        self.request = self.create_request(obj, self.sitemap_path)
         self.prep_directory(build_path)
 
         path = os.path.join(settings.BUILD_DIR, build_path)
@@ -171,3 +171,7 @@ class SitemapBuildableView(BuildableMixin):
 
     def get_content(self):
         return sitemap(self.request).render().content
+
+    def create_request(self, site, path):
+        full_path = '{}/{}'.format(site.root_url, path)
+        return RequestFactory(SERVER_NAME=site.hostname).get(full_path)

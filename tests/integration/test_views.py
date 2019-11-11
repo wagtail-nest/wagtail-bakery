@@ -109,14 +109,14 @@ def test_sitemap_content_for_single_site(settings, site):
 
     assert content == expected_content
 
+
 @pytest.mark.django_db
 def test_sitemap_content_for_multiple_sites(settings, multisite):
     settings.BAKERY_MULTISITE = True
     view = SitemapBuildableView()
 
     for site in multisite:
-        build_path = view.get_build_path(site)
-        view.request = view.create_request(build_path)
+        view.request = view.create_request(site, view.sitemap_path)
 
         content = view.get_content().decode()
         expected_content = (
@@ -131,7 +131,6 @@ def test_sitemap_content_for_multiple_sites(settings, multisite):
 
 @pytest.mark.django_db
 def test_sitemap_build_path_for_single_site(settings, site):
-    settings.BAKERY_MULTISITE = False
     view = SitemapBuildableView()
 
     build_path = view.get_build_path(site)
