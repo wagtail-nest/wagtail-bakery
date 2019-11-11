@@ -1,5 +1,6 @@
 import logging
 import os
+from urllib.parse import urlparse
 
 from bakery.views import BuildableDetailView
 from django.conf import settings
@@ -7,7 +8,6 @@ from django.core.handlers.base import BaseHandler
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.test.client import RequestFactory
-from django.utils.six.moves.urllib.parse import urlparse
 from wagtail.core.models import Page, Site
 
 logger = logging.getLogger(__name__)
