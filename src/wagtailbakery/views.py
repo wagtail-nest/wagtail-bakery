@@ -106,7 +106,7 @@ class WagtailBakeryView(BuildableDetailView):
 
 class AllPagesView(WagtailBakeryView):
     """
-    Generates a seperate index.html page for each (latest revision) wagtail
+    Generates a separate index.html page for each (latest revision) wagtail
     page.
 
     Use this view to export your pages for acceptance/staging environments.
@@ -127,7 +127,7 @@ class AllPagesView(WagtailBakeryView):
 
 class AllPublishedPagesView(AllPagesView):
     """
-    Generates a seperate index.html page for each published wagtail page.
+    Generates a separate index.html page for each published wagtail page.
 
     Use this view to export your pages for production.
 
