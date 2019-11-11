@@ -23,12 +23,6 @@ def handle_api_error(response):
     raise APIResponseError("Unexpected status code returned from API: %d" % response.status_code)
 
 
-def ensure_dir_exists(fs, filename):
-    dirname = os.path.dirname(filename)
-    if not fs.exists(dirname):
-        fs.makedirs(dirname)
-
-
 class APIListingView(BuildableMixin):
     results_per_page = 20
 
@@ -47,10 +41,13 @@ class APIListingView(BuildableMixin):
         has_next_page = True
 
         while has_next_page:
-            target_path = os.path.join(settings.BUILD_DIR, self.get_build_path(page_num + 1))
-            ensure_dir_exists(self.fs, target_path)
+            build_path = self.get_build_path(page_num + 1)
+            self.prep_directory(build_path)
+
             page_content, has_next_page = self.get_content(page_num)
-            self.build_file(target_path, page_content)
+
+            path = os.path.join(settings.BUILD_DIR, build_path)
+            self.build_file(path, page_content)
 
             page_num += 1
 
@@ -79,9 +76,13 @@ class APIDetailView(BuildableMixin):
         raise NotImplementedError
 
     def build_object(self, obj):
-        target_path = os.path.join(settings.BUILD_DIR, self.get_build_path(obj))
-        ensure_dir_exists(self.fs, target_path)
-        self.build_file(target_path, self.get_content(obj))
+        build_path = self.get_build_path(obj)
+        self.prep_directory(build_path)
+
+        page_content = self.get_content(obj)
+
+        path = os.path.join(settings.BUILD_DIR, build_path)
+        self.build_file(path, page_content)
 
     def build_queryset(self):
         [self.build_object(o) for o in self.get_queryset().all()]
@@ -189,9 +190,12 @@ class TypedPagesAPIListingView(PagesAPIListingView):
             has_next_page = True
 
             while has_next_page:
-                target_path = os.path.join(settings.BUILD_DIR, self.get_build_path(model, page_num + 1))
-                ensure_dir_exists(self.fs, target_path)
+                build_path = self.get_build_path(model, page_num + 1)
+                self.prep_directory(build_path)
+
                 page_content, has_next_page = self.get_content(model, page_num)
-                self.build_file(target_path, page_content)
+
+                path = os.path.join(settings.BUILD_DIR, build_path)
+                self.build_file(path, page_content)
 
                 page_num += 1
