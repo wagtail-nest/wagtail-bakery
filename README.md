@@ -166,3 +166,5 @@ For issues [please submit an issue](https://github.com/wagtail/wagtail-bakery/is
 Thanks to [@mhnbcu](https://github.com/mhnbcu/wagtailbakery) for bringing this
 idea up initially, and [Django Bakery](https://github.com/datadesk/django-bakery)
 for providing the initial bakery package.
+
+Thanks to all the [contributors](https://github.com/wagtail/wagtail-bakery/graphs/contributors) for their help.
