@@ -22,7 +22,7 @@ class WagtailBakeryView(BuildableDetailView):
         self.handler = BaseHandler()
         self.handler.load_middleware()
 
-        super(WagtailBakeryView, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def get(self, request):
         response = self.handler.get_response(request)
@@ -138,5 +138,5 @@ class AllPublishedPagesView(AllPagesView):
         )
     """
     def get_queryset(self):
-        pages = super(AllPublishedPagesView, self).get_queryset()
+        pages = super().get_queryset()
         return pages.live()
