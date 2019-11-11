@@ -1,7 +1,8 @@
 import pytest
 from django.conf import settings
 
-from wagtailbakery.views import AllPagesView, AllPublishedPagesView, WagtailBakeryView
+from wagtailbakery.views import (
+    AllPagesView, AllPublishedPagesView, SitemapBuildableView, WagtailBakeryView)
 
 
 @pytest.mark.django_db
@@ -91,3 +92,66 @@ def test_all_pages_for_single_page(page):
     page.save()
     assert qs.filter(live=False).exists()
     assert qs.filter(id=page.id).exists()
+
+
+@pytest.mark.django_db
+def test_sitemap_content_for_single_site(settings, site):
+    view = SitemapBuildableView()
+    view.request = view.create_request(view.sitemap_path)
+
+    content = view.get_content().decode()
+    expected_content = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        '<url><loc>{}</loc></url>\n'
+        '</urlset>\n'
+    ).format(site.root_page.get_full_url())
+
+    assert content == expected_content
+
+
+@pytest.mark.django_db
+def test_sitemap_content_for_multiple_sites(settings, multisite):
+    settings.BAKERY_MULTISITE = True
+    view = SitemapBuildableView()
+
+    for site in multisite:
+        view.request = view.create_request(site, view.sitemap_path)
+
+        content = view.get_content().decode()
+        expected_content = (
+            '<?xml version="1.0" encoding="UTF-8"?>\n'
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+            '<url><loc>{}</loc></url>\n'
+            '</urlset>\n'
+        ).format(site.root_page.get_full_url())
+
+        assert content == expected_content
+
+
+@pytest.mark.django_db
+def test_sitemap_build_path_for_single_site(settings, site):
+    view = SitemapBuildableView()
+
+    build_path = view.get_build_path(site)
+    expected_build_path = view.sitemap_path
+
+    assert build_path == expected_build_path
+
+
+@pytest.mark.django_db
+def test_sitemap_build_path_for_multiple_sites(settings, multisite):
+    settings.BAKERY_MULTISITE = True
+    view = SitemapBuildableView()
+
+    build_paths = []
+    expected_build_paths = []
+
+    for site in multisite:
+        build_paths.append(view.get_build_path(site))
+
+        expected_build_paths.append("{hostname}/{sitemap_path}".format(
+            hostname=site.hostname, sitemap_path=view.sitemap_path
+        ))
+
+    assert build_paths == expected_build_paths

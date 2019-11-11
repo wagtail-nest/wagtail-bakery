@@ -1,13 +1,14 @@
 import logging
 import os
 
-from bakery.views import BuildableDetailView
+from bakery.views import BuildableDetailView, BuildableMixin
 from django.conf import settings
 from django.core.handlers.base import BaseHandler
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.test.client import RequestFactory
 from django.utils.six.moves.urllib.parse import urlparse
+from wagtail.contrib.sitemaps.views import sitemap
 from wagtail.core.models import Page, Site
 
 logger = logging.getLogger(__name__)
@@ -140,3 +141,37 @@ class AllPublishedPagesView(AllPagesView):
     def get_queryset(self):
         pages = super(AllPublishedPagesView, self).get_queryset()
         return pages.live()
+
+
+class SitemapBuildableView(BuildableMixin):
+
+    sitemap_path = 'sitemap.xml'
+
+    @property
+    def build_method(self):
+        return self.build_queryset
+
+    def build_queryset(self):
+        for site in Site.objects.all():
+            self.build_object(site)
+
+    def build_object(self, obj):
+        build_path = self.get_build_path(obj)
+        self.request = self.create_request(obj, self.sitemap_path)
+        self.prep_directory(build_path)
+
+        path = os.path.join(settings.BUILD_DIR, build_path)
+        self.build_file(path, self.get_content())
+
+    def get_build_path(self, obj):
+        if getattr(settings, 'BAKERY_MULTISITE', False):
+            return os.path.join(obj.hostname, self.sitemap_path)
+        else:
+            return self.sitemap_path
+
+    def get_content(self):
+        return sitemap(self.request).render().content
+
+    def create_request(self, site, path):
+        full_path = '{}/{}'.format(site.root_url, path)
+        return RequestFactory(SERVER_NAME=site.hostname).get(full_path)
