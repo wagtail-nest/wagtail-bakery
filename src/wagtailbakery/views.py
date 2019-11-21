@@ -1,5 +1,6 @@
 import logging
 import os
+from urllib.parse import urlparse
 
 from bakery.views import BuildableDetailView
 from django.conf import settings
@@ -7,7 +8,6 @@ from django.core.handlers.base import BaseHandler
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.test.client import RequestFactory
-from django.utils.six.moves.urllib.parse import urlparse
 from wagtail.core.models import Page, Site
 
 logger = logging.getLogger(__name__)
@@ -22,7 +22,7 @@ class WagtailBakeryView(BuildableDetailView):
         self.handler = BaseHandler()
         self.handler.load_middleware()
 
-        super(WagtailBakeryView, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def get(self, request):
         response = self.handler.get_response(request)
@@ -106,7 +106,7 @@ class WagtailBakeryView(BuildableDetailView):
 
 class AllPagesView(WagtailBakeryView):
     """
-    Generates a seperate index.html page for each (latest revision) wagtail
+    Generates a separate index.html page for each (latest revision) wagtail
     page.
 
     Use this view to export your pages for acceptance/staging environments.
@@ -127,7 +127,7 @@ class AllPagesView(WagtailBakeryView):
 
 class AllPublishedPagesView(AllPagesView):
     """
-    Generates a seperate index.html page for each published wagtail page.
+    Generates a separate index.html page for each published wagtail page.
 
     Use this view to export your pages for production.
 
@@ -138,5 +138,5 @@ class AllPublishedPagesView(AllPagesView):
         )
     """
     def get_queryset(self):
-        pages = super(AllPublishedPagesView, self).get_queryset()
+        pages = super().get_queryset()
         return pages.live()

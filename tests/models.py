@@ -24,7 +24,7 @@ class EventPage(RoutablePageMixin, Page):
         })
 
     def get_static_site_paths(self):
-        return super(EventPage, self).get_static_site_paths()
+        return super().get_static_site_paths()
 
     @property
     def url(self):

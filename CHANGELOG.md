@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased](https://github.com/wagtail/wagtail-bakery/compare/0.3.0...HEAD)
 
+- Use model url from inherited model (#42)
+- Allow use of new versions of django-bakery (#44)
+- Drop support for Wagtail < 2.6, Django < 2.x & Python < 3.5 (#45, #46)
+
 ## [0.3.0](https://github.com/wagtail/wagtail-bakery/compare/0.2.0...0.3.0)
 
 ### Added
