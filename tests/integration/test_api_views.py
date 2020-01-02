@@ -12,6 +12,14 @@ DEFAULT_PAGE_META_FIELDS = {'type', 'show_in_menus', 'search_description', 'firs
 
 
 @pytest.mark.django_db
+def test_wagtail_bakery_pages_api_detail_view_contains_no_root_pages():
+    """
+    Do not include the Root page
+    """
+    view = PagesAPIDetailView()
+    assert not any(o for o in view.get_queryset() if o.depth <= 1)
+
+@pytest.mark.django_db
 def test_wagtail_bakery_pages_api_detail_view(page_tree):
     view = PagesAPIDetailView()
 

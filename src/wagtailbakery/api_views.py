@@ -87,7 +87,7 @@ class APIDetailView(BuildableMixin):
         self.build_file(path, page_content)
 
     def build_queryset(self):
-        [self.build_object(o) for o in self.get_queryset().filter(depth__gt=1)]
+        [self.build_object(o) for o in self.get_queryset()]
 
     def unbuild_object(self, obj):
         """
@@ -126,7 +126,7 @@ class PagesAPIDetailView(APIDetailView):
 
     def get_queryset(self):
         if getattr(settings, 'BAKERY_MULTISITE', False):
-            return Page.objects.all().public().live()
+            return Page.objects.filter(depth__gt=1).public().live()
         else:
             site = Site.objects.get(is_default_site=True)
             return site.root_page.get_descendants(inclusive=True).public().live()
