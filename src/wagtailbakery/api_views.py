@@ -87,7 +87,7 @@ class APIDetailView(BuildableMixin):
         self.build_file(path, page_content)
 
     def build_queryset(self):
-        [self.build_object(o) for o in self.get_queryset().all() if o.is_root() is False]
+        [self.build_object(o) for o in self.get_queryset().filter(depth__gt=1)]
 
     def unbuild_object(self, obj):
         """
