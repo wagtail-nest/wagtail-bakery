@@ -1,19 +1,17 @@
-import os
 import json
 import logging
+import os
 
-from django.conf import settings
 from bakery.views import BuildableMixin
-
-from wagtail.core.models import Page, Site
-from wagtail.api.v2.router import WagtailAPIRouter
-from wagtail.api.v2.endpoints import PagesAPIEndpoint
-
+from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
+from wagtail.api.v2.endpoints import PagesAPIEndpoint
+from wagtail.api.v2.router import WagtailAPIRouter
+from wagtail.core.models import Page, Site
 
 logger = logging.getLogger(__name__)
 
-BAKERY_RESULTS_PER_PAGE = getattr(settings, 'BAKERY_RESULTS_PER_PAGE', 25)
+BAKERY_RESULTS_PER_PAGE = getattr(settings, 'BAKERY_RESULTS_PER_PAGE', 20)
 
 
 class APIResponseError(Exception):
