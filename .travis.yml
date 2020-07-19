@@ -9,31 +9,39 @@ matrix:
       env: TOXENV=isort
     # Tests
     - python: 3.5
+      env: TOXENV=py35-django21-wagtail27
+    - python: 3.5
       env: TOXENV=py35-django22-wagtail27
     - python: 3.6
       env: TOXENV=py36-django22-wagtail27
-    - python: 3.7
-      env: TOXENV=py37-django20-wagtail26
-    - python: 3.7
-      env: TOXENV=py37-django20-wagtail27
-    - python: 3.7
-      env: TOXENV=py37-django21-wagtail26
-    - python: 3.7
-      env: TOXENV=py37-django21-wagtail27
-    - python: 3.7
-      env: TOXENV=py37-django22-wagtail26
+    - python: 3.6
+      env: TOXENV=py36-django30-wagtail28
+    - python: 3.6
+      env: TOXENV=py36-django30-wagtail29
     - python: 3.7
       env: TOXENV=py37-django22-wagtail27
-    # Only testing Django 2.2 & Wagtail 2.7 (instead of all Django/Wagtail combinations)
+    - python: 3.7
+      env: TOXENV=py37-django30-wagtail28
+    - python: 3.7
+      env: TOXENV=py37-django30-wagtail29
+    # Only testing Django 2.2+ (instead of all Django/Wagtail combinations)
     # against Python 3.8 as Django<=2.2 doesn't officially support Python 3.8
     - python: 3.8
       env: TOXENV=py38-django22-wagtail27
+    - python: 3.8
+      env: TOXENV=py38-django22-wagtail28
+    - python: 3.8
+      env: TOXENV=py38-django30-wagtail28
+    - python: 3.8
+      env: TOXENV=py38-django22-wagtail29
+    - python: 3.8
+      env: TOXENV=py38-django30-wagtail29
     # Future (Should be in `allow_failures`)
-    - python: 3.7
-      env: TOXENV=py37-django22-wagtailmaster
+    - python: 3.8
+      env: TOXENV=py38-django30-wagtailmaster
   allow_failures:
     # Allow failures against Wagtail master
-    - env: TOXENV=py37-django22-wagtailmaster
+    - env: TOXENV=py38-django30-wagtailmaster
 cache:
   directories:
     - $HOME/.cache/pip
