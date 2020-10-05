@@ -3,18 +3,18 @@
 A set of helpers for baking your Django Wagtail site out as flat files.
 
 [![Build Status](https://travis-ci.org/wagtail/wagtail-bakery.svg?branch=master)](https://travis-ci.org/wagtail/wagtail-bakery)
-[![Coverage Status](https://coveralls.io/repos/github/moorinteractive/wagtail-bakery/badge.svg?branch=master)](https://coveralls.io/github/moorinteractive/wagtail-bakery?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/wagtail/wagtail-bakery/badge.svg?branch=master)](https://coveralls.io/github/wagtail/wagtail-bakery?branch=master)
 
 * Issues: [https://github.com/wagtail/wagtail-bakery/issues](https://github.com/wagtail/wagtail-bakery/issues)
 * Testing: [https://travis-ci.org/wagtail/wagtail-bakery](https://travis-ci.org/wagtail/wagtail-bakery)
-* Coverage: [https://coveralls.io/github/moorinteractive/wagtail-bakery](https://coveralls.io/github/moorinteractive/wagtail-bakery)
+* Coverage: [https://coveralls.io/github/wagtail/wagtail-bakery](https://coveralls.io/github/wagtail/wagtail-bakery)
 
 Wagtail-bakery is built on top of [Django bakery](https://github.com/datadesk/django-bakery). Please read their [documentation](https://django-bakery.readthedocs.io/en/latest/) for detailed configuration and how to build default Django flat files. Yes. Wagtail-bakery is not limited to build Wagtail pages specifically, mixed content is possible!
 
 ## Features
 
 * Single management command that will build your Wagtail site out as flat files
-* Support for multisite, [theming](https://github.com/moorinteractive/wagtail-themes) and [multilingual](http://docs.wagtail.io/en/latest/advanced_topics/i18n/index.html) setup
+* Support for multisite, [theming](https://github.com/wagtail/wagtail-themes) and [multilingual](http://docs.wagtail.io/en/latest/advanced_topics/i18n/index.html) setup
 * Support for `i18n_patterns`
 * Support for generating a static API
 * Ready to use Wagtail Buildable views to build all your (un)published pages at once (no extra code required!)
