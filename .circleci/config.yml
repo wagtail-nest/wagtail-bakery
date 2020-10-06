@@ -1,0 +1,34 @@
+jobs:
+  nightly-wagtail-test:
+    docker:
+      - image: circleci/python:3.8
+    steps:
+      - checkout
+      - run: git clone git@github.com:wagtail/wagtail.git
+
+      # Install your plugin with its testing requirements. Update this line
+      - run: pip install -e .[testing]
+      # Replace Wagtail with the one checked out from git
+      - run: pip install ./wagtail
+
+      # Run the tests. Update this line too
+      - run: python testmanage.py test
+
+      - run:
+          when: on_fail
+          command: python ./.circleci/report_nightly_build_failure.py
+
+
+workflows:
+    version: 2
+
+    nightly:
+      jobs:
+        - nightly-wagtail-test
+      triggers:
+        - schedule:
+            cron: "0 0 * * *"
+            filters:
+              branches:
+                only:
+                  - master
