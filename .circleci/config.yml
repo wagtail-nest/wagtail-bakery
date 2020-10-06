@@ -6,13 +6,12 @@ jobs:
       - checkout
       - run: git clone git@github.com:wagtail/wagtail.git
 
-      # Install your plugin with its testing requirements. Update this line
+      # Install your plugin with its testing requirements.
       - run: pip install -e .[testing]
       # Replace Wagtail with the one checked out from git
       - run: pip install ./wagtail
-
-      # Run the tests. Update this line too
-      - run: python testmanage.py test
+      # Run the tests.
+      - run: pytest
 
       - run:
           when: on_fail
