@@ -20,15 +20,15 @@ jobs:
 
 
 workflows:
-    version: 2
+  version: 2
 
-    nightly:
-      jobs:
-        - nightly-wagtail-test
-      triggers:
-        - schedule:
-            cron: "0 0 * * *"
-            filters:
-              branches:
-                only:
-                  - master
+  nightly:
+    jobs:
+      - nightly-wagtail-test
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
+          filters:
+            branches:
+              only:
+                - master
