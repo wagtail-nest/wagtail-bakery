@@ -9,7 +9,7 @@ install_requires = [
 ]
 
 test_requires = [
-    'factory-boy',
+    'factory-boy<3',
     'flake8',
     'isort',
     'pytest',
