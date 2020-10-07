@@ -7,7 +7,7 @@ jobs:
       - run: git clone git@github.com:wagtail/wagtail.git
 
       # Install your plugin with its testing requirements.
-      - run: pip install -e .[testing]
+      - run: pip install -e .[test]
       # Replace Wagtail with the one checked out from git
       - run: pip install ./wagtail
       # Run the tests.
