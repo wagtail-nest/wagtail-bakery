@@ -1,4 +1,4 @@
-{% load static %}
+{% load static wagtailcore_tags %}
 
 <!DOCTYPE HTML>
 <html>
@@ -18,7 +18,8 @@
         {% endblock %}
         {% block title %}
         <h1>{{ self.title }}</h1>
-        <h2>{{ request.site.hostname }}</h2>
+        {% wagtail_site as current_site %}
+        <h2>{{ current_site.hostname }}</h2>
         {% endblock %}
         {% block content %}{% endblock %}
     </body>
