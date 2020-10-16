@@ -1,6 +1,7 @@
 import os
 
 from django.conf import settings
+from wagtail import VERSION as WAGTAIL_VERSION
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -21,10 +22,15 @@ def pytest_configure():
         'wagtail.admin',
         'wagtail.core',
     ]
-    wagtail_middleware = [
-        'wagtail.core.middleware.SiteMiddleware',
-        'wagtail.contrib.redirects.middleware.RedirectMiddleware',
-    ]
+    if WAGTAIL_VERSION >= (2, 9):
+        wagtail_middleware = [
+            'wagtail.contrib.redirects.middleware.RedirectMiddleware',
+        ]
+    else:
+        wagtail_middleware = [
+            'wagtail.core.middleware.SiteMiddleware',
+            'wagtail.contrib.redirects.middleware.RedirectMiddleware',
+        ]
 
     settings.configure(
         DATABASES={

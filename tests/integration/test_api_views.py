@@ -1,6 +1,7 @@
 import json
 
 import pytest
+from wagtail import VERSION as WAGTAIL_VERSION
 
 from wagtailbakery.api_views import (
     PagesAPIDetailView, PagesAPIListingView, TypedPagesAPIListingView)
@@ -9,6 +10,9 @@ from ..models import EventPage
 
 DEFAULT_PAGE_FIELDS = {'id', 'meta', 'title'}
 DEFAULT_PAGE_META_FIELDS = {'type', 'show_in_menus', 'search_description', 'first_published_at', 'slug', 'html_url', 'seo_title'}
+
+if WAGTAIL_VERSION >= (2, 11):
+    DEFAULT_PAGE_META_FIELDS.add('locale')
 
 
 @pytest.mark.django_db
