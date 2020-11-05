@@ -3,45 +3,36 @@ language: python
 matrix:
   include:
     # Linting
-    - python: 3.7
+    - python: 3.8
       env: TOXENV=flake8
-    - python: 3.7
+    - python: 3.8
       env: TOXENV=isort
-    # Tests
-    - python: 3.5
-      env: TOXENV=py35-django21-wagtail27
-    - python: 3.5
-      env: TOXENV=py35-django22-wagtail27
+    # All supported Django/Wagtail combinations with the latest supported Python version
+    - python: 3.8
+      env: TOXENV=py38-django22-wagtail210
+    - python: 3.9
+      env: TOXENV=py39-django22-wagtail211
+    - python: 3.8
+      env: TOXENV=py38-django30-wagtail210
+    - python: 3.9
+      env: TOXENV=py39-django30-wagtail211
+    - python: 3.8
+      env: TOXENV=py38-django31-wagtail210
+    - python: 3.9
+      env: TOXENV=py39-django31-wagtail211
+    # The latest supported Django/Wagtail combination for the remaining Python versions
     - python: 3.6
-      env: TOXENV=py36-django22-wagtail27
-    - python: 3.6
-      env: TOXENV=py36-django30-wagtail28
-    - python: 3.6
-      env: TOXENV=py36-django30-wagtail29
+      env: TOXENV=py36-django31-wagtail211
     - python: 3.7
-      env: TOXENV=py37-django22-wagtail27
-    - python: 3.7
-      env: TOXENV=py37-django30-wagtail28
-    - python: 3.7
-      env: TOXENV=py37-django30-wagtail29
-    # Only testing Django 2.2+ (instead of all Django/Wagtail combinations)
-    # against Python 3.8 as Django<=2.2 doesn't officially support Python 3.8
+      env: TOXENV=py37-django31-wagtail211
     - python: 3.8
-      env: TOXENV=py38-django22-wagtail27
-    - python: 3.8
-      env: TOXENV=py38-django22-wagtail28
-    - python: 3.8
-      env: TOXENV=py38-django30-wagtail28
-    - python: 3.8
-      env: TOXENV=py38-django22-wagtail29
-    - python: 3.8
-      env: TOXENV=py38-django30-wagtail29
+      env: TOXENV=py38-django31-wagtail211
     # Future (Should be in `allow_failures`)
     - python: 3.8
-      env: TOXENV=py38-django30-wagtailmaster
+      env: TOXENV=py39-django31-wagtailmaster
   allow_failures:
     # Allow failures against Wagtail master
-    - env: TOXENV=py38-django30-wagtailmaster
+    - env: TOXENV=py39-django31-wagtailmaster
 cache:
   directories:
     - $HOME/.cache/pip
