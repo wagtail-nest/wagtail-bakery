@@ -13,7 +13,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Removed
 
-- Drop support for Wagtail < 2.7
+- Drop support for Python 3.5
+- Drop support for Django before 2.2
+- Drop support for Wagtail before 2.10
 
 ## [0.4.0](https://github.com/wagtail/wagtail-bakery/compare/0.3.0...0.4.0)
 
