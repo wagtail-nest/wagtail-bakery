@@ -5,7 +5,7 @@ with open('README.md', 'r') as fh:
 
 install_requires = [
     'django-bakery~=0.12.7',
-    'wagtail>=2.6',
+    'wagtail>=2.10',
 ]
 
 test_requires = [
@@ -19,7 +19,7 @@ test_requires = [
 
 setup(
     name='wagtail-bakery',
-    version='0.4.0',
+    version='0.5.0',
     description='A set of helpers for baking your Django Wagtail site out as flat files.',
     long_description=long_description,
     long_description_content_type='text/markdown',
@@ -40,9 +40,9 @@ setup(
         'Framework :: Wagtail :: 2',
         'Operating System :: Unix',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
     ],
 )
