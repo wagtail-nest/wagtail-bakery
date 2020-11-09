@@ -5,8 +5,8 @@ import os
 from bakery.views import BuildableMixin
 from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
-from wagtail.api.v2.endpoints import PagesAPIEndpoint
 from wagtail.api.v2.router import WagtailAPIRouter
+from wagtail.api.v2.views import PagesAPIViewSet
 from wagtail.core.models import Page, Site
 
 logger = logging.getLogger(__name__)
@@ -116,7 +116,7 @@ class PagesAPIDetailView(APIDetailView):
 
     URL example: /api/pages/detail/1.json
     """
-    endpoint_class = PagesAPIEndpoint
+    endpoint_class = PagesAPIViewSet
 
     def get_build_path(self, page):
         return 'api/pages/detail/{pk}.json'.format(pk=page.pk)
@@ -146,7 +146,7 @@ class PagesAPIListingView(APIListingView):
 
         request = self.create_request(url)
         request.wagtailapi_router = WagtailAPIRouter('')
-        response = PagesAPIEndpoint.as_view({'get': 'listing_view'})(request)
+        response = PagesAPIViewSet.as_view({'get': 'listing_view'})(request)
 
         if response.status_code == 200:
             content = response.render().content
