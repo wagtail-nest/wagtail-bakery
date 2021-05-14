@@ -10,10 +10,14 @@ on:
 
 jobs:
   test:
+    name: Python ${{ matrix.python}} ${{ matrix.toxenv }}
     runs-on: ubuntu-latest
     continue-on-error: ${{ matrix.experimental }}
     strategy:
       matrix:
+        python: ["3.6", "3.7", "3.8", "3.9"]
+        experimental: [false]
+        toxenv: ["py"]
         include:
           # Linting
           - python: 3.8
@@ -22,44 +26,9 @@ jobs:
           - python: 3.8
             toxenv: isort
             experimental: false
-
-          # All supported Django/Wagtail combinations with the latest supported Python version
-          # Wagtail 2.11 - latest supported Python
-          - python: 3.8
-            toxenv: py38-django22-wagtail211
-            experimental: false
-          - python: 3.8
-            toxenv: py38-django30-wagtail211
-            experimental: false
-          - python: 3.8
-            toxenv: py38-django31-wagtail211
-            experimental: false
-          # Wagtail 2.13 - latest supported Python
+            # Future Wagtail release from main branch (allowed to fail)
           - python: 3.9
-            toxenv: py39-django22-wagtail213
-            experimental: false
-          - python: 3.9
-            toxenv: py39-django30-wagtail213
-            experimental: false
-          - python: 3.9
-            toxenv: py39-django31-wagtail213
-            experimental: false
-          - python: 3.9
-            toxenv: py39-django32-wagtail213
-            experimental: false
-          # The latest supported Django/Wagtail combination for the remaining Python versions
-          - python: 3.6
-            toxenv: py36-django32-wagtail213
-            experimental: false
-          - python: 3.7
-            toxenv: py37-django32-wagtail213
-            experimental: false
-          - python: 3.8
-            toxenv: py38-django32-wagtail213
-            experimental: false
-          # Future Wagtail release from main branch (allowed to fail)
-          - python: 3.9
-            toxenv: py39-django32-wagtailmain
+            toxenv: wagtailmain
             experimental: true
     steps:
       - uses: actions/checkout@v2
@@ -67,12 +36,22 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python }}
-      - name: Install Tox
+      - name: Install dependencies
         run: |
-          python -m pip install coveralls tox
-      - name: Test
+          python -m pip install coveralls tox tox-py
+
+        # This step runs only for jobs NOT in the include matrix
+      - name: Run tox targets for Python ${{ matrix.python }}
+        if: ${{ matrix.toxenv == 'py' }}
         run: |
-          tox
+          tox --py current
+          coveralls
+
+        # This step runs only for jobs in the include matrix and covers linting
+      - name: Run tox targets for Python ${{ matrix.python }}
+        if: ${{ matrix.toxenv != 'py' }}
+        run: |
+          tox -e ${{ matrix.toxenv }}
           coveralls
         env:
           TOXENV: ${{ matrix.toxenv }}
