@@ -38,21 +38,19 @@ jobs:
           python-version: ${{ matrix.python }}
       - name: Install dependencies
         run: |
-          python -m pip install coveralls tox tox-py
+          python -m pip install tox tox-py
 
         # This step runs only for jobs NOT in the include matrix
       - name: Run tox targets for Python ${{ matrix.python }}
         if: ${{ matrix.toxenv == 'py' }}
         run: |
           tox --py current
-          coveralls
 
         # This step runs only for jobs in the include matrix and covers linting
       - name: Run tox targets for Python ${{ matrix.python }} (${{ matrix.toxenv }})
         if: ${{ matrix.toxenv != 'py' }}
         run: |
           tox -e ${{ matrix.toxenv }}
-          coveralls
         env:
           TOXENV: ${{ matrix.toxenv }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
