@@ -33,6 +33,7 @@ def pytest_configure():
         ]
 
     settings.configure(
+        SECRET_KEY="secret_for_testing_only",
         DATABASES={
             'default': {
                 'ENGINE': 'django.db.backends.sqlite3',

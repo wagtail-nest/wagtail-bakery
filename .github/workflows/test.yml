@@ -1,0 +1,58 @@
+name: Wagtail Bakery CI
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+  pull_request:
+
+jobs:
+  test:
+    name: Python ${{ matrix.python}} ${{ matrix.toxenv }}
+    runs-on: ubuntu-latest
+    continue-on-error: ${{ matrix.experimental }}
+    strategy:
+      matrix:
+        python: ["3.6", "3.7", "3.8", "3.9"]
+        experimental: [false]
+        toxenv: ["py"]
+        include:
+          # Linting
+          - python: 3.8
+            toxenv: flake8
+            experimental: false
+          - python: 3.8
+            toxenv: isort
+            experimental: false
+            # Future Wagtail release from main branch (allowed to fail)
+          - python: 3.9
+            toxenv: wagtailmain
+            experimental: true
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python ${{ matrix.python }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install dependencies
+        run: |
+          python -m pip install coveralls tox tox-py
+
+        # This step runs only for jobs NOT in the include matrix
+      - name: Run tox targets for Python ${{ matrix.python }}
+        if: ${{ matrix.toxenv == 'py' }}
+        run: |
+          tox --py current
+          coveralls
+
+        # This step runs only for jobs in the include matrix and covers linting
+      - name: Run tox targets for Python ${{ matrix.python }} (${{ matrix.toxenv }})
+        if: ${{ matrix.toxenv != 'py' }}
+        run: |
+          tox -e ${{ matrix.toxenv }}
+          coveralls
+        env:
+          TOXENV: ${{ matrix.toxenv }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
