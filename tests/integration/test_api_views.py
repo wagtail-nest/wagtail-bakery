@@ -14,6 +14,9 @@ DEFAULT_PAGE_META_FIELDS = {'type', 'show_in_menus', 'search_description', 'firs
 if WAGTAIL_VERSION >= (2, 11):
     DEFAULT_PAGE_META_FIELDS.add('locale')
 
+if WAGTAIL_VERSION >= (2, 16):
+    DEFAULT_PAGE_META_FIELDS.add('alias_of')
+
 
 @pytest.mark.django_db
 def test_wagtail_bakery_pages_api_detail_view(page_tree):
