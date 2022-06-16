@@ -94,9 +94,9 @@ class WagtailBakeryView(BuildableDetailView):
         try:
             path = self.get_build_path(obj)
             self.build_file(path, self.get_content(obj))
-        except Exception as exc:
-            if settings.BAKERY_IGNORE_OBJECTS_THAT_FAILED_TO_BUILD:
-                logger.error("Failed to build object %s: %s" % (obj, exc))
+        except (OSError, AttributeError) as exc:
+            if getattr(settings, 'BAKERY_IGNORE_OBJECTS_THAT_FAILED_TO_BUILD', False):
+                logger.exception("Failed to build object %s: %s" % (obj, exc))
             else:
                 raise exc
 
