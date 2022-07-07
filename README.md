@@ -11,6 +11,10 @@ A set of helpers for baking your Django Wagtail site out as flat files.
 
 Wagtail-bakery is built on top of [Django bakery](https://github.com/datadesk/django-bakery). Please read their [documentation](https://django-bakery.readthedocs.io/en/latest/) for detailed configuration and how to build default Django flat files. Yes. Wagtail-bakery is not limited to build Wagtail pages specifically, mixed content is possible!
 
+## Compatibility note
+
+As of July 2022, django-bakery lacks support for Django 4.x. You are advised to use Django 3.2.x (LTS). Alternatively, see [wagtail-freezer](https://github.com/gasman/wagtail-freezer) for a Django 4 compatible replacement.
+
 ## Features
 
 * Single management command that will build your Wagtail site out as flat files
