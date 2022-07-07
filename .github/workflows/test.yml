@@ -38,7 +38,7 @@ jobs:
           python-version: ${{ matrix.python }}
       - name: Install dependencies
         run: |
-          python -m pip install tox tox-py
+          python -m pip install tox tox-py "Django<4"
 
         # This step runs only for jobs NOT in the include matrix
       - name: Run tox targets for Python ${{ matrix.python }}
