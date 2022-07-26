@@ -5,9 +5,9 @@ A set of helpers for baking your Django Wagtail site out as flat files.
 [![Build Status](https://travis-ci.org/wagtail/wagtail-bakery.svg?branch=master)](https://travis-ci.org/wagtail/wagtail-bakery)
 [![Coverage Status](https://coveralls.io/repos/github/wagtail/wagtail-bakery/badge.svg?branch=master)](https://coveralls.io/github/wagtail/wagtail-bakery?branch=master)
 
-* Issues: [https://github.com/wagtail/wagtail-bakery/issues](https://github.com/wagtail/wagtail-bakery/issues)
-* Testing: [https://travis-ci.org/wagtail/wagtail-bakery](https://travis-ci.org/wagtail/wagtail-bakery)
-* Coverage: [https://coveralls.io/github/wagtail/wagtail-bakery](https://coveralls.io/github/wagtail/wagtail-bakery)
+- Issues: [https://github.com/wagtail/wagtail-bakery/issues](https://github.com/wagtail/wagtail-bakery/issues)
+- Testing: [https://travis-ci.org/wagtail/wagtail-bakery](https://travis-ci.org/wagtail/wagtail-bakery)
+- Coverage: [https://coveralls.io/github/wagtail/wagtail-bakery](https://coveralls.io/github/wagtail/wagtail-bakery)
 
 Wagtail-bakery is built on top of [Django bakery](https://github.com/datadesk/django-bakery). Please read their [documentation](https://django-bakery.readthedocs.io/en/latest/) for detailed configuration and how to build default Django flat files. Yes. Wagtail-bakery is not limited to build Wagtail pages specifically, mixed content is possible!
 
@@ -17,11 +17,11 @@ As of July 2022, django-bakery lacks support for Django 4.x. You are advised to 
 
 ## Features
 
-* Single management command that will build your Wagtail site out as flat files
-* Support for multisite, [theming](https://github.com/wagtail/wagtail-themes) and [multilingual](http://docs.wagtail.io/en/latest/advanced_topics/i18n/index.html) setup
-* Support for `i18n_patterns`
-* Support for generating a static API
-* Ready to use Wagtail Buildable views to build all your (un)published pages at once (no extra code required!)
+- Single management command that will build your Wagtail site out as flat files
+- Support for multisite, [theming](https://github.com/wagtail/wagtail-themes) and [multilingual](http://docs.wagtail.io/en/latest/advanced_topics/i18n/index.html) setup
+- Support for `i18n_patterns`
+- Support for generating a static API
+- Ready to use Wagtail Buildable views to build all your (un)published pages at once (no extra code required!)
 
 ## Installation
 
@@ -82,6 +82,16 @@ BAKERY_VIEWS = (
 ```
 
 The API views use Wagtail's V2 API module. To configure the data that is rendered by these views, please refer to Wagtail's [V2 API configuration guide](http://docs.wagtail.io/en/stable/advanced_topics/api/v2/configuration.html).
+
+In case the static file for a page fails to build (for example, because the file
+name would be too long for the filesystem's maximum file name length), you can
+configure wagtail-bakery to ignore the page and continue to build the rest of
+the static archive. The default behavior is that wagtail-bakery will throw the
+error and stop the build.
+
+```py
+BAKERY_IGNORE_OBJECTS_THAT_FAILED_TO_BUILD = True
+```
 
 ## Usage
 
@@ -144,6 +154,7 @@ Django/Wagtail combinations as [supported](http://docs.wagtail.io/en/latest/rele
 In order to keep for CI build time from growing out of control, not all Python/Django/Wagtail combinations will be tested.
 
 Test as follow:
+
 - All supported Django/Wagtail combinations with the latest supported Python version.
 - The latest supported Django/Wagtail combination for the remaining Python versions.
 
@@ -161,7 +172,7 @@ For issues [please submit an issue](https://github.com/wagtail/wagtail-bakery/is
 1. Update `CHANGELOG.md`.
 1. On GitHub, create a pull request and squash merge it.
 1. Checkout and pull the `master` branch locally.
-1. (Optional) If you need to verify anything, use `make publish-test` to upload to https://test.pypi.org and enter your PyPi *test* credentials as needed.
+1. (Optional) If you need to verify anything, use `make publish-test` to upload to https://test.pypi.org and enter your PyPi _test_ credentials as needed.
 1. Use `make publish` and enter your PyPi credentials as needed.
 1. On GitHub, create a release and a tag for the new version.
 

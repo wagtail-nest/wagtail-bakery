@@ -91,8 +91,14 @@ class WagtailBakeryView(BuildableDetailView):
         self.request = RequestFactory(
             SERVER_NAME=site.hostname).get(self.get_url(obj))
         self.set_kwargs(obj)
-        path = self.get_build_path(obj)
-        self.build_file(path, self.get_content(obj))
+        try:
+            path = self.get_build_path(obj)
+            self.build_file(path, self.get_content(obj))
+        except (OSError, AttributeError) as exc:
+            if getattr(settings, 'BAKERY_IGNORE_OBJECTS_THAT_FAILED_TO_BUILD', False):
+                logger.exception("Failed to build object %s: %s" % (obj, exc))
+            else:
+                raise exc
 
     def build_queryset(self):
         for item in self.get_queryset().all():
