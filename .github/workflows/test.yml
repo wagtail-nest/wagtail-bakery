@@ -20,14 +20,14 @@ jobs:
         toxenv: ["py"]
         include:
           # Linting
-          - python: 3.8
+          - python: "3.8"
             toxenv: flake8
             experimental: false
-          - python: 3.8
+          - python: "3.8"
             toxenv: isort
             experimental: false
             # Future Wagtail release from main branch (allowed to fail)
-          - python: 3.10
+          - python: "3.10"
             toxenv: wagtailmain
             experimental: true
     steps:
