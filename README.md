@@ -21,6 +21,20 @@ Wagtail-bakery is built on top of [Django bakery](https://github.com/datadesk/dj
 * Support for generating a static API
 * Ready to use Wagtail Buildable views to build all your (un)published pages at once (no extra code required!)
 
+## Supported Versions
+
+- Python 3.8 - 3.10
+- Django 3.2 - 4.1
+- Wagtail 2.15 - 4.1
+
+We aim to support the Wagtail versions as [supported](http://docs.wagtail.io/en/latest/releases/upgrading.html) by Wagtail (current LTS, current stable).
+
+Django/Wagtail combinations as [supported](http://docs.wagtail.io/en/latest/releases/upgrading.html#compatible-django-python-versions) by Wagtail (for the Wagtail versions as defined above).
+
+### Browser support
+
+We align our browser support targets with that of Wagtail. Have a look at the [official documentation](http://docs.wagtail.io/en/latest/contributing/developing.html).
+
 ## Installation
 
 ```
@@ -123,21 +137,15 @@ build/blog/example/index.html
 build/static/
 ```
 
-## Supported Versions
 
-### Browser support
+## Troubleshooting
 
-We align our browser support targets with that of Wagtail. Have a look at the [official documentation](http://docs.wagtail.io/en/latest/contributing/developing.html).
+For issues [please submit an issue](https://github.com/wagtail/wagtail-bakery/issues/new) on GitHub.
 
-### Python/Django/Wagtail support
+## Development
 
-Python versions as defined in `setup.py` classifiers.
 
-Wagtail versions as [supported](http://docs.wagtail.io/en/latest/releases/upgrading.html) by Wagtail (current LTS, current stable).
-
-Django/Wagtail combinations as [supported](http://docs.wagtail.io/en/latest/releases/upgrading.html#compatible-django-python-versions) by Wagtail (for the Wagtail versions as defined above).
-
-#### Which version combinations to include in Github Actions test matrix?
+### Which version combinations to include in Github Actions test matrix?
 
 In order to keep for CI build time from growing out of control, not all Python/Django/Wagtail combinations will be tested.
 
@@ -145,11 +153,6 @@ Test as follow:
 - All supported Django/Wagtail combinations with the latest supported Python version.
 - The latest supported Django/Wagtail combination for the remaining Python versions.
 
-## Troubleshooting
-
-For issues [please submit an issue](https://github.com/wagtail/wagtail-bakery/issues/new) on GitHub.
-
-## Development
 
 ### Releases
 
