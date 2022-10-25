@@ -35,6 +35,7 @@ setup(
     license='MIT',
     classifiers=[
         'Environment :: Web Environment',
+        'License :: OSI Approved :: MIT License',
         'Framework :: Django',
         'Framework :: Wagtail',
         'Framework :: Wagtail :: 2',
