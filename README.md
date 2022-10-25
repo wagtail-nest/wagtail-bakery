@@ -2,6 +2,7 @@
 
 A set of helpers for baking your Django Wagtail site out as flat files.
 
+[![License: MIT](https://img.shields.io/pypi/l/wagtail-bakery)](https://github.com/wagtail/wagtail-bakery/blob/master/LICENSE)
 [![Build Status](https://travis-ci.org/wagtail/wagtail-bakery.svg?branch=master)](https://travis-ci.org/wagtail/wagtail-bakery)
 [![Coverage Status](https://coveralls.io/repos/github/wagtail/wagtail-bakery/badge.svg?branch=master)](https://coveralls.io/github/wagtail/wagtail-bakery?branch=master)
 
