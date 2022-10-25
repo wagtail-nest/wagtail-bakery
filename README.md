@@ -6,12 +6,13 @@ A set of helpers for baking your Django Wagtail site out as flat files.
 [![Build Status](https://travis-ci.org/wagtail/wagtail-bakery.svg?branch=master)](https://travis-ci.org/wagtail/wagtail-bakery)
 [![Coverage Status](https://coveralls.io/repos/github/wagtail/wagtail-bakery/badge.svg?branch=master)](https://coveralls.io/github/wagtail/wagtail-bakery?branch=master)
 
-* Issues: [https://github.com/wagtail/wagtail-bakery/issues](https://github.com/wagtail/wagtail-bakery/issues)
-* Testing: [https://travis-ci.org/wagtail/wagtail-bakery](https://travis-ci.org/wagtail/wagtail-bakery)
-* Coverage: [https://coveralls.io/github/wagtail/wagtail-bakery](https://coveralls.io/github/wagtail/wagtail-bakery)
-
 Wagtail-bakery is built on top of [Django bakery](https://github.com/datadesk/django-bakery). Please read their [documentation](https://django-bakery.readthedocs.io/en/latest/) for detailed configuration and how to build default Django flat files. Yes. Wagtail-bakery is not limited to build Wagtail pages specifically, mixed content is possible!
 
+## Links
+
+* [Issues](https://github.com/wagtail/wagtail-bakery/issues)
+* [Changelog](https://github.com/wagtail/wagtail-bakery/issues)
+* [Coverage](https://coveralls.io/github/wagtail/wagtail-bakery)
 
 ## Features
 
