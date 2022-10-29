@@ -2,15 +2,17 @@
 
 A set of helpers for baking your Django Wagtail site out as flat files.
 
-[![Build Status](https://travis-ci.org/wagtail/wagtail-bakery.svg?branch=master)](https://travis-ci.org/wagtail/wagtail-bakery)
+[![License: MIT](https://img.shields.io/pypi/l/wagtail-bakery)](https://github.com/wagtail/wagtail-bakery/blob/master/LICENSE)
+[![Build Status](https://github.com/wagtail/wagtail-bakery/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/wagtail/wagtail-bakery/actions/workflows/test.yml)
 [![Coverage Status](https://coveralls.io/repos/github/wagtail/wagtail-bakery/badge.svg?branch=master)](https://coveralls.io/github/wagtail/wagtail-bakery?branch=master)
-
-* Issues: [https://github.com/wagtail/wagtail-bakery/issues](https://github.com/wagtail/wagtail-bakery/issues)
-* Testing: [https://travis-ci.org/wagtail/wagtail-bakery](https://travis-ci.org/wagtail/wagtail-bakery)
-* Coverage: [https://coveralls.io/github/wagtail/wagtail-bakery](https://coveralls.io/github/wagtail/wagtail-bakery)
 
 Wagtail-bakery is built on top of [Django bakery](https://github.com/datadesk/django-bakery). Please read their [documentation](https://django-bakery.readthedocs.io/en/latest/) for detailed configuration and how to build default Django flat files. Yes. Wagtail-bakery is not limited to build Wagtail pages specifically, mixed content is possible!
 
+## Links
+
+* [Issues](https://github.com/wagtail/wagtail-bakery/issues)
+* [Changelog](https://github.com/wagtail/wagtail-bakery/issues)
+* [Coverage](https://coveralls.io/github/wagtail/wagtail-bakery)
 
 ## Features
 
@@ -19,6 +21,20 @@ Wagtail-bakery is built on top of [Django bakery](https://github.com/datadesk/dj
 * Support for `i18n_patterns`
 * Support for generating a static API
 * Ready to use Wagtail Buildable views to build all your (un)published pages at once (no extra code required!)
+
+## Supported Versions
+
+- Python 3.8 - 3.10
+- Django 3.2 - 4.1
+- Wagtail 2.15 - 4.1
+
+We aim to support the Wagtail versions as [supported](http://docs.wagtail.io/en/latest/releases/upgrading.html) by Wagtail (current LTS, current stable).
+
+Django/Wagtail combinations as [supported](http://docs.wagtail.io/en/latest/releases/upgrading.html#compatible-django-python-versions) by Wagtail (for the Wagtail versions as defined above).
+
+### Browser support
+
+We align our browser support targets with that of Wagtail. Have a look at the [official documentation](http://docs.wagtail.io/en/latest/contributing/developing.html).
 
 ## Installation
 
@@ -122,21 +138,15 @@ build/blog/example/index.html
 build/static/
 ```
 
-## Supported Versions
 
-### Browser support
+## Troubleshooting
 
-We align our browser support targets with that of Wagtail. Have a look at the [official documentation](http://docs.wagtail.io/en/latest/contributing/developing.html).
+For issues [please submit an issue](https://github.com/wagtail/wagtail-bakery/issues/new) on GitHub.
 
-### Python/Django/Wagtail support
+## Development
 
-Python versions as defined in `setup.py` classifiers.
 
-Wagtail versions as [supported](http://docs.wagtail.io/en/latest/releases/upgrading.html) by Wagtail (current LTS, current stable).
-
-Django/Wagtail combinations as [supported](http://docs.wagtail.io/en/latest/releases/upgrading.html#compatible-django-python-versions) by Wagtail (for the Wagtail versions as defined above).
-
-#### Which version combinations to include in Github Actions test matrix?
+### Which version combinations to include in Github Actions test matrix?
 
 In order to keep for CI build time from growing out of control, not all Python/Django/Wagtail combinations will be tested.
 
@@ -144,11 +154,6 @@ Test as follow:
 - All supported Django/Wagtail combinations with the latest supported Python version.
 - The latest supported Django/Wagtail combination for the remaining Python versions.
 
-## Troubleshooting
-
-For issues [please submit an issue](https://github.com/wagtail/wagtail-bakery/issues/new) on GitHub.
-
-## Development
 
 ### Releases
 

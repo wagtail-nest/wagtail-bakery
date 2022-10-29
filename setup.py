@@ -25,6 +25,12 @@ setup(
     long_description_content_type='text/markdown',
     author='Rob Moorman and Wagtail Core Team',
     author_email='hello@wagtail.io',
+    url="https://github.com/wagtail/wagtail-bakery/",
+    project_urls={
+        "Source": "https://github.com/wagtail/wagtail-bakery/",
+        "Issue tracker": "https://github.com/wagtail/wagtail-bakery/issues/",
+        "Changelog": "https://github.com/wagtail/wagtail-bakery/blob/master/CHANGELOG.md",
+    },
     install_requires=install_requires,
     tests_require=test_requires,
     extras_require={'test': test_requires},
@@ -35,6 +41,7 @@ setup(
     license='MIT',
     classifiers=[
         'Environment :: Web Environment',
+        'License :: OSI Approved :: MIT License',
         'Framework :: Django',
         'Framework :: Wagtail',
         'Framework :: Wagtail :: 2',
