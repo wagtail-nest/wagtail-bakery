@@ -29,7 +29,7 @@ setup(
     project_urls={
         "Source": "https://github.com/wagtail/wagtail-bakery/",
         "Issue tracker": "https://github.com/wagtail/wagtail-bakery/issues/",
-        "Changelog": "https://github.com/wagtail/wagtail-bakery/blob/master/CHANGELOG.md",
+        "Changelog": "https://github.com/wagtail/wagtail-bakery/blob/main/CHANGELOG.md",
     },
     install_requires=install_requires,
     tests_require=test_requires,

@@ -2,9 +2,9 @@
 
 A set of helpers for baking your Django Wagtail site out as flat files.
 
-[![License: MIT](https://img.shields.io/pypi/l/wagtail-bakery)](https://github.com/wagtail/wagtail-bakery/blob/master/LICENSE)
-[![Build Status](https://github.com/wagtail/wagtail-bakery/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/wagtail/wagtail-bakery/actions/workflows/test.yml)
-[![Coverage Status](https://coveralls.io/repos/github/wagtail/wagtail-bakery/badge.svg?branch=master)](https://coveralls.io/github/wagtail/wagtail-bakery?branch=master)
+[![License: MIT](https://img.shields.io/pypi/l/wagtail-bakery)](https://github.com/wagtail/wagtail-bakery/blob/main/LICENSE)
+[![Build Status](https://github.com/wagtail/wagtail-bakery/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/wagtail/wagtail-bakery/actions/workflows/test.yml)
+[![Coverage Status](https://coveralls.io/repos/github/wagtail/wagtail-bakery/badge.svg?branch=main)](https://coveralls.io/github/wagtail/wagtail-bakery?branch=main)
 
 Wagtail-bakery is built on top of [Django bakery](https://github.com/datadesk/django-bakery). Please read their [documentation](https://django-bakery.readthedocs.io/en/latest/) for detailed configuration and how to build default Django flat files. Yes. Wagtail-bakery is not limited to build Wagtail pages specifically, mixed content is possible!
 
@@ -112,7 +112,7 @@ manage.py buildserver
 
 ## Examples
 
-In the [examples](https://github.com/wagtail/wagtail-bakery/tree/master/examples) directory you can find a Wagtail setup with fixtures for a single site as well as a multisite setup.
+In the [examples](https://github.com/wagtail/wagtail-bakery/tree/main/examples) directory you can find a Wagtail setup with fixtures for a single site as well as a multisite setup.
 
 Create a virtualenv and go to one of the examples, you can use the `Make` command to install all requirements, load fixtures and run the server.
 
@@ -162,7 +162,7 @@ Test as follow:
 1. Update the version number in `setup.py` following [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 1. Update `CHANGELOG.md`.
 1. On GitHub, create a pull request and squash merge it.
-1. Checkout and pull the `master` branch locally.
+1. Checkout and pull the `main` branch locally.
 1. (Optional) If you need to verify anything, use `make publish-test` to upload to https://test.pypi.org and enter your PyPi *test* credentials as needed.
 1. Use `make publish` and enter your PyPi credentials as needed.
 1. On GitHub, create a release and a tag for the new version.
