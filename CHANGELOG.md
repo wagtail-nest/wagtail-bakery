@@ -5,7 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/wagtail/wagtail-bakery/compare/0.5.0...HEAD)
+## [Unreleased](https://github.com/wagtail/wagtail-bakery/compare/0.6.0...HEAD)
+
+- Nothing new yet
+
+## [0.6.0](https://github.com/wagtail/wagtail-bakery/compare/0.5.0...0.6.0)
+
+### Added
+
+- Compatibility with Wagtail 2.15, 4.0 and 4.1. [#73](https://github.com/wagtail/wagtail-bakery/pull/73)
+- Compatibility with Django 4.0 and 4.1 [#73](https://github.com/wagtail/wagtail-bakery/pull/73)
+- Compatibility with Python 3.10 [#73](https://github.com/wagtail/wagtail-bakery/pull/73)
+
+### Fixed
+
+- Tidy up readme [#75](https://github.com/wagtail/wagtail-bakery/pull/75)
+- Rename `master` branch to `main` [#74](https://github.com/wagtail/wagtail-bakery/issues/74)
+
+### Removed
+
+- Drop support for Wagtail 2.11 and 2.13
+- Drop support for Django 2.2, 3.0 and 3.1
+- Drop support for Python 3.6 and 3.7
 
 ## [0.5.0](https://github.com/wagtail/wagtail-bakery/compare/0.4.0...0.5.0)
 
