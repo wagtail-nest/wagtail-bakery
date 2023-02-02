@@ -7,7 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased](https://github.com/wagtail/wagtail-bakery/compare/0.6.0...HEAD)
 
-- Nothing new yet
+### Added
+
+- Compatibility with Wagtail 4.2. [#79](https://github.com/wagtail/wagtail-bakery/pull/79)
 
 ## [0.6.0](https://github.com/wagtail/wagtail-bakery/compare/0.5.0...0.6.0)
 
