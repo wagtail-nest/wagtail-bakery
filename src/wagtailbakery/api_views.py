@@ -5,9 +5,14 @@ import os
 from bakery.views import BuildableMixin
 from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
+from wagtail import VERSION as WAGTAIL_VERSION
 from wagtail.api.v2.router import WagtailAPIRouter
 from wagtail.api.v2.views import PagesAPIViewSet
-from wagtail.core.models import Page, Site
+
+if WAGTAIL_VERSION >= (3, 0):
+    from wagtail.models import Page, Site
+else:
+    from wagtail.core.models import Page, Site
 
 logger = logging.getLogger(__name__)
 

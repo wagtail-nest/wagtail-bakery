@@ -14,6 +14,8 @@ import os
 
 import environ
 
+from wagtail import VERSION as WAGTAIL_VERSION
+
 env = environ.Env()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -52,7 +54,7 @@ INSTALLED_APPS = [
     'wagtail.images',
     'wagtail.search',
     'wagtail.admin',
-    'wagtail.core',
+    'wagtail' if WAGTAIL_VERSION >= (3, 0) else 'wagtail.core',
 
     'wagtail.contrib.settings',
 

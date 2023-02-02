@@ -8,7 +8,13 @@ from django.core.handlers.base import BaseHandler
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.test.client import RequestFactory
-from wagtail.core.models import Page, Site
+
+from wagtail import VERSION as WAGTAIL_VERSION
+
+if WAGTAIL_VERSION >= (3, 0):
+    from wagtail.models import Page, Site
+else:
+    from wagtail.core.models import Page, Site
 
 logger = logging.getLogger(__name__)
 
