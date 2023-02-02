@@ -8,7 +8,6 @@ from django.core.handlers.base import BaseHandler
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.test.client import RequestFactory
-
 from wagtail import VERSION as WAGTAIL_VERSION
 
 if WAGTAIL_VERSION >= (3, 0):

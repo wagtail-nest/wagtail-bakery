@@ -28,10 +28,7 @@ def pytest_configure():
         ]
     else:
         wagtail_middleware = [
-            ('wagtail.middleware.SiteMiddleware'
-                if WAGTAIL_VERSION >= (3, 0)
-                else 'wagtail.core.middleware.SiteMiddleware'
-            ),
+            'wagtail.middleware.SiteMiddleware' if WAGTAIL_VERSION >= (3, 0) else 'wagtail.core.middleware.SiteMiddleware',
             'wagtail.contrib.redirects.middleware.RedirectMiddleware',
         ]
 

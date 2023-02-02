@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 import os
 
 import environ
-
 from wagtail import VERSION as WAGTAIL_VERSION
 
 env = environ.Env()
