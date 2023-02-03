@@ -24,7 +24,7 @@ Wagtail-bakery is built on top of [Django bakery](https://github.com/datadesk/dj
 
 ## Supported Versions
 
-- Python 3.8 - 3.10
+- Python 3.8 - 3.11
 - Django 3.2 - 4.1
 - Wagtail 2.15 - 4.2
 

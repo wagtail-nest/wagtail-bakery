@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-- Compatibility with Wagtail 4.2. [#79](https://github.com/wagtail/wagtail-bakery/pull/79)
+- Compatibility with Python 3.11 and Wagtail 4.2. [#79](https://github.com/wagtail/wagtail-bakery/pull/79)
 
 ## [0.6.0](https://github.com/wagtail/wagtail-bakery/compare/0.5.0...0.6.0)
 
