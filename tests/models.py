@@ -1,11 +1,6 @@
 from django.shortcuts import redirect, render
-from wagtail import VERSION as WAGTAIL_VERSION
 from wagtail.contrib.routable_page.models import RoutablePageMixin, route
-
-if WAGTAIL_VERSION >= (3, 0):
-    from wagtail.models import Page
-else:
-    from wagtail.core.models import Page
+from wagtail.models import Page
 
 
 class RedirectPage(Page):

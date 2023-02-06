@@ -5,7 +5,7 @@ with open('README.md', 'r') as fh:
 
 install_requires = [
     'django-bakery~=0.13.1',
-    'wagtail>=2.15',
+    'wagtail>=4.1',
 ]
 
 test_requires = [
@@ -44,7 +44,6 @@ setup(
         'License :: OSI Approved :: MIT License',
         'Framework :: Django',
         'Framework :: Wagtail',
-        'Framework :: Wagtail :: 2',
         'Framework :: Wagtail :: 4',
         'Operating System :: Unix',
         'Programming Language :: Python :: 3',

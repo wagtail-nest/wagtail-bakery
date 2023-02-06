@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 import os
 
 import environ
-from wagtail import VERSION as WAGTAIL_VERSION
 
 env = environ.Env()
 
@@ -53,7 +52,7 @@ INSTALLED_APPS = [
     'wagtail.images',
     'wagtail.search',
     'wagtail.admin',
-    'wagtail' if WAGTAIL_VERSION >= (3, 0) else 'wagtail.core',
+    'wagtail',
 
     'wagtail.contrib.settings',
 
