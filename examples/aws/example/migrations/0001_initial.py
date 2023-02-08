@@ -13,14 +13,12 @@ class Migration(migrations.Migration):
         ('wagtailcore', '0030_index_on_pagerevision_created_at'),
     ]
 
-    streamfield_params = {"use_json_field": True}
-
     operations = [
         migrations.CreateModel(
             name='BlogListPage',
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('body', fields.StreamField([(b'paragraph', blocks.RichTextBlock())], **streamfield_params)),
+                ('body', fields.StreamField([(b'paragraph', blocks.RichTextBlock())], use_json_field=True)),
             ],
             options={
                 'abstract': False,
@@ -31,7 +29,7 @@ class Migration(migrations.Migration):
             name='BlogPostPage',
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('body', fields.StreamField([(b'paragraph', blocks.RichTextBlock())], **streamfield_params)),
+                ('body', fields.StreamField([(b'paragraph', blocks.RichTextBlock())], use_json_field=True)),
             ],
             options={
                 'abstract': False,
@@ -42,7 +40,7 @@ class Migration(migrations.Migration):
             name='GenericPage',
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('body', fields.StreamField([(b'paragraph', blocks.RichTextBlock())], **streamfield_params)),
+                ('body', fields.StreamField([(b'paragraph', blocks.RichTextBlock())], use_json_field=True)),
             ],
             options={
                 'abstract': False,
@@ -53,7 +51,7 @@ class Migration(migrations.Migration):
             name='HomePage',
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('body', fields.StreamField([(b'paragraph', blocks.RichTextBlock())], **streamfield_params)),
+                ('body', fields.StreamField([(b'paragraph', blocks.RichTextBlock())], use_json_field=True)),
             ],
             options={
                 'abstract': False,
