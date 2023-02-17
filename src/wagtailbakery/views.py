@@ -55,7 +55,7 @@ class WagtailBakeryView(BuildableDetailView):
         if url.startswith('http'):
             # Multisite has absolute urls
             url_parsed = urlparse(url)
-            path = unquote(url_parsed.path[:1])
+            path = unquote(url_parsed.path[1:])
             hostname = url_parsed.hostname
 
             if getattr(settings, 'BAKERY_MULTISITE', False):
@@ -65,7 +65,7 @@ class WagtailBakeryView(BuildableDetailView):
                 build_path = os.path.join(settings.BUILD_DIR, path)
         else:
             # Single site has relative urls
-            path = unquote(url[:1])
+            path = unquote(url[1:])
             build_path = os.path.join(settings.BUILD_DIR, path)
 
         # Make sure the (deeply) directories are created
