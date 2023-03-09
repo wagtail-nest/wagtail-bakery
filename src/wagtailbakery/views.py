@@ -1,6 +1,6 @@
 import logging
 import os
-from urllib.parse import urlparse, unquote
+from urllib.parse import unquote, urlparse
 
 from bakery.views import BuildableDetailView
 from django.conf import settings
