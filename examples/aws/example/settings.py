@@ -156,7 +156,7 @@ WAGTAIL_SITE_NAME = 'Example'
 
 
 # Wagtail bakery
-# https://github.com/wagtail/wagtail-bakery
+# https://github.com/wagtail-nest/wagtail-bakery
 
 ALLOW_BAKERY_AUTO_PUBLISHING = True
 

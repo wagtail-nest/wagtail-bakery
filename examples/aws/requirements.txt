@@ -2,4 +2,4 @@ django
 django-celery
 django-environ
 wagtail
-git+https://github.com/wagtail/wagtail-bakery.git#egg=wagtail-bakery
+git+https://github.com/wagtail-nest/wagtail-bakery.git#egg=wagtail-bakery

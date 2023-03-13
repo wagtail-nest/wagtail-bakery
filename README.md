@@ -2,25 +2,25 @@
 
 A set of helpers for baking your Django Wagtail site out as flat files.
 
-[![License: MIT](https://img.shields.io/pypi/l/wagtail-bakery)](https://github.com/wagtail/wagtail-bakery/blob/main/LICENSE)
-[![Build Status](https://github.com/wagtail/wagtail-bakery/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/wagtail/wagtail-bakery/actions/workflows/test.yml)
-[![Coverage Status](https://coveralls.io/repos/github/wagtail/wagtail-bakery/badge.svg?branch=main)](https://coveralls.io/github/wagtail/wagtail-bakery?branch=main)
+[![License: MIT](https://img.shields.io/pypi/l/wagtail-bakery)](https://github.com/wagtail-nest/wagtail-bakery/blob/main/LICENSE)
+[![Build Status](https://github.com/wagtail-nest/wagtail-bakery/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/wagtail-nest/wagtail-bakery/actions/workflows/test.yml)
+[![Coverage Status](https://coveralls.io/repos/github/wagtail-nest/wagtail-bakery/badge.svg?branch=main)](https://coveralls.io/github/wagtail-nest/wagtail-bakery?branch=main)
 
 Wagtail-bakery is built on top of [Django bakery](https://github.com/datadesk/django-bakery). Please read their [documentation](https://django-bakery.readthedocs.io/en/latest/) for detailed configuration and how to build default Django flat files. Yes. Wagtail-bakery is not limited to build Wagtail pages specifically, mixed content is possible!
 
 ## Links
 
-* [Issues](https://github.com/wagtail/wagtail-bakery/issues)
-* [Changelog](https://github.com/wagtail/wagtail-bakery/issues)
-* [Coverage](https://coveralls.io/github/wagtail/wagtail-bakery)
+- [Issues](https://github.com/wagtail-nest/wagtail-bakery/issues)
+- [Changelog](https://github.com/wagtail-nest/wagtail-bakery/issues)
+- [Coverage](https://coveralls.io/github/wagtail-nest/wagtail-bakery)
 
 ## Features
 
-* Single management command that will build your Wagtail site out as flat files
-* Support for multisite, [theming](https://github.com/wagtail/wagtail-themes) and [multilingual](http://docs.wagtail.io/en/latest/advanced_topics/i18n/index.html) setup
-* Support for `i18n_patterns`
-* Support for generating a static API
-* Ready to use Wagtail Buildable views to build all your (un)published pages at once (no extra code required!)
+- Single management command that will build your Wagtail site out as flat files
+- Support for multisite, [theming](https://github.com/wagtail/wagtail-themes) and [multilingual](http://docs.wagtail.io/en/latest/advanced_topics/i18n/index.html) setup
+- Support for `i18n_patterns`
+- Support for generating a static API
+- Ready to use Wagtail Buildable views to build all your (un)published pages at once (no extra code required!)
 
 ## Supported Versions
 
@@ -112,7 +112,7 @@ manage.py buildserver
 
 ## Examples
 
-In the [examples](https://github.com/wagtail/wagtail-bakery/tree/main/examples) directory you can find a Wagtail setup with fixtures for a single site as well as a multisite setup.
+In the [examples](https://github.com/wagtail-nest/wagtail-bakery/tree/main/examples) directory you can find a Wagtail setup with fixtures for a single site as well as a multisite setup.
 
 Create a virtualenv and go to one of the examples, you can use the `Make` command to install all requirements, load fixtures and run the server.
 
@@ -138,22 +138,20 @@ build/blog/example/index.html
 build/static/
 ```
 
-
 ## Troubleshooting
 
-For issues [please submit an issue](https://github.com/wagtail/wagtail-bakery/issues/new) on GitHub.
+For issues [please submit an issue](https://github.com/wagtail-nest/wagtail-bakery/issues/new) on GitHub.
 
 ## Development
-
 
 ### Which version combinations to include in Github Actions test matrix?
 
 In order to keep for CI build time from growing out of control, not all Python/Django/Wagtail combinations will be tested.
 
 Test as follow:
+
 - All supported Django/Wagtail combinations with the latest supported Python version.
 - The latest supported Django/Wagtail combination for the remaining Python versions.
-
 
 ### Releases
 
@@ -163,7 +161,7 @@ Test as follow:
 1. Update `CHANGELOG.md`.
 1. On GitHub, create a pull request and squash merge it.
 1. Checkout and pull the `main` branch locally.
-1. (Optional) If you need to verify anything, use `make publish-test` to upload to https://test.pypi.org and enter your PyPi *test* credentials as needed.
+1. (Optional) If you need to verify anything, use `make publish-test` to upload to https://test.pypi.org and enter your PyPi _test_ credentials as needed.
 1. Use `make publish` and enter your PyPi credentials as needed.
 1. On GitHub, create a release and a tag for the new version.
 
@@ -173,4 +171,4 @@ Thanks to [@mhnbcu](https://github.com/mhnbcu/wagtailbakery) for bringing this
 idea up initially, and [Django Bakery](https://github.com/datadesk/django-bakery)
 for providing the initial bakery package.
 
-Thanks to all the [contributors](https://github.com/wagtail/wagtail-bakery/graphs/contributors) for their help.
+Thanks to all the [contributors](https://github.com/wagtail-nest/wagtail-bakery/graphs/contributors) for their help.

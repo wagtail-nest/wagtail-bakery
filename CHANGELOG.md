@@ -5,22 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/wagtail/wagtail-bakery/compare/0.6.0...HEAD)
+## [Unreleased](https://github.com/wagtail-nest/wagtail-bakery/compare/0.6.0...HEAD)
 
 - Nothing new yet
 
-## [0.6.0](https://github.com/wagtail/wagtail-bakery/compare/0.5.0...0.6.0)
+## [0.6.0](https://github.com/wagtail-nest/wagtail-bakery/compare/0.5.0...0.6.0)
 
 ### Added
 
-- Compatibility with Wagtail 2.15, 4.0 and 4.1. [#73](https://github.com/wagtail/wagtail-bakery/pull/73)
-- Compatibility with Django 4.0 and 4.1 [#73](https://github.com/wagtail/wagtail-bakery/pull/73)
-- Compatibility with Python 3.10 [#73](https://github.com/wagtail/wagtail-bakery/pull/73)
+- Compatibility with Wagtail 2.15, 4.0 and 4.1. [#73](https://github.com/wagtail-nest/wagtail-bakery/pull/73)
+- Compatibility with Django 4.0 and 4.1 [#73](https://github.com/wagtail-nest/wagtail-bakery/pull/73)
+- Compatibility with Python 3.10 [#73](https://github.com/wagtail-nest/wagtail-bakery/pull/73)
 
 ### Fixed
 
-- Tidy up readme [#75](https://github.com/wagtail/wagtail-bakery/pull/75)
-- Rename `master` branch to `main` [#74](https://github.com/wagtail/wagtail-bakery/issues/74)
+- Tidy up readme [#75](https://github.com/wagtail-nest/wagtail-bakery/pull/75)
+- Rename `master` branch to `main` [#74](https://github.com/wagtail-nest/wagtail-bakery/issues/74)
 
 ### Removed
 
@@ -28,7 +28,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Drop support for Django 2.2, 3.0 and 3.1
 - Drop support for Python 3.6 and 3.7
 
-## [0.5.0](https://github.com/wagtail/wagtail-bakery/compare/0.4.0...0.5.0)
+## [0.5.0](https://github.com/wagtail-nest/wagtail-bakery/compare/0.4.0...0.5.0)
 
 ### Added
 
@@ -40,7 +40,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Drop support for Django before 2.2
 - Drop support for Wagtail before 2.10
 
-## [0.4.0](https://github.com/wagtail/wagtail-bakery/compare/0.3.0...0.4.0)
+## [0.4.0](https://github.com/wagtail-nest/wagtail-bakery/compare/0.3.0...0.4.0)
 
 ### Fixed
 
@@ -51,7 +51,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Drop support for Wagtail < 2.6, Django < 2.x & Python < 3.5 (#45, #46)
 
-## [0.3.0](https://github.com/wagtail/wagtail-bakery/compare/0.2.0...0.3.0)
+## [0.3.0](https://github.com/wagtail-nest/wagtail-bakery/compare/0.2.0...0.3.0)
 
 ### Added
 
@@ -61,13 +61,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - UTF8 decoding with Python 3 (#28)
 
-## [0.2.0](https://github.com/wagtail/wagtail-bakery/compare/0.1.0...0.2.0)
+## [0.2.0](https://github.com/wagtail-nest/wagtail-bakery/compare/0.1.0...0.2.0)
 
 ### Added
 
 - MIT License
 - Support for generating a static API
 
-## [0.1.0](https://github.com/wagtail/wagtail-bakery/compare/8ad37f6a733699c339bd50a965cc1b0387898205...0.1.0)
+## [0.1.0](https://github.com/wagtail-nest/wagtail-bakery/compare/8ad37f6a733699c339bd50a965cc1b0387898205...0.1.0)
 
 Initial Release
