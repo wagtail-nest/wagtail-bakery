@@ -17,7 +17,7 @@ def test_wagtail_bakery_view_get_url(page_tree):
     url = view.get_url(child_page)
     assert url == '/first/'
 
-    # Check child url of the first child page
+    # Check child url of the first grandchild page
     child_page = child_page.get_descendants().first()
     url = view.get_url(child_page)
     assert url == '/first/first/'
@@ -36,7 +36,7 @@ def test_wagtail_bakery_view_build_path(page_tree):
     build_path = view.get_build_path(child_page)
     assert build_path == settings.BUILD_DIR + '/first/index.html'
 
-    # Check child build path of the first child page
+    # Check child build path of the first grandchild page
     child_page = child_page.get_descendants().first()
     build_path = view.get_build_path(child_page)
     assert build_path == settings.BUILD_DIR + '/first/first/index.html'

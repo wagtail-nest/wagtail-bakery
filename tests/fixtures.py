@@ -17,12 +17,19 @@ def site():
 def page_tree(page):
     from tests.factories.page import PageFactory
 
-    PageFactory(depth=3, path='000100010001', slug='first', numchild=2)
-    PageFactory(depth=3, path='000100010002', slug='second')
-    PageFactory(depth=3, path='000100010003', slug='third')
+    # /first
+    first_page = PageFactory(depth=3, path='000100010001', slug='first', numchild=2)
 
-    PageFactory(depth=4, path='0001000100010001', slug='first')
-    PageFactory(depth=4, path='0001000100010002', slug='second')
+    # /first/first
+    PageFactory(depth=4, path=f'{first_page.path}0001', slug='first')
+    # /first/second
+    PageFactory(depth=4, path=f'{first_page.path}0002', slug='second')
+
+    # /second
+    PageFactory(depth=3, path='000100010002', slug='second')
+
+    # /third
+    PageFactory(depth=3, path='000100010003', slug='third')
 
     page.numchild = 3
     page.save()

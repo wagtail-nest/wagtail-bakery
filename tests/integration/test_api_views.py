@@ -31,10 +31,10 @@ def test_wagtail_bakery_pages_api_detail_view(page_tree):
     build_path = view.get_build_path(child_page)
     assert build_path == 'api/pages/detail/3.json'
 
-    # Check child build path of the first child page
+    # Check child build path of the first grandchild page
     child_page = child_page.get_descendants().first()
     build_path = view.get_build_path(child_page)
-    assert build_path == 'api/pages/detail/6.json'
+    assert build_path == 'api/pages/detail/4.json'
 
 
 @pytest.mark.django_db
@@ -72,7 +72,7 @@ def test_wagtail_bakery_pages_api_detail_view_content(page_tree):
     content = json.loads(view.get_content(grandchild_page).decode('UTF-8'))
     assert set(content.keys()) == DEFAULT_PAGE_FIELDS
     assert set(content['meta'].keys()) == DEFAULT_PAGE_META_FIELDS.union({'parent'})
-    assert content['id'] == 6
+    assert content['id'] == 4
     assert content['title'] == "Page"
 
 
