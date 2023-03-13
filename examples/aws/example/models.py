@@ -1,6 +1,5 @@
 from wagtail import blocks
 from wagtail.admin.panels import FieldPanel
-from wagtail.admin.panels import FieldPanel as StreamFieldPanel
 from wagtail.fields import StreamField
 from wagtail.models import Page
 
@@ -14,7 +13,7 @@ class AbstractExamplePage(Page, AutoPublishingWagtailBakeryModel):
 
     content_panels = [
         FieldPanel('title'),
-        StreamFieldPanel('body')
+        FieldPanel('body')
     ]
 
     class Meta:
