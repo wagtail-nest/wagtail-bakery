@@ -31,7 +31,16 @@ def page_tree(page):
     # /third
     PageFactory(depth=3, path='000100010003', slug='third')
 
-    page.numchild = 3
+    # /unicode-children
+    unicode_page = PageFactory(depth=3, path='000100010004', slug='unicode-children', numchild=3)
+    # /unicode-children/latin-capital-letter-i-with-diaeresis-Ï
+    PageFactory(depth=4, path=f'{unicode_page.path}0001', slug='latin-capital-letter-i-with-diaeresis-Ï')
+    # /unicode-children/cyrillic-capital-letter-ya-Я
+    PageFactory(depth=4, path=f'{unicode_page.path}0002', slug='cyrillic-capital-letter-ya-Я')
+    # /unicode-children/cjk-fire-火
+    PageFactory(depth=4, path=f'{unicode_page.path}0003', slug='cjk-fire-火')
+
+    page.numchild = 4
     page.save()
 
     return page
