@@ -1,4 +1,4 @@
 django
 django-environ
-wagtail
+wagtail>=4.2
 git+https://github.com/wagtail-nest/wagtail-bakery.git#egg=wagtail-bakery
