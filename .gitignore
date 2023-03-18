@@ -10,6 +10,5 @@ __pycache__/
 coverage.xml
 build/
 dist/
-site/
 src/wagtailbakery/build/
 src/wagtailbakery/tests/public/
