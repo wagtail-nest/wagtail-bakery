@@ -90,5 +90,4 @@ def pytest_configure():
             'wagtailbakery.views.AllPagesView',
         ),
         CELERY_ALWAYS_EAGER=True,
-        WAGTAIL_ALLOW_UNICODE_SLUGS=True,
     )
