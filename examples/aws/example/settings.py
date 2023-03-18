@@ -59,7 +59,6 @@ INSTALLED_APPS = [
     'modelcluster',
     'taggit',
 
-    'djcelery',
     'bakery',
     'wagtailbakery',
 
@@ -150,9 +149,10 @@ STATICFILES_DIRS = [
 
 
 # Wagtail
-# http://docs.wagtail.io/en/v1.6.2/getting_started/integrating_into_django.html
+# https://docs.wagtail.org/en/stable/getting_started/integrating_into_django.html
 
 WAGTAIL_SITE_NAME = 'Example'
+WAGTAILADMIN_BASE_URL = 'http://127.0.0.1:8000'
 
 
 # Wagtail bakery
@@ -170,9 +170,3 @@ AWS_BUCKET_NAME = 'wagtail-bakery'
 
 AWS_ACCESS_KEY_ID = env.str('AWS_ACCESS_KEY_ID', '')
 AWS_SECRET_ACCESS_KEY = env.str('AWS_SECRET_ACCESS_KEY', '')
-
-
-# Django-celery
-# http://docs.celeryproject.org/en/latest/
-
-CELERY_ALWAYS_EAGER = True

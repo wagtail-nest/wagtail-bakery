@@ -7,9 +7,12 @@ from wagtailbakery.models import AutoPublishingWagtailBakeryModel
 
 
 class AbstractExamplePage(Page, AutoPublishingWagtailBakeryModel):
-    body = StreamField([
-        ('paragraph', blocks.RichTextBlock())
-    ])
+    body = StreamField(
+        [
+            ('paragraph', blocks.RichTextBlock())
+        ],
+        use_json_field=True,
+    )
 
     content_panels = [
         FieldPanel('title'),

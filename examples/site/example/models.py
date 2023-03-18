@@ -1,17 +1,20 @@
 from wagtail import blocks
-from wagtail.admin.panels import FieldPanel, StreamFieldPanel
+from wagtail.admin.panels import FieldPanel
 from wagtail.fields import StreamField
 from wagtail.models import Page
 
 
 class AbstractExamplePage(Page):
-    body = StreamField([
-        ('paragraph', blocks.RichTextBlock())
-    ])
+    body = StreamField(
+        [
+            ('paragraph', blocks.RichTextBlock())
+        ],
+        use_json_field=True,
+    )
 
     content_panels = [
         FieldPanel('title'),
-        StreamFieldPanel('body')
+        FieldPanel('body')
     ]
 
     class Meta:

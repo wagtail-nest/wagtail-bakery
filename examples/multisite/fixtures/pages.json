@@ -3,56 +3,56 @@
   "model": "example.homepage",
   "pk": 3,
   "fields": {
-    "body": "[{\"type\": \"paragraph\", \"value\": \"<p>This is the example page of example.com.</p>\"}]"
+    "body": "[{\"type\": \"paragraph\", \"value\": \"<p>This is the example page of example.com.</p>\", \"id\": \"3acfe413-703f-44df-b72b-22a65275b7bc\"}]"
   }
 },
 {
   "model": "example.homepage",
   "pk": 8,
   "fields": {
-    "body": "[{\"type\": \"paragraph\", \"value\": \"<p>This is the example page of domain.com.</p>\"}]"
+    "body": "[{\"type\": \"paragraph\", \"value\": \"<p>This is the example page of domain.com.</p>\", \"id\": \"0e03c6dc-a74f-4427-bb43-123e11d4e978\"}]"
   }
 },
 {
   "model": "example.genericpage",
   "pk": 4,
   "fields": {
-    "body": "[{\"type\": \"paragraph\", \"value\": \"<p>This is the about page.</p>\"}]"
+    "body": "[{\"type\": \"paragraph\", \"value\": \"<p>This is the about page.</p>\", \"id\": \"2ca50357-59c2-485a-9cf2-909a60121ddc\"}]"
   }
 },
 {
   "model": "example.genericpage",
   "pk": 12,
   "fields": {
-    "body": "[{\"type\": \"paragraph\", \"value\": \"<p>This is the contact page.</p>\"}]"
+    "body": "[{\"type\": \"paragraph\", \"value\": \"<p>This is the contact page.</p>\", \"id\": \"e0343c02-d829-4b2d-b7b3-fe58e3085627\"}]"
   }
 },
 {
   "model": "example.bloglistpage",
   "pk": 5,
   "fields": {
-    "body": "[{\"type\": \"paragraph\", \"value\": \"<p>This is the blog page.</p>\"}]"
+    "body": "[{\"type\": \"paragraph\", \"value\": \"<p>This is the blog page.</p>\", \"id\": \"3474905d-1465-4fb9-b2e8-627d2cf0dcf2\"}]"
   }
 },
 {
   "model": "example.bloglistpage",
   "pk": 10,
   "fields": {
-    "body": "[{\"type\": \"paragraph\", \"value\": \"<p>This is the blog page.</p>\"}]"
+    "body": "[{\"type\": \"paragraph\", \"value\": \"<p>This is the blog page.</p>\", \"id\": \"2e052159-f0ef-4b7f-8b33-be223671e3ce\"}]"
   }
 },
 {
   "model": "example.blogpostpage",
   "pk": 6,
   "fields": {
-    "body": "[{\"type\": \"paragraph\", \"value\": \"<p>This is the example blog post.</p>\"}]"
+    "body": "[{\"type\": \"paragraph\", \"value\": \"<p>This is the example blog post.</p>\", \"id\": \"d7b02083-fc93-46e3-9e37-d0fb9f0926b5\"}]"
   }
 },
 {
   "model": "example.blogpostpage",
   "pk": 11,
   "fields": {
-    "body": "[{\"type\": \"paragraph\", \"value\": \"<p>This is the example blog post.</p>\"}]"
+    "body": "[{\"type\": \"paragraph\", \"value\": \"<p>This is the example blog post.</p>\", \"id\": \"e7d6fced-cb0f-4a7b-83c5-7ed6d94528eb\"}]"
   }
 },
 {
@@ -62,25 +62,34 @@
     "path": "0001",
     "depth": 1,
     "numchild": 1,
+    "translation_key": "9c611170-db63-4112-8318-83baff7d2615",
+    "locale": 1,
+    "latest_revision": null,
+    "live": true,
+    "has_unpublished_changes": false,
+    "first_published_at": null,
+    "last_published_at": null,
+    "live_revision": null,
+    "go_live_at": null,
+    "expire_at": null,
+    "expired": false,
+    "locked": false,
+    "locked_at": null,
+    "locked_by": null,
     "title": "Root",
+    "draft_title": "",
     "slug": "root",
     "content_type": [
       "wagtailcore",
       "page"
     ],
-    "live": true,
-    "has_unpublished_changes": false,
     "url_path": "/",
     "owner": null,
     "seo_title": "",
     "show_in_menus": false,
     "search_description": "",
-    "go_live_at": null,
-    "expire_at": null,
-    "expired": false,
-    "locked": false,
-    "first_published_at": null,
-    "latest_revision_created_at": null
+    "latest_revision_created_at": null,
+    "alias_of": null
   }
 },
 {
@@ -90,25 +99,34 @@
     "path": "00010001",
     "depth": 2,
     "numchild": 0,
+    "translation_key": "88a2f286-4382-4b2a-a442-fa4bf8cf9b45",
+    "locale": 1,
+    "latest_revision": null,
+    "live": true,
+    "has_unpublished_changes": false,
+    "first_published_at": null,
+    "last_published_at": null,
+    "live_revision": null,
+    "go_live_at": null,
+    "expire_at": null,
+    "expired": false,
+    "locked": false,
+    "locked_at": null,
+    "locked_by": null,
     "title": "Welcome to your new Wagtail site!",
+    "draft_title": "",
     "slug": "home",
     "content_type": [
       "wagtailcore",
       "page"
     ],
-    "live": true,
-    "has_unpublished_changes": false,
     "url_path": "/home/",
     "owner": null,
     "seo_title": "",
     "show_in_menus": false,
     "search_description": "",
-    "go_live_at": null,
-    "expire_at": null,
-    "expired": false,
-    "locked": false,
-    "first_published_at": null,
-    "latest_revision_created_at": null
+    "latest_revision_created_at": null,
+    "alias_of": null
   }
 },
 {
@@ -118,14 +136,27 @@
     "path": "00010002",
     "depth": 2,
     "numchild": 2,
+    "translation_key": "75147933-271c-4a7f-9551-ba2e24d30711",
+    "locale": 1,
+    "latest_revision": null,
+    "live": true,
+    "has_unpublished_changes": false,
+    "first_published_at": "2016-11-22T14:58:42.065Z",
+    "last_published_at": null,
+    "live_revision": null,
+    "go_live_at": null,
+    "expire_at": null,
+    "expired": false,
+    "locked": false,
+    "locked_at": null,
+    "locked_by": null,
     "title": "example.com",
+    "draft_title": "",
     "slug": "example",
     "content_type": [
       "example",
       "homepage"
     ],
-    "live": true,
-    "has_unpublished_changes": false,
     "url_path": "/example/",
     "owner": [
       "admin"
@@ -133,12 +164,8 @@
     "seo_title": "Example",
     "show_in_menus": false,
     "search_description": "",
-    "go_live_at": null,
-    "expire_at": null,
-    "expired": false,
-    "locked": false,
-    "first_published_at": "2016-11-22T14:58:42.065Z",
-    "latest_revision_created_at": "2017-03-24T12:31:34.735Z"
+    "latest_revision_created_at": "2017-03-24T12:31:34.735Z",
+    "alias_of": null
   }
 },
 {
@@ -148,14 +175,27 @@
     "path": "000100020001",
     "depth": 3,
     "numchild": 0,
+    "translation_key": "6a2a3589-1669-4ebc-9766-b2d52ffe9935",
+    "locale": 1,
+    "latest_revision": null,
+    "live": true,
+    "has_unpublished_changes": false,
+    "first_published_at": "2016-11-22T15:07:30.743Z",
+    "last_published_at": null,
+    "live_revision": null,
+    "go_live_at": null,
+    "expire_at": null,
+    "expired": false,
+    "locked": false,
+    "locked_at": null,
+    "locked_by": null,
     "title": "About",
+    "draft_title": "",
     "slug": "about",
     "content_type": [
       "example",
       "genericpage"
     ],
-    "live": true,
-    "has_unpublished_changes": false,
     "url_path": "/example/about/",
     "owner": [
       "admin"
@@ -163,12 +203,8 @@
     "seo_title": "",
     "show_in_menus": false,
     "search_description": "",
-    "go_live_at": null,
-    "expire_at": null,
-    "expired": false,
-    "locked": false,
-    "first_published_at": "2016-11-22T15:07:30.743Z",
-    "latest_revision_created_at": "2016-11-22T15:07:30.732Z"
+    "latest_revision_created_at": "2016-11-22T15:07:30.732Z",
+    "alias_of": null
   }
 },
 {
@@ -178,14 +214,27 @@
     "path": "000100020002",
     "depth": 3,
     "numchild": 1,
+    "translation_key": "0310ef80-15d7-4ece-bbf2-50094205697e",
+    "locale": 1,
+    "latest_revision": null,
+    "live": true,
+    "has_unpublished_changes": false,
+    "first_published_at": "2016-11-22T15:07:47.773Z",
+    "last_published_at": null,
+    "live_revision": null,
+    "go_live_at": null,
+    "expire_at": null,
+    "expired": false,
+    "locked": false,
+    "locked_at": null,
+    "locked_by": null,
     "title": "Blog",
+    "draft_title": "",
     "slug": "blog",
     "content_type": [
       "example",
       "bloglistpage"
     ],
-    "live": true,
-    "has_unpublished_changes": false,
     "url_path": "/example/blog/",
     "owner": [
       "admin"
@@ -193,12 +242,8 @@
     "seo_title": "",
     "show_in_menus": false,
     "search_description": "",
-    "go_live_at": null,
-    "expire_at": null,
-    "expired": false,
-    "locked": false,
-    "first_published_at": "2016-11-22T15:07:47.773Z",
-    "latest_revision_created_at": "2016-11-22T15:07:47.759Z"
+    "latest_revision_created_at": "2016-11-22T15:07:47.759Z",
+    "alias_of": null
   }
 },
 {
@@ -208,14 +253,27 @@
     "path": "0001000200020001",
     "depth": 4,
     "numchild": 0,
+    "translation_key": "292f2f00-5927-4b9e-87e7-12dcace25667",
+    "locale": 1,
+    "latest_revision": null,
+    "live": true,
+    "has_unpublished_changes": false,
+    "first_published_at": "2016-11-22T15:08:03.287Z",
+    "last_published_at": null,
+    "live_revision": null,
+    "go_live_at": null,
+    "expire_at": null,
+    "expired": false,
+    "locked": false,
+    "locked_at": null,
+    "locked_by": null,
     "title": "Example",
+    "draft_title": "",
     "slug": "example",
     "content_type": [
       "example",
       "blogpostpage"
     ],
-    "live": true,
-    "has_unpublished_changes": false,
     "url_path": "/example/blog/example/",
     "owner": [
       "admin"
@@ -223,12 +281,8 @@
     "seo_title": "",
     "show_in_menus": false,
     "search_description": "",
-    "go_live_at": null,
-    "expire_at": null,
-    "expired": false,
-    "locked": false,
-    "first_published_at": "2016-11-22T15:08:03.287Z",
-    "latest_revision_created_at": "2016-11-22T15:08:03.277Z"
+    "latest_revision_created_at": "2016-11-22T15:08:03.277Z",
+    "alias_of": null
   }
 },
 {
@@ -238,14 +292,27 @@
     "path": "00010003",
     "depth": 2,
     "numchild": 2,
+    "translation_key": "6a2826a3-9a0d-4bf3-885f-edafd8d963c0",
+    "locale": 1,
+    "latest_revision": null,
+    "live": true,
+    "has_unpublished_changes": false,
+    "first_published_at": "2016-11-22T14:58:42.065Z",
+    "last_published_at": null,
+    "live_revision": null,
+    "go_live_at": null,
+    "expire_at": null,
+    "expired": false,
+    "locked": false,
+    "locked_at": null,
+    "locked_by": null,
     "title": "domain.com",
+    "draft_title": "",
     "slug": "domain",
     "content_type": [
       "example",
       "homepage"
     ],
-    "live": true,
-    "has_unpublished_changes": false,
     "url_path": "/domain/",
     "owner": [
       "admin"
@@ -253,12 +320,8 @@
     "seo_title": "Example",
     "show_in_menus": false,
     "search_description": "",
-    "go_live_at": null,
-    "expire_at": null,
-    "expired": false,
-    "locked": false,
-    "first_published_at": "2016-11-22T14:58:42.065Z",
-    "latest_revision_created_at": "2017-03-24T12:31:44.040Z"
+    "latest_revision_created_at": "2017-03-24T12:31:44.040Z",
+    "alias_of": null
   }
 },
 {
@@ -268,14 +331,27 @@
     "path": "000100030002",
     "depth": 3,
     "numchild": 1,
+    "translation_key": "d91b082f-b1e8-429e-8f94-2f0ee365e0b7",
+    "locale": 1,
+    "latest_revision": null,
+    "live": true,
+    "has_unpublished_changes": false,
+    "first_published_at": "2016-11-22T15:07:47.773Z",
+    "last_published_at": null,
+    "live_revision": null,
+    "go_live_at": null,
+    "expire_at": null,
+    "expired": false,
+    "locked": false,
+    "locked_at": null,
+    "locked_by": null,
     "title": "Blog",
+    "draft_title": "",
     "slug": "blog",
     "content_type": [
       "example",
       "bloglistpage"
     ],
-    "live": true,
-    "has_unpublished_changes": false,
     "url_path": "/domain/blog/",
     "owner": [
       "admin"
@@ -283,12 +359,8 @@
     "seo_title": "",
     "show_in_menus": false,
     "search_description": "",
-    "go_live_at": null,
-    "expire_at": null,
-    "expired": false,
-    "locked": false,
-    "first_published_at": "2016-11-22T15:07:47.773Z",
-    "latest_revision_created_at": "2016-11-22T22:41:00.512Z"
+    "latest_revision_created_at": "2016-11-22T22:41:00.512Z",
+    "alias_of": null
   }
 },
 {
@@ -298,14 +370,27 @@
     "path": "0001000300020001",
     "depth": 4,
     "numchild": 0,
+    "translation_key": "2768cbc8-b68a-49bf-8b54-d3e558a1c5d0",
+    "locale": 1,
+    "latest_revision": null,
+    "live": true,
+    "has_unpublished_changes": false,
+    "first_published_at": "2016-11-22T15:08:03.287Z",
+    "last_published_at": null,
+    "live_revision": null,
+    "go_live_at": null,
+    "expire_at": null,
+    "expired": false,
+    "locked": false,
+    "locked_at": null,
+    "locked_by": null,
     "title": "Example",
+    "draft_title": "",
     "slug": "example",
     "content_type": [
       "example",
       "blogpostpage"
     ],
-    "live": true,
-    "has_unpublished_changes": false,
     "url_path": "/domain/blog/example/",
     "owner": [
       "admin"
@@ -313,12 +398,8 @@
     "seo_title": "",
     "show_in_menus": false,
     "search_description": "",
-    "go_live_at": null,
-    "expire_at": null,
-    "expired": false,
-    "locked": false,
-    "first_published_at": "2016-11-22T15:08:03.287Z",
-    "latest_revision_created_at": "2016-11-22T22:41:00.534Z"
+    "latest_revision_created_at": "2016-11-22T22:41:00.534Z",
+    "alias_of": null
   }
 },
 {
@@ -328,14 +409,27 @@
     "path": "000100030003",
     "depth": 3,
     "numchild": 0,
+    "translation_key": "cf5bcf35-3356-4fb4-b9ef-a24395bb2c71",
+    "locale": 1,
+    "latest_revision": null,
+    "live": true,
+    "has_unpublished_changes": false,
+    "first_published_at": "2016-11-22T15:08:17.495Z",
+    "last_published_at": null,
+    "live_revision": null,
+    "go_live_at": null,
+    "expire_at": null,
+    "expired": false,
+    "locked": false,
+    "locked_at": null,
+    "locked_by": null,
     "title": "Contact",
+    "draft_title": "",
     "slug": "contact",
     "content_type": [
       "example",
       "genericpage"
     ],
-    "live": true,
-    "has_unpublished_changes": false,
     "url_path": "/domain/contact/",
     "owner": [
       "admin"
@@ -343,12 +437,8 @@
     "seo_title": "",
     "show_in_menus": false,
     "search_description": "",
-    "go_live_at": null,
-    "expire_at": null,
-    "expired": false,
-    "locked": false,
-    "first_published_at": "2016-11-22T15:08:17.495Z",
-    "latest_revision_created_at": "2016-11-22T22:41:00.559Z"
+    "latest_revision_created_at": "2016-11-22T22:41:00.559Z",
+    "alias_of": null
   }
 }
 ]
