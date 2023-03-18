@@ -34,10 +34,13 @@ def test_page_tree(page_tree):
     grandchildren = children[3].get_children()
     assert grandchildren.count() == 3
 
-    # TODO: @loicteixeira Fix unicode slugs in test?
-    # assert grandchildren[0].url == '/unicode-children/latin-capital-letter-i-with-diaeresis-Ï/'
-    # assert grandchildren[1].url == '/unicode-children/cyrillic-capital-letter-ya-Я/'
-    # assert grandchildren[2].url == '/unicode-children/cjk-fire-火/'
+    # Unicode characters are URL-encoded with `url` but not `url_path`.
+    # However manual testing shows that the page is indeed accessible with the non-encoded string.
+    assert grandchildren[0].url_path == (
+        '/home/unicode-children/latin-capital-letter-i-with-diaeresis-Ï/'
+    )
+    assert grandchildren[1].url_path == '/home/unicode-children/cyrillic-capital-letter-ya-Я/'
+    assert grandchildren[2].url_path == '/home/unicode-children/cjk-fire-火/'
 
 
 @pytest.mark.django_db
