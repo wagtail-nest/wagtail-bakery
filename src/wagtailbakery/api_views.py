@@ -7,7 +7,7 @@ from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
 from wagtail.api.v2.router import WagtailAPIRouter
 from wagtail.api.v2.views import PagesAPIViewSet
-from wagtail.core.models import Page, Site
+from wagtail.models import Page, Site
 
 logger = logging.getLogger(__name__)
 

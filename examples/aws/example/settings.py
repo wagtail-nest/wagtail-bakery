@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'wagtail.images',
     'wagtail.search',
     'wagtail.admin',
-    'wagtail.core',
+    'wagtail',
 
     'wagtail.contrib.settings',
 
@@ -156,7 +156,7 @@ WAGTAIL_SITE_NAME = 'Example'
 
 
 # Wagtail bakery
-# https://github.com/wagtail/wagtail-bakery
+# https://github.com/wagtail-nest/wagtail-bakery
 
 ALLOW_BAKERY_AUTO_PUBLISHING = True
 

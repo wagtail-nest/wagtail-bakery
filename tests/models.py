@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from wagtail.contrib.routable_page.models import RoutablePageMixin, route
-from wagtail.core.models import Page
+from wagtail.models import Page
 
 
 class RedirectPage(Page):
