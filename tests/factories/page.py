@@ -1,5 +1,5 @@
 import factory
-from wagtail.core.models import Page
+from wagtail.models import Page
 
 
 class PageFactory(factory.DjangoModelFactory):

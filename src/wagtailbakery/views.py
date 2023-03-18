@@ -8,7 +8,7 @@ from django.core.handlers.base import BaseHandler
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.test.client import RequestFactory
-from wagtail.core.models import Page, Site
+from wagtail.models import Page, Site
 
 logger = logging.getLogger(__name__)
 

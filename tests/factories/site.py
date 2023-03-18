@@ -1,5 +1,5 @@
 import factory
-from wagtail.core.models import Site
+from wagtail.models import Site
 
 
 class SiteFactory(factory.DjangoModelFactory):

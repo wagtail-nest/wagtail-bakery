@@ -1,4 +1,4 @@
-from wagtail.core.signals import page_published, page_unpublished
+from wagtail.signals import page_published, page_unpublished
 
 
 def handle_publish(sender, instance, **kwargs):
