@@ -59,7 +59,6 @@ INSTALLED_APPS = [
     'modelcluster',
     'taggit',
 
-    'djcelery',
     'bakery',
     'wagtailbakery',
 
@@ -171,9 +170,3 @@ AWS_BUCKET_NAME = 'wagtail-bakery'
 
 AWS_ACCESS_KEY_ID = env.str('AWS_ACCESS_KEY_ID', '')
 AWS_SECRET_ACCESS_KEY = env.str('AWS_SECRET_ACCESS_KEY', '')
-
-
-# Django-celery
-# http://docs.celeryproject.org/en/latest/
-
-CELERY_ALWAYS_EAGER = True
