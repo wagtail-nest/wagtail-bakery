@@ -1,0 +1,52 @@
+diff --git a/examples/site/fixtures/pages.json b/examples/site/fixtures/pages.json
+index fbeca09..ba7cd3a 100755
+--- a/examples/site/fixtures/pages.json
++++ b/examples/site/fixtures/pages.json
+@@ -34,6 +34,13 @@
+     "body": "[{\"type\": \"paragraph\", \"value\": \"<p>This is the example blog post.</p>\"}]"
+   }
+ },
++{
++  "model": "example.blogpostpage",
++  "pk": 8,
++  "fields": {
++    "body": "[{\"type\": \"paragraph\", \"value\": \"<p data-block-key=\\\"l757b\\\">This is the example blog post with unicode characters \\u00cf\\u042f\\u706b.</p>\"}]"
++  }
++},
+ {
+   "model": "wagtailcore.page",
+   "pk": 1,
+@@ -211,5 +218,33 @@
+     "first_published_at": "2016-11-22T15:08:17.495Z",
+     "latest_revision_created_at": "2016-11-22T15:08:17.484Z"
+   }
++},
++{
++  "model": "wagtailcore.page",
++  "pk": 8,
++  "fields": {
++    "path": "0001000200020002",
++    "depth": 4,
++    "numchild": 0,
++    "title": "Example with unicode characters ÏЯ火",
++    "slug": "example-with-unicode-characters-ïя火",
++    "content_type": [
++      "example",
++      "blogpostpage"
++    ],
++    "url_path": "/example/blog/example-with-unicode-characters-ïя火/",
++    "owner": [
++      "admin"
++    ],
++    "seo_title": "",
++    "show_in_menus": false,
++    "search_description": "",
++    "go_live_at": null,
++    "expire_at": null,
++    "expired": false,
++    "locked": false,
++    "first_published_at": "2023-03-18T09:35:51.228Z",
++    "latest_revision_created_at": "2023-03-18T09:40:29.480Z"
++  }
+ }
+ ]
