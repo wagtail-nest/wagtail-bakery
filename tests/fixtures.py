@@ -19,14 +19,30 @@ def site():
 def page_tree(page):
     from tests.factories.page import PageFactory
 
-    PageFactory(depth=3, path='000100010001', slug='first', numchild=2)
+    # /first
+    first_page = PageFactory(depth=3, path='000100010001', slug='first', numchild=2)
+
+    # /first/first
+    PageFactory(depth=4, path=f'{first_page.path}0001', slug='first')
+    # /first/second
+    PageFactory(depth=4, path=f'{first_page.path}0002', slug='second')
+
+    # /second
     PageFactory(depth=3, path='000100010002', slug='second')
+
+    # /third
     PageFactory(depth=3, path='000100010003', slug='third')
 
-    PageFactory(depth=4, path='0001000100010001', slug='first')
-    PageFactory(depth=4, path='0001000100010002', slug='second')
+    # /unicode-children
+    unicode_page = PageFactory(depth=3, path='000100010004', slug='unicode-children', numchild=3)
+    # /unicode-children/latin-capital-letter-i-with-diaeresis-Ï
+    PageFactory(depth=4, path=f'{unicode_page.path}0001', slug='latin-capital-letter-i-with-diaeresis-Ï')
+    # /unicode-children/cyrillic-capital-letter-ya-Я
+    PageFactory(depth=4, path=f'{unicode_page.path}0002', slug='cyrillic-capital-letter-ya-Я')
+    # /unicode-children/cjk-fire-火
+    PageFactory(depth=4, path=f'{unicode_page.path}0003', slug='cjk-fire-火')
 
-    page.numchild = 3
+    page.numchild = 4
     page.save()
 
     return page

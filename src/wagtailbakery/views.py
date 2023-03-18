@@ -1,6 +1,6 @@
 import logging
 import os
-from urllib.parse import urlparse
+from urllib.parse import unquote, urlparse
 
 from bakery.views import BuildableDetailView
 from django.conf import settings
@@ -55,17 +55,18 @@ class WagtailBakeryView(BuildableDetailView):
         if url.startswith('http'):
             # Multisite has absolute urls
             url_parsed = urlparse(url)
-            path = url_parsed.path
+            path = unquote(url_parsed.path[1:])
             hostname = url_parsed.hostname
 
             if getattr(settings, 'BAKERY_MULTISITE', False):
                 build_path = os.path.join(
-                    settings.BUILD_DIR, hostname, path[1:])
+                    settings.BUILD_DIR, hostname, path)
             else:
-                build_path = os.path.join(settings.BUILD_DIR, path[1:])
+                build_path = os.path.join(settings.BUILD_DIR, path)
         else:
             # Single site has relative urls
-            build_path = os.path.join(settings.BUILD_DIR, url[1:])
+            path = unquote(url[1:])
+            build_path = os.path.join(settings.BUILD_DIR, path)
 
         # Make sure the (deeply) directories are created
         os.path.exists(build_path) or os.makedirs(build_path)
