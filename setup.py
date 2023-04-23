@@ -45,6 +45,7 @@ setup(
         'Framework :: Django',
         'Framework :: Wagtail',
         'Framework :: Wagtail :: 4',
+        'Framework :: Wagtail :: 5',
         'Operating System :: Unix',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.8',
