@@ -1,11 +1,11 @@
-name: Wagtail Bakery CI
+name: Test & Lint
 
 on:
   push:
     branches:
       - main
-
   pull_request:
+  workflow_call:  # Allow for the publish workflows to run the tests by calling this workflow
 
 jobs:
   test:

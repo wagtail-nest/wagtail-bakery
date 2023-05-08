@@ -155,14 +155,19 @@ Test as follow:
 
 ### Releases
 
-1. Ensure you have the latest versions of `pip`, `setuptools` and `twine` installed in your virtual environment.
 1. Create a new branch (e.g. `release/1.1.3`) for the release of the new version.
 1. Update the version number in `setup.py` following [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 1. Update `CHANGELOG.md`.
 1. On GitHub, create a pull request and squash merge it.
-1. Checkout and pull the `main` branch locally.
-1. (Optional) If you need to verify anything, use `make publish-test` to upload to https://test.pypi.org and enter your PyPi _test_ credentials as needed.
-1. Use `make publish` and enter your PyPi credentials as needed.
+1. On GitHub, if this is a minor release bump (for example `1.1.0` or `1.2.0` but not `1.1.1`, `1.2.3`), create a `stable/1.1.x` branch from `main`.
+1. (Optional) Publish to TestPyPI if you need to verify anything:
+   1. Create and push a tag following the pattern `X.Y.Z.devN` (for example `1.1.3.dev1`).
+   1. Follow the action progress for the [Publish to TestPyPI](https://github.com/wagtail-nest/wagtail-bakery/actions/workflows/publish-test.yml) workflow.
+   1. Check the result on [TestPyPI: wagtail-bakery](https://test.pypi.org/project/wagtail-bakery/).
+1. Publish to PyPI:
+   1. Create and push a tag following [PEP 440 – Version Identification Specification](https://peps.python.org/pep-0440/) (for example `1.1.3` or `1.1.3rc1`), except for the `.devN` suffix used for testing (see _Publish to TestPyPI_ step above)
+   1. Follow the action progress for the [Publish to PyPI](https://github.com/wagtail-nest/wagtail-bakery/actions/workflows/publish.yml) workflow
+   1. Check the result on [PyPI: wagtail-bakery](https://pypi.org/project/wagtail-bakery/)
 1. On GitHub, create a release and a tag for the new version.
 
 ## Credits

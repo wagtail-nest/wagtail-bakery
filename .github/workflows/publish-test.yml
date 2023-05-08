@@ -1,0 +1,48 @@
+name: Publish to TestPyPI
+on:
+  push:
+    tags:
+      # Only run for tags ending with `.devN`
+      # https://peps.python.org/pep-0440/#summary-of-permitted-suffixes-and-relative-ordering
+      - '*\.dev\d+'
+jobs:
+  test:
+    uses: ./.github/workflows/test.yml
+
+  build:
+    needs: ['test']
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v3
+        with:
+          python-version: 3.11
+
+      - run: |
+          pip install setuptools
+          python setup.py sdist
+
+      - uses: actions/upload-artifact@v3
+        with:
+          path: ./dist
+
+  # https://docs.pypi.org/trusted-publishers/using-a-publisher/
+  test-pypi-publish:
+    needs: ['build']
+    environment: 'publish-test'
+
+    name: upload release to TestPyPI
+    runs-on: ubuntu-latest
+    permissions:
+      # Mandatory for trusted publishing
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v3
+
+      - name: Publish package distributions to TestPyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: artifact/
+          print-hash: true
+          repository-url: https://test.pypi.org/legacy/
