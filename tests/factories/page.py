@@ -2,7 +2,7 @@ import factory
 from wagtail.models import Page
 
 
-class PageFactory(factory.DjangoModelFactory):
+class PageFactory(factory.django.DjangoModelFactory):
     depth = 2
     numchild = 0
     path = '00010002'
