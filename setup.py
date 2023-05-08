@@ -19,7 +19,7 @@ test_requires = [
 
 setup(
     name='wagtail-bakery',
-    version='0.7.0',
+    version='0.8.0',
     description='A set of helpers for baking your Django Wagtail site out as flat files.',
     long_description=long_description,
     long_description_content_type='text/markdown',
