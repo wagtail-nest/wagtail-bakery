@@ -5,9 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/wagtail-nest/wagtail-bakery/compare/0.7.0...HEAD)
+## [Unreleased](https://github.com/wagtail-nest/wagtail-bakery/compare/0.8.0...HEAD)
 
 Nothing yet
+
+## [0.8.0](https://github.com/wagtail-nest/wagtail-bakery/compare/0.7.0...0.8.0)
+
+### Added
+
+- Compatibility with Wagtail 5.0 and Django 4.2. [#86](https://github.com/wagtail-nest/wagtail-bakery/pull/86)
+- (Development) Update factory-boy to 3.x [#87](https://github.com/wagtail-nest/wagtail-bakery/pull/87)
 
 ## [0.7.0](https://github.com/wagtail-nest/wagtail-bakery/compare/0.6.0...0.7.0)
 
