@@ -24,7 +24,7 @@ setup(
     long_description=long_description,
     long_description_content_type='text/markdown',
     author='Rob Moorman and Wagtail Core Team',
-    author_email='hello@wagtail.io',
+    author_email='hello@wagtail.org',
     url="https://github.com/wagtail-nest/wagtail-bakery/",
     project_urls={
         "Source": "https://github.com/wagtail-nest/wagtail-bakery/",
