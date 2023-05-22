@@ -17,7 +17,7 @@ Wagtail-bakery is built on top of [Django bakery](https://github.com/datadesk/dj
 ## Features
 
 - Single management command that will build your Wagtail site out as flat files
-- Support for multisite, [theming](https://github.com/wagtail/wagtail-themes) and [multilingual](http://docs.wagtail.io/en/latest/advanced_topics/i18n/index.html) setup
+- Support for multisite, [theming](https://github.com/wagtail/wagtail-themes) and [multilingual](https://docs.wagtail.org/en/latest/advanced_topics/i18n.html) setup
 - Support for `i18n_patterns`
 - Support for generating a static API
 - Ready to use Wagtail Buildable views to build all your (un)published pages at once (no extra code required!)
@@ -28,13 +28,13 @@ Wagtail-bakery is built on top of [Django bakery](https://github.com/datadesk/dj
 - Django 3.2 - 4.2
 - Wagtail >= 4.1
 
-We aim to support the Wagtail versions as [supported](http://docs.wagtail.io/en/latest/releases/upgrading.html) by Wagtail (current LTS, current stable).
+We aim to support the Wagtail versions as [supported](http://docs.wagtail.org/en/latest/releases/upgrading.html) by Wagtail (current LTS, current stable).
 
-Django/Wagtail combinations as [supported](http://docs.wagtail.io/en/latest/releases/upgrading.html#compatible-django-python-versions) by Wagtail (for the Wagtail versions as defined above).
+Django/Wagtail combinations as [supported](http://docs.wagtail.org/en/latest/releases/upgrading.html#compatible-django-python-versions) by Wagtail (for the Wagtail versions as defined above).
 
 ### Browser support
 
-We align our browser support targets with that of Wagtail. Have a look at the [official documentation](http://docs.wagtail.io/en/latest/contributing/developing.html).
+We align our browser support targets with that of Wagtail. Have a look at the [official documentation](http://docs.wagtail.org/en/latest/contributing/developing.html).
 
 ## Installation
 
@@ -94,7 +94,7 @@ BAKERY_VIEWS = (
 )
 ```
 
-The API views use Wagtail's V2 API module. To configure the data that is rendered by these views, please refer to Wagtail's [V2 API configuration guide](http://docs.wagtail.io/en/stable/advanced_topics/api/v2/configuration.html).
+The API views use Wagtail's V2 API module. To configure the data that is rendered by these views, please refer to Wagtail's [V2 API configuration guide](http://docs.wagtail.org/en/latest/advanced_topics/api/v2/configuration.html).
 
 ## Usage
 
