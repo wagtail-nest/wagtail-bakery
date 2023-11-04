@@ -14,7 +14,7 @@ jobs:
     continue-on-error: ${{ matrix.experimental }}
     strategy:
       matrix:
-        python: ["3.8", "3.9", "3.10", "3.11"]
+        python: ["3.8", "3.9", "3.10", "3.11", "3.12"]
         experimental: [false]
         toxenv: ["py"]
         include:
@@ -26,7 +26,7 @@ jobs:
             toxenv: isort
             experimental: false
             # Future Wagtail release from main branch (allowed to fail)
-          - python: "3.11"
+          - python: "3.12"
             toxenv: wagtailmain
             experimental: true
     steps:
