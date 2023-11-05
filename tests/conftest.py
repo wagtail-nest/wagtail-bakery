@@ -90,4 +90,5 @@ def pytest_configure():
             'wagtailbakery.views.AllPagesView',
         ),
         CELERY_ALWAYS_EAGER=True,
+        STATIC_URL="/static/",
     )
