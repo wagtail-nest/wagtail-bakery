@@ -4,15 +4,22 @@ A set of helpers for baking your Django Wagtail site out as flat files.
 
 [![License: MIT](https://img.shields.io/pypi/l/wagtail-bakery)](https://github.com/wagtail-nest/wagtail-bakery/blob/main/LICENSE)
 [![Build Status](https://github.com/wagtail-nest/wagtail-bakery/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/wagtail-nest/wagtail-bakery/actions/workflows/test.yml)
-[![Coverage Status](https://coveralls.io/repos/github/wagtail-nest/wagtail-bakery/badge.svg?branch=main)](https://coveralls.io/github/wagtail-nest/wagtail-bakery?branch=main)
+[![Version](https://img.shields.io/pypi/v/wagtail-bakery.svg)](https://pypi.python.org/pypi/wagtail-bakery/)
+[![Monthly downloads](https://img.shields.io/pypi/dm/wagtail-bakery.svg?logo=Downloads)](https://pypi.python.org/pypi/wagtail-bakery/)
 
 Wagtail-bakery is built on top of [Django bakery](https://github.com/datadesk/django-bakery). Please read their [documentation](https://django-bakery.readthedocs.io/en/latest/) for detailed configuration and how to build default Django flat files. Yes. Wagtail-bakery is not limited to build Wagtail pages specifically, mixed content is possible!
 
 ## Links
 
 - [Issues](https://github.com/wagtail-nest/wagtail-bakery/issues)
+- [Discussion boards](https://github.com/wagtail/wagtail/discussions) are open for sharing ideas and plans for the Wagtail project.
 - [Changelog](https://github.com/wagtail-nest/wagtail-bakery/issues)
-- [Coverage](https://coveralls.io/github/wagtail-nest/wagtail-bakery)
+
+### Security
+
+We take the security of Wagtail, and related packages we maintain, seriously. If you have found a security issue with any of our projects please email us at [security@wagtail.org](mailto:security@wagtail.org) so we can work together to find and patch the issue. We appreciate responsible disclosure with any security related issues, so please contact us first before creating a GitHub issue.
+
+If you want to send an encrypted email (optional), the public key ID for security@wagtail.org is 0xbed227b4daf93ff9, and this public key is available from most commonly-used keyservers.
 
 ## Features
 
