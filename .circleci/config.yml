@@ -9,8 +9,7 @@ jobs:
       # Install your plugin with its testing requirements.
       - run: pip install -e .[test]
       # Replace Wagtail with the one checked out from git.
-      # Also pin Django to 3.x until django-bakery adds Django 4 support
-      - run: pip install ./wagtail "Django<4"
+      - run: pip install ./wagtail
       # Run the tests.
       - run: pytest
 
