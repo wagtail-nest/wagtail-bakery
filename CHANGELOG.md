@@ -7,7 +7,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased](https://github.com/wagtail-nest/wagtail-bakery/compare/0.8.0...HEAD)
 
-Nothing yet
+### Added
+
+- Compatibility with Wagtail 6.0 and 6.1. [#95](https://github.com/wagtail-nest/wagtail-bakery/pull/95)
+- Compatibility with Django 5.0. [#95](https://github.com/wagtail-nest/wagtail-bakery/pull/95)
+
+### Fixed
+
+- Fix links to Wagtail documentation. [#91](https://github.com/wagtail-nest/wagtail-bakery/pull/91)
+- Fix link to django-bakery documentation. [#94](https://github.com/wagtail-nest/wagtail-bakery/pull/94)
+
+### Removed
+
+- Drop support for Wagtail before 5.2. [#95](https://github.com/wagtail-nest/wagtail-bakery/pull/95)
+- Drop support for Django before 4.2. [#95](https://github.com/wagtail-nest/wagtail-bakery/pull/95)
 
 ## [0.8.0](https://github.com/wagtail-nest/wagtail-bakery/compare/0.7.0...0.8.0)
 
