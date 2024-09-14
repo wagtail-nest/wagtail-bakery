@@ -1,1 +1,1 @@
-default_app_config = 'wagtailbakery.apps.WagtailBakeryAppConfig'
+default_app_config = "wagtailbakery.apps.WagtailBakeryAppConfig"

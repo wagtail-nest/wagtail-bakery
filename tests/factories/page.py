@@ -5,10 +5,10 @@ from wagtail.models import Page
 class PageFactory(factory.django.DjangoModelFactory):
     depth = 2
     numchild = 0
-    path = '00010002'
-    title = 'Page'
-    slug = 'page'
-    url_path = '/page/'
+    path = "00010002"
+    title = "Page"
+    slug = "page"
+    url_path = "/page/"
 
     class Meta:
         model = Page

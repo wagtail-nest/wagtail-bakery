@@ -18,6 +18,7 @@ class WagtailBakeryView(BuildableDetailView):
     An abstract class that can be inherited to create a buildable view that can
     be added to BAKERY_VIEWS setting.
     """
+
     def __init__(self, *args, **kwargs):
         self.handler = BaseHandler()
         self.handler.load_middleware()
@@ -32,35 +33,34 @@ class WagtailBakeryView(BuildableDetailView):
         response = self.get(self.request)
         if isinstance(response, HttpResponseRedirect):
             return self.get_redirect_content(response, obj)
-        if hasattr(response, 'render'):
+        if hasattr(response, "render"):
             return response.render().content
-        if hasattr(response, 'content'):
+        if hasattr(response, "content"):
             return response.content
         raise AttributeError(
-            "'%s' object has no attribute 'render' or 'content'" % response)
+            "'%s' object has no attribute 'render' or 'content'" % response
+        )
 
     def get_redirect_content(self, response, obj):
         context = {
-            'page': obj,
-            'self': obj,
-            'redirect_url': response.url,
+            "page": obj,
+            "self": obj,
+            "redirect_url": response.url,
         }
-        content = render(
-            self.request, 'wagtailbakery/redirect.html', context).content
+        content = render(self.request, "wagtailbakery/redirect.html", context).content
         return response.make_bytes(content)
 
     def get_build_path(self, obj):
         url = self.get_url(obj)
 
-        if url.startswith('http'):
+        if url.startswith("http"):
             # Multisite has absolute urls
             url_parsed = urlparse(url)
             path = unquote(url_parsed.path[1:])
             hostname = url_parsed.hostname
 
-            if getattr(settings, 'BAKERY_MULTISITE', False):
-                build_path = os.path.join(
-                    settings.BUILD_DIR, hostname, path)
+            if getattr(settings, "BAKERY_MULTISITE", False):
+                build_path = os.path.join(settings.BUILD_DIR, hostname, path)
             else:
                 build_path = os.path.join(settings.BUILD_DIR, path)
         else:
@@ -72,7 +72,7 @@ class WagtailBakeryView(BuildableDetailView):
         os.path.exists(build_path) or os.makedirs(build_path)
 
         # Always append index.html at the end of the path
-        return os.path.join(build_path, 'index.html')
+        return os.path.join(build_path, "index.html")
 
     def get_url(self, obj):
         """Return Wagtail page url instead of Django's get_absolute_url."""
@@ -89,8 +89,7 @@ class WagtailBakeryView(BuildableDetailView):
         """
         site = obj.get_site()
         logger.debug("Building %s" % obj)
-        self.request = RequestFactory(
-            SERVER_NAME=site.hostname).get(self.get_url(obj))
+        self.request = RequestFactory(SERVER_NAME=site.hostname).get(self.get_url(obj))
         self.set_kwargs(obj)
         path = self.get_build_path(obj)
         self.build_file(path, self.get_content(obj))
@@ -118,8 +117,9 @@ class AllPagesView(WagtailBakeryView):
             'wagtailbakery.views.AllPagesView',
         )
     """
+
     def get_queryset(self):
-        if getattr(settings, 'BAKERY_MULTISITE', False):
+        if getattr(settings, "BAKERY_MULTISITE", False):
             return Page.objects.all().public()
         else:
             site = Site.objects.get(is_default_site=True)
@@ -138,6 +138,7 @@ class AllPublishedPagesView(AllPagesView):
             'wagtailbakery.views.AllPublishedPagesView',
         )
     """
+
     def get_queryset(self):
         pages = super().get_queryset()
         return pages.live()
