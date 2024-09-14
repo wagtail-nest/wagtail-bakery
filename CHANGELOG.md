@@ -9,8 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-- Compatibility with Wagtail 6.0 and 6.1. [#95](https://github.com/wagtail-nest/wagtail-bakery/pull/95)
+- Compatibility with Python 3.12.
+- Compatibility with Wagtail 6.0, 6.1 and 6.2. [#95](https://github.com/wagtail-nest/wagtail-bakery/pull/95)
 - Compatibility with Django 5.0. [#95](https://github.com/wagtail-nest/wagtail-bakery/pull/95)
+- Switch `setup.py` to `pyproject.toml`.
+- Linting with `black`, `isort` and `flake8`.
+- Added back coverage reporting.
 
 ### Fixed
 

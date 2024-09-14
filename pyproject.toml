@@ -1,0 +1,97 @@
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wagtail-bakery"
+version = "0.9.0"
+description = "A set of helpers for baking your Django Wagtail site out as flat files."
+readme = "README.md"
+authors = [
+    { name = "Wagtail Nest team", email = "hello@wagtail.org" },
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Web Environment",
+    "Framework :: Django",
+    "Framework :: Wagtail",
+    "Framework :: Wagtail :: 5",
+    "Framework :: Wagtail :: 6",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Build Tools",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "django-bakery~=0.13.1",
+    "wagtail>=5.2",
+]
+
+[project.optional-dependencies]
+test = [
+    "black>=24,<25",
+    "coverage[toml]>=7.2.7,<8.0",
+    "factory-boy",
+    "flake8",
+    "flake8-black",
+    "flake8-isort",
+    "isort",
+    "pytest-cov",
+    "pytest-django",
+    "pytest",
+]
+
+[project.urls]
+Changelog = "https://github.com/wagtail-nest/wagtail-bakery/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/wagtail-nest/wagtail-bakery/"
+"Issue tracker" = "https://github.com/wagtail-nest/wagtail-bakery/issues/"
+Source = "https://github.com/wagtail-nest/wagtail-bakery/"
+
+[tool.isort]
+force_grid_wrap = 0
+include_trailing_comma = true
+line_length = 88
+multi_line_output = 3
+use_parentheses = true
+
+[tool.black]
+line-length = 88
+
+[tool.coverage.run]
+branch = true
+source_pkgs = ["wagtailbakery"]
+
+omit = ["tests/*"]
+
+[tool.coverage.paths]
+source = ["src/wagtailbakery"]
+
+[tool.coverage.report]
+show_missing = true
+exclude_lines = [
+    # Have to re-enable the standard pragma
+    "pragma: no cover",
+
+    # Don't complain about missing debug-only code:
+    "def __repr__",
+    "if self.debug",
+
+    # Don't complain if tests don't hit defensive assertion code:
+    "raise AssertionError",
+    "raise NotImplementedError",
+
+    # Don't complain if non-runnable code isn't run:
+    "if 0:",
+    "if __name__ == .__main__.:",
+
+    # Don't complain about abstract methods, they aren't run:
+    "@(abc.)?abstractmethod",
+
+    # Nor complain about type checking
+    "if TYPE_CHECKING:",
+]
