@@ -17,9 +17,9 @@ install: ## Install dependencies.
 	pip install -e .[test]
 
 format: ## Format the code.
-	black src/ tests/ examples/
-	isort src/ tests/ examples/
-	flake8 src/ tests/ examples/
+	black .
+	isort .
+	flake8 .
 
 test: ## Test the project.
 	pytest --cov
