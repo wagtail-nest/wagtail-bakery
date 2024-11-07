@@ -3,12 +3,15 @@ __pycache__/
 .cache/
 .tox/
 .coverage
+.coverage.*
 .DS_Store
 .python-version
 *.egg-info/
 *.py[cod]
 coverage.xml
+htmlcov/
 build/
 dist/
+venv/
 src/wagtailbakery/build/
 src/wagtailbakery/tests/public/

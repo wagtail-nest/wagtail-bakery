@@ -8,19 +8,29 @@ from wagtail.contrib.routable_page.models import RoutablePageMixin
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('wagtailcore', '0032_add_bulk_delete_page_permission'),
-        ('tests', '0001_initial'),
+        ("wagtailcore", "0032_add_bulk_delete_page_permission"),
+        ("tests", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='EventPage',
+            name="EventPage",
             fields=[
-                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
+                (
+                    "page_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="wagtailcore.Page",
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
-            bases=(RoutablePageMixin, 'wagtailcore.page'),
+            bases=(RoutablePageMixin, "wagtailcore.page"),
         ),
     ]

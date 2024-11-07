@@ -18,9 +18,14 @@ class APIResponseError(Exception):
 
 def handle_api_error(response):
     if response.status_code == 400:
-        raise APIResponseError("API error: " + json.loads(response.render().content.decode('UTF-8'))['message'])
+        raise APIResponseError(
+            "API error: "
+            + json.loads(response.render().content.decode("UTF-8"))["message"]
+        )
 
-    raise APIResponseError("Unexpected status code returned from API: %d" % response.status_code)
+    raise APIResponseError(
+        "Unexpected status code returned from API: %d" % response.status_code
+    )
 
 
 class APIListingView(BuildableMixin):
@@ -65,6 +70,7 @@ class APIDetailView(BuildableMixin):
         get_queryset:
             A method that returns a queryset of objects to include
     """
+
     @property
     def build_method(self):
         return self.build_queryset
@@ -99,10 +105,12 @@ class APIDetailView(BuildableMixin):
 
     def get_content(self, obj):
         # Create a dummy request
-        request = self.create_request('/?format=json&fields=*')
-        request.wagtailapi_router = WagtailAPIRouter('')
+        request = self.create_request("/?format=json&fields=*")
+        request.wagtailapi_router = WagtailAPIRouter("")
 
-        response = self.endpoint_class.as_view({'get': 'detail_view'})(request, pk=obj.pk)
+        response = self.endpoint_class.as_view({"get": "detail_view"})(
+            request, pk=obj.pk
+        )
 
         if response.status_code == 200:
             return response.render().content
@@ -116,13 +124,14 @@ class PagesAPIDetailView(APIDetailView):
 
     URL example: /api/pages/detail/1.json
     """
+
     endpoint_class = PagesAPIViewSet
 
     def get_build_path(self, page):
-        return 'api/pages/detail/{pk}.json'.format(pk=page.pk)
+        return "api/pages/detail/{pk}.json".format(pk=page.pk)
 
     def get_queryset(self):
-        if getattr(settings, 'BAKERY_MULTISITE', False):
+        if getattr(settings, "BAKERY_MULTISITE", False):
             return Page.objects.all().public().live()
         else:
             site = Site.objects.get(is_default_site=True)
@@ -135,22 +144,32 @@ class PagesAPIListingView(APIListingView):
 
     URL example: /api/pages/1.json
     """
+
     def get_build_path(self, page_num):
-        return 'api/pages/{page_num}.json'.format(page_num=page_num)
+        return "api/pages/{page_num}.json".format(page_num=page_num)
 
     def fetch_page_listing(self, page_num, model=None):
         if model:
-            url = '/?format=json&fields=*&limit={}&offset={}&type={}.{}'.format(self.results_per_page, self.results_per_page * page_num, model._meta.app_label, model.__name__)
+            url = "/?format=json&fields=*&limit={}&offset={}&type={}.{}".format(
+                self.results_per_page,
+                self.results_per_page * page_num,
+                model._meta.app_label,
+                model.__name__,
+            )
         else:
-            url = '/?format=json&fields=*&limit={}&offset={}'.format(self.results_per_page, self.results_per_page * page_num)
+            url = "/?format=json&fields=*&limit={}&offset={}".format(
+                self.results_per_page, self.results_per_page * page_num
+            )
 
         request = self.create_request(url)
-        request.wagtailapi_router = WagtailAPIRouter('')
-        response = PagesAPIViewSet.as_view({'get': 'listing_view'})(request)
+        request.wagtailapi_router = WagtailAPIRouter("")
+        response = PagesAPIViewSet.as_view({"get": "listing_view"})(request)
 
         if response.status_code == 200:
             content = response.render().content
-            has_next_page = json.loads(content.decode('UTF-8'))['meta']['total_count'] > self.results_per_page * (page_num + 1)
+            has_next_page = json.loads(content.decode("UTF-8"))["meta"][
+                "total_count"
+            ] > self.results_per_page * (page_num + 1)
             return content, has_next_page
 
         handle_api_error(response)
@@ -166,8 +185,9 @@ class TypedPagesAPIListingView(PagesAPIListingView):
 
     URL example: /api/pages/blog_BlogPage/1.json
     """
+
     def get_build_path(self, model, page_num):
-        return 'api/pages/{app_label}_{class_name}/{page_num}.json'.format(
+        return "api/pages/{app_label}_{class_name}/{page_num}.json".format(
             app_label=model._meta.app_label,
             class_name=model.__name__,
             page_num=page_num,
@@ -179,7 +199,9 @@ class TypedPagesAPIListingView(PagesAPIListingView):
     def get_page_models(self):
         return [
             content_type.model_class()
-            for content_type in ContentType.objects.filter(id__in=Page.objects.values_list('content_type_id', flat=True))
+            for content_type in ContentType.objects.filter(
+                id__in=Page.objects.values_list("content_type_id", flat=True)
+            )
         ]
 
     def build(self):

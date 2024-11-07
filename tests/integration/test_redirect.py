@@ -11,9 +11,9 @@ from tests.models import RedirectPage
 def test_page_has_redirect_response(site):
     redirect_page = RedirectPage.objects.create(
         depth=1,
-        path='0002',
-        title='Page',
-        slug='page',
+        path="0002",
+        title="Page",
+        slug="page",
     )
 
     # Make redirect page the root page
@@ -21,9 +21,12 @@ def test_page_has_redirect_response(site):
     site.save()
 
     # Build static files
-    management.call_command('build', '--skip-static', '--skip-media')
-    assert os.path.exists(os.path.join(settings.BUILD_DIR, 'index.html'))
+    management.call_command("build", "--skip-static", "--skip-media")
+    assert os.path.exists(os.path.join(settings.BUILD_DIR, "index.html"))
 
     # Check if meta tag is present
-    content = open(os.path.join(settings.BUILD_DIR, 'index.html')).read()
-    assert '<meta http-equiv="refresh" content="1; url=http://www.example.com/">' in content # noqa
+    content = open(os.path.join(settings.BUILD_DIR, "index.html")).read()
+    assert (
+        '<meta http-equiv="refresh" content="1; url=http://www.example.com/">'
+        in content
+    )  # noqa

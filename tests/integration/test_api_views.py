@@ -3,21 +3,24 @@ import json
 import pytest
 
 from wagtailbakery.api_views import (
-    PagesAPIDetailView, PagesAPIListingView, TypedPagesAPIListingView)
+    PagesAPIDetailView,
+    PagesAPIListingView,
+    TypedPagesAPIListingView,
+)
 
 from ..models import EventPage
 
-DEFAULT_PAGE_FIELDS = {'id', 'meta', 'title'}
+DEFAULT_PAGE_FIELDS = {"id", "meta", "title"}
 DEFAULT_PAGE_META_FIELDS = {
-    'type',
-    'show_in_menus',
-    'search_description',
-    'first_published_at',
-    'slug',
-    'html_url',
-    'seo_title',
-    'locale',
-    'alias_of',
+    "type",
+    "show_in_menus",
+    "search_description",
+    "first_published_at",
+    "slug",
+    "html_url",
+    "seo_title",
+    "locale",
+    "alias_of",
 }
 
 
@@ -27,17 +30,17 @@ def test_wagtail_bakery_pages_api_detail_view(page_tree):
 
     # Check build path
     build_path = view.get_build_path(page_tree)
-    assert build_path == 'api/pages/detail/2.json'
+    assert build_path == "api/pages/detail/2.json"
 
     # Check child build path for first child page
     child_page = page_tree.get_descendants().first()
     build_path = view.get_build_path(child_page)
-    assert build_path == 'api/pages/detail/3.json'
+    assert build_path == "api/pages/detail/3.json"
 
     # Check child build path of the first grandchild page
     child_page = child_page.get_descendants().first()
     build_path = view.get_build_path(child_page)
-    assert build_path == 'api/pages/detail/4.json'
+    assert build_path == "api/pages/detail/4.json"
 
 
 @pytest.mark.django_db
@@ -48,7 +51,7 @@ def test_wagtail_bakery_pages_api_detail_view_build_path_for_multisite(multisite
 
     # Check build path for homepage
     build_path = view.get_build_path(page)
-    assert build_path == 'api/pages/detail/2.json'
+    assert build_path == "api/pages/detail/2.json"
 
 
 @pytest.mark.django_db
@@ -56,27 +59,27 @@ def test_wagtail_bakery_pages_api_detail_view_content(page_tree):
     view = PagesAPIDetailView()
 
     # Check content for homepage
-    content = json.loads(view.get_content(page_tree).decode('UTF-8'))
+    content = json.loads(view.get_content(page_tree).decode("UTF-8"))
     assert set(content.keys()) == DEFAULT_PAGE_FIELDS
-    assert set(content['meta'].keys()) == DEFAULT_PAGE_META_FIELDS.union({'parent'})
-    assert content['id'] == 2
-    assert content['title'] == "Welcome to your new Wagtail site!"
+    assert set(content["meta"].keys()) == DEFAULT_PAGE_META_FIELDS.union({"parent"})
+    assert content["id"] == 2
+    assert content["title"] == "Welcome to your new Wagtail site!"
 
     # Check content for first child page
     child_page = page_tree.get_descendants().first()
-    content = json.loads(view.get_content(child_page).decode('UTF-8'))
+    content = json.loads(view.get_content(child_page).decode("UTF-8"))
     assert set(content.keys()) == DEFAULT_PAGE_FIELDS
-    assert set(content['meta'].keys()) == DEFAULT_PAGE_META_FIELDS.union({'parent'})
-    assert content['id'] == 3
-    assert content['title'] == "Page"
+    assert set(content["meta"].keys()) == DEFAULT_PAGE_META_FIELDS.union({"parent"})
+    assert content["id"] == 3
+    assert content["title"] == "Page"
 
     # Check content of the first grandchild page
     grandchild_page = child_page.get_descendants().first()
-    content = json.loads(view.get_content(grandchild_page).decode('UTF-8'))
+    content = json.loads(view.get_content(grandchild_page).decode("UTF-8"))
     assert set(content.keys()) == DEFAULT_PAGE_FIELDS
-    assert set(content['meta'].keys()) == DEFAULT_PAGE_META_FIELDS.union({'parent'})
-    assert content['id'] == 4
-    assert content['title'] == "Page"
+    assert set(content["meta"].keys()) == DEFAULT_PAGE_META_FIELDS.union({"parent"})
+    assert content["id"] == 4
+    assert content["title"] == "Page"
 
 
 @pytest.mark.django_db
@@ -85,11 +88,11 @@ def test_wagtail_bakery_pages_api_listing_view():
 
     # Check build path
     build_path = view.get_build_path(0)
-    assert build_path == 'api/pages/0.json'
+    assert build_path == "api/pages/0.json"
 
     # Check build path for second page
     build_path = view.get_build_path(1)
-    assert build_path == 'api/pages/1.json'
+    assert build_path == "api/pages/1.json"
 
 
 @pytest.mark.django_db
@@ -98,7 +101,7 @@ def test_wagtail_bakery_pages_api_listing_view_build_path_for_multisite(multisit
 
     # Check build path for homepage
     build_path = view.get_build_path(0)
-    assert build_path == 'api/pages/0.json'
+    assert build_path == "api/pages/0.json"
 
 
 @pytest.mark.django_db
@@ -106,13 +109,13 @@ def test_wagtail_bakery_pages_api_listing_view_content(page_tree):
     view = PagesAPIListingView()
 
     # Check content
-    content = json.loads(view.get_content(0)[0].decode('UTF-8'))
-    assert set(content.keys()) == {'meta', 'items'}
-    assert set(content['meta'].keys()) == {'total_count'}
+    content = json.loads(view.get_content(0)[0].decode("UTF-8"))
+    assert set(content.keys()) == {"meta", "items"}
+    assert set(content["meta"].keys()) == {"total_count"}
 
-    page = content['items'][0]
+    page = content["items"][0]
     assert set(page.keys()) == DEFAULT_PAGE_FIELDS
-    assert set(page['meta'].keys()) == DEFAULT_PAGE_META_FIELDS
+    assert set(page["meta"].keys()) == DEFAULT_PAGE_META_FIELDS
 
 
 @pytest.mark.django_db
@@ -121,37 +124,41 @@ def test_wagtail_bakery_typed_pages_api_listing_view():
 
     # Check build path
     build_path = view.get_build_path(EventPage, 0)
-    assert build_path == 'api/pages/tests_EventPage/0.json'
+    assert build_path == "api/pages/tests_EventPage/0.json"
 
     # Check build path for second page
     build_path = view.get_build_path(EventPage, 1)
-    assert build_path == 'api/pages/tests_EventPage/1.json'
+    assert build_path == "api/pages/tests_EventPage/1.json"
 
 
 @pytest.mark.django_db
-def test_wagtail_bakery_typed_pages_api_listing_view_build_path_for_multisite(multisite):
+def test_wagtail_bakery_typed_pages_api_listing_view_build_path_for_multisite(
+    multisite,
+):
     view = TypedPagesAPIListingView()
 
     # Check build path for homepage
     build_path = view.get_build_path(EventPage, 0)
-    assert build_path == 'api/pages/tests_EventPage/0.json'
+    assert build_path == "api/pages/tests_EventPage/0.json"
 
 
 @pytest.mark.django_db
 def test_wagtail_bakery_typed_pages_api_listing_view_content(page_tree):
     view = TypedPagesAPIListingView()
 
-    page_tree.add_child(instance=EventPage(
-        title="Test event page",
-        slug="test-event-page",
-    ))
+    page_tree.add_child(
+        instance=EventPage(
+            title="Test event page",
+            slug="test-event-page",
+        )
+    )
 
     # Check content
-    content = json.loads(view.get_content(EventPage, 0)[0].decode('UTF-8'))
-    assert set(content.keys()) == {'meta', 'items'}
-    assert set(content['meta'].keys()) == {'total_count'}
+    content = json.loads(view.get_content(EventPage, 0)[0].decode("UTF-8"))
+    assert set(content.keys()) == {"meta", "items"}
+    assert set(content["meta"].keys()) == {"total_count"}
 
-    page = content['items'][0]
+    page = content["items"][0]
     assert set(page.keys()) == DEFAULT_PAGE_FIELDS
-    assert set(page['meta'].keys()) == DEFAULT_PAGE_META_FIELDS
-    assert page['title'] == "Test event page"
+    assert set(page["meta"].keys()) == DEFAULT_PAGE_META_FIELDS
+    assert page["title"] == "Test event page"

@@ -8,36 +8,49 @@ on:
   workflow_call:  # Allow for the publish workflows to run the tests by calling this workflow
 
 jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.9
+          cache: 'pip'
+      - name: Install dependencies
+        run: |
+          python -m pip install .[test]
+      - name: Run linting
+        run: |
+          make format
   test:
     name: Python ${{ matrix.python}} ${{ matrix.toxenv }}
     runs-on: ubuntu-latest
     continue-on-error: ${{ matrix.experimental }}
     strategy:
       matrix:
-        python: ["3.8", "3.9", "3.10", "3.11", "3.12"]
+        python: ["3.9", "3.10", "3.11", "3.12", "3.13"]
         experimental: [false]
         toxenv: ["py"]
         include:
-          # Linting
-          - python: "3.8"
-            toxenv: flake8
-            experimental: false
-          - python: "3.8"
-            toxenv: isort
-            experimental: false
             # Future Wagtail release from main branch (allowed to fail)
-          - python: "3.12"
+          - python: "3.13"
             toxenv: wagtailmain
             experimental: true
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Set up Python ${{ matrix.python }}
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
+          cache: 'pip'
       - name: Install dependencies
         run: |
-          python -m pip install setuptools tox tox-py
+          python -m pip install tox tox-py coverage
 
         # This step runs only for jobs NOT in the include matrix
       - name: Run tox targets for Python ${{ matrix.python }}
@@ -45,11 +58,23 @@ jobs:
         run: |
           tox --py current
 
-        # This step runs only for jobs in the include matrix and covers linting
+        # This step runs only for jobs in the include matrix
       - name: Run tox targets for Python ${{ matrix.python }} (${{ matrix.toxenv }})
         if: ${{ matrix.toxenv != 'py' }}
         run: |
           tox -e ${{ matrix.toxenv }}
         env:
           TOXENV: ${{ matrix.toxenv }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate coverage report
+        run: |
+          coverage combine
+          coverage xml
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: coverage.xml
+          flags: unittests
+          fail_ci_if_error: true

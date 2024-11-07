@@ -1,0 +1,5 @@
+[flake8]
+max-line-length = 88
+exclude = .tox,.git,*/migrations/*,venv,dist,build,*.pyc,*.egg-info
+ignore = E203,E231,E266,E501,W503,B950,F405
+max-complexity = 11

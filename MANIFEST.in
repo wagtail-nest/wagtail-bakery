@@ -5,7 +5,6 @@ include CHANGELOG.md
 include LICENSE
 include MANIFEST.in
 include README.md
-include setup.cfg
-include setup.py
+include pyproject.toml
 
 recursive-include src/wagtailbakery *.html *.py

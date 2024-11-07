@@ -8,15 +8,13 @@ from wagtailbakery.models import AutoPublishingWagtailBakeryModel
 
 class AbstractExamplePage(Page, AutoPublishingWagtailBakeryModel):
     body = StreamField(
-        [
-            ('paragraph', blocks.RichTextBlock())
-        ],
+        [("paragraph", blocks.RichTextBlock())],
         use_json_field=True,
     )
 
     content_panels = [
-        FieldPanel('title'),
-        FieldPanel('body')
+        FieldPanel("title"),
+        FieldPanel("body"),
     ]
 
     class Meta:

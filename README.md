@@ -4,6 +4,7 @@ A set of helpers for baking your Django Wagtail site out as flat files.
 
 [![License: MIT](https://img.shields.io/pypi/l/wagtail-bakery)](https://github.com/wagtail-nest/wagtail-bakery/blob/main/LICENSE)
 [![Build Status](https://github.com/wagtail-nest/wagtail-bakery/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/wagtail-nest/wagtail-bakery/actions/workflows/test.yml)
+[![codecov](https://codecov.io/gh/wagtail-nest/wagtail-bakery/graph/badge.svg?token=5SbMtmHcal)](https://codecov.io/gh/wagtail-nest/wagtail-bakery)
 [![Version](https://img.shields.io/pypi/v/wagtail-bakery.svg)](https://pypi.python.org/pypi/wagtail-bakery/)
 [![Monthly downloads](https://img.shields.io/pypi/dm/wagtail-bakery.svg?logo=Downloads)](https://pypi.python.org/pypi/wagtail-bakery/)
 
@@ -31,8 +32,8 @@ If you want to send an encrypted email (optional), the public key ID for securit
 
 ## Supported Versions
 
-- Python 3.8 - 3.12
-- Django 4.2 - 5.0
+- Python 3.9 - 3.13
+- Django 4.2 - 5.1
 - Wagtail >= 5.2
 
 We aim to support the Wagtail versions as [supported](http://docs.wagtail.org/en/latest/releases/upgrading.html) by Wagtail (current LTS, current stable).
@@ -163,7 +164,7 @@ Test as follow:
 ### Releases
 
 1. Create a new branch (e.g. `release/1.1.3`) for the release of the new version.
-1. Update the version number in `setup.py` following [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+1. Update the version number in `pyproject.toml` following [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 1. Update `CHANGELOG.md`.
 1. On GitHub, create a pull request and squash merge it.
 1. On GitHub, if this is a minor release bump (for example `1.1.0` or `1.2.0` but not `1.1.1`, `1.2.3`), create a `stable/1.1.x` branch from `main`.
@@ -178,6 +179,8 @@ Test as follow:
 1. On GitHub, create a release and a tag for the new version.
 
 ## Credits
+
+`wagtail-bakery` was originally developed by [Rob Moorman](https://github.com/robmoorman) and is now maintained by the Wagtail Nest team.
 
 Thanks to [@mhnbcu](https://github.com/mhnbcu/wagtailbakery) for bringing this
 idea up initially, and [Django Bakery](https://github.com/datadesk/django-bakery)
