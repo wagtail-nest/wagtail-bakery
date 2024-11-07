@@ -58,14 +58,13 @@ jobs:
         run: |
           tox --py current
 
-        # This step runs only for jobs in the include matrix and covers linting
+        # This step runs only for jobs in the include matrix
       - name: Run tox targets for Python ${{ matrix.python }} (${{ matrix.toxenv }})
         if: ${{ matrix.toxenv != 'py' }}
         run: |
           tox -e ${{ matrix.toxenv }}
         env:
           TOXENV: ${{ matrix.toxenv }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate coverage report
         run: |
