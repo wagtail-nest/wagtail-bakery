@@ -15,10 +15,9 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Set up Python 3.8
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
-          python-version: 3.8
+          python-version: 3.9
           cache: 'pip'
       - name: Install dependencies
         run: |
@@ -32,12 +31,12 @@ jobs:
     continue-on-error: ${{ matrix.experimental }}
     strategy:
       matrix:
-        python: ["3.8", "3.9", "3.10", "3.11", "3.12"]
+        python: ["3.9", "3.10", "3.11", "3.12", "3.13"]
         experimental: [false]
         toxenv: ["py"]
         include:
             # Future Wagtail release from main branch (allowed to fail)
-          - python: "3.12"
+          - python: "3.13"
             toxenv: wagtailmain
             experimental: true
     steps:
