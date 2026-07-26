@@ -5,26 +5,33 @@ on:
     branches:
       - main
   pull_request:
-  workflow_call:  # Allow for the publish workflows to run the tests by calling this workflow
+  workflow_call: # Allow for the publish workflows to run the tests by calling this workflow
+
+permissions:
+  contents: read # Mandatory for actions/checkout
+
+concurrency:
+  group: "test-${{ github.ref }}"
+  cancel-in-progress: true
 
 jobs:
   lint:
     name: Lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
-      - uses: actions/setup-python@v6
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
-          python-version: 3.13
-          cache: 'pip'
+          python-version: 3.14
+          cache: "pip"
       - name: Install dependencies
         run: |
           python -m pip install .[test]
-      - name: Run linting
-        run: |
-          make format
+      - name: Run pre-commit hooks
+        uses: j178/prek-action@5337cb91e0fa35a7ff31b9ca345126d8bbbcdf16 # v2.0.6
   test:
     name: Python ${{ matrix.python}} ${{ matrix.toxenv }}
     runs-on: ubuntu-latest
@@ -35,36 +42,40 @@ jobs:
         experimental: [false]
         toxenv: ["py"]
         include:
-            # Future Wagtail release from main branch (allowed to fail)
-          - python: "3.13"
-            toxenv: wagtailmain
+          # Future Wagtail release from main branch (allowed to fail)
+          - python: "3.14"
+            toxenv: future
             experimental: true
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
+          persist-credentials: false
       - name: Set up Python ${{ matrix.python }}
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: ${{ matrix.python }}
-          cache: 'pip'
+          allow-prereleases: true
+          cache: "pip"
       - name: Install dependencies
         run: |
-          python -m pip install tox tox-py coverage
+          python -m pip install tox coverage
 
         # This step runs only for jobs NOT in the include matrix
       - name: Run tox targets for Python ${{ matrix.python }}
         if: ${{ matrix.toxenv == 'py' }}
+        env:
+          PYTHON_VERSION: ${{ matrix.python }}
         run: |
-          tox --py current
+          tox -f py$(echo $PYTHON_VERSION | tr -d .)
 
-        # This step runs only for jobs in the include matrix
+      # This step runs only for jobs in the include matrix
       - name: Run tox targets for Python ${{ matrix.python }} (${{ matrix.toxenv }})
         if: ${{ matrix.toxenv != 'py' }}
-        run: |
-          tox -e ${{ matrix.toxenv }}
         env:
           TOXENV: ${{ matrix.toxenv }}
+        run: |
+          tox
 
       - name: Generate coverage report
         run: |
@@ -72,7 +83,7 @@ jobs:
           coverage xml
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v6
+        uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f # v7.0.0
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           file: coverage.xml

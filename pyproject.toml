@@ -1,107 +1,104 @@
 [build-system]
-requires = ["setuptools >= 61.0"]
 build-backend = "setuptools.build_meta"
+requires = [ "setuptools>=77.0.3" ]
 
 [project]
 name = "wagtail-bakery"
 version = "0.9.0"
 description = "A set of helpers for baking your Django Wagtail site out as flat files."
 readme = "README.md"
+license = "MIT"
 authors = [
-    { name = "Wagtail Nest team", email = "hello@wagtail.org" },
+  { name = "Wagtail Nest team", email = "hello@wagtail.org" },
 ]
 requires-python = ">=3.10"
 classifiers = [
-    "Development Status :: 3 - Alpha",
-    "Environment :: Web Environment",
-    "Framework :: Django",
-    "Framework :: Django :: 5.2",
-    "Framework :: Django :: 6.0",
-    "Framework :: Wagtail",
-    "Framework :: Wagtail :: 7",
-    "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent",
-    "Topic :: Software Development :: Build Tools",
-    "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",
-    "Programming Language :: Python :: 3.13",
-    "Programming Language :: Python :: 3.14",
+  "Development Status :: 3 - Alpha",
+  "Environment :: Web Environment",
+  "Framework :: Django",
+  "Framework :: Django :: 5.2",
+  "Framework :: Django :: 6.0",
+  "Framework :: Django :: 6.1",
+  "Framework :: Wagtail",
+  "Framework :: Wagtail :: 7",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Topic :: Software Development :: Build Tools",
 ]
 dependencies = [
-    "django-bakery~=0.13.5",
-    "wagtail>=7.0",
+  "django-bakery~=0.13.5",
+  "wagtail>=7",
+]
+optional-dependencies.test = [
+  "coverage[toml]",
+  "factory-boy",
+  "pytest",
+  "pytest-cov",
+  "pytest-django",
+  # `fs` (transitive via django-bakery) still calls pkg_resources.declare_namespace,
+  # which setuptools 81+ removed. Pin until PyFilesystem2 ships a fix.
+  "setuptools<81",
+]
+urls."Issue tracker" = "https://github.com/wagtail-nest/wagtail-bakery/issues/"
+urls.Changelog = "https://github.com/wagtail-nest/wagtail-bakery/blob/main/CHANGELOG.md"
+urls.Homepage = "https://github.com/wagtail-nest/wagtail-bakery/"
+urls.Source = "https://github.com/wagtail-nest/wagtail-bakery/"
+
+[tool.setuptools]
+packages.find.where = [ "src" ]
+
+[tool.ruff]
+target-version = "py310"  # minimum target version
+exclude = [
+  ".github",
+]
+lint.select = [
+  "BLE", # flake8-blind-except
+  "C4",  # flake8-comprehensions
+  "E",   # pycodestyle errors
+  "F",   # pyflakes
+  "I",   # isort
+  "T20", # flake8-print
+  "UP",  # pyupgrade
+]
+# E501: Line too long
+lint.ignore = [ "E501" ]
+
+[tool.pytest]
+ini_options.testpaths = [ "tests" ]
+ini_options.filterwarnings = [
+  "ignore:.*Deprecated call to `pkg_resources.declare_namespace('fs')",
 ]
 
-[project.optional-dependencies]
-test = [
-    "black>=26,<27",
-    "coverage[toml]>=7.13.5,<8.0",
-    "factory-boy",
-    "flake8",
-    "flake8-black",
-    "flake8-isort",
-    "isort",
-    "pytest-cov",
-    "pytest-django",
-    "pytest",
-    # `fs` (transitive via django-bakery) still calls pkg_resources.declare_namespace,
-    # which setuptools 81+ removed. Pin until PyFilesystem2 ships a fix.
-    "setuptools<81",
+[tool.coverage]
+run.branch = true
+run.omit = [ "tests/*" ]
+run.source_pkgs = [ "wagtailbakery" ]
+paths.source = [ "src/wagtailbakery" ]
+report.exclude_lines = [
+  # Don't complain about abstract methods, they aren't run:
+  "@(abc.)?abstractmethod",
+
+  # Don't complain about missing debug-only code:
+  "def __repr__",
+  "if __name__ == .__main__.:",
+
+  # Don't complain if non-runnable code isn't run:
+  "if 0:",
+  "if self.debug",
+
+  # Nor complain about type checking
+  "if TYPE_CHECKING:",
+  # Have to re-enable the standard pragma
+  "pragma: no cover",
+
+  # Don't complain if tests don't hit defensive assertion code:
+  "raise AssertionError",
+  "raise NotImplementedError",
 ]
-
-[project.urls]
-Changelog = "https://github.com/wagtail-nest/wagtail-bakery/blob/main/CHANGELOG.md"
-Homepage = "https://github.com/wagtail-nest/wagtail-bakery/"
-"Issue tracker" = "https://github.com/wagtail-nest/wagtail-bakery/issues/"
-Source = "https://github.com/wagtail-nest/wagtail-bakery/"
-
-[tool.setuptools.packages.find]
-where = ["src"]
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-
-[tool.isort]
-force_grid_wrap = 0
-include_trailing_comma = true
-line_length = 88
-multi_line_output = 3
-use_parentheses = true
-
-[tool.black]
-line-length = 88
-
-[tool.coverage.run]
-branch = true
-source_pkgs = ["wagtailbakery"]
-omit = ["tests/*"]
-
-[tool.coverage.paths]
-source = ["src/wagtailbakery"]
-
-[tool.coverage.report]
-show_missing = true
-exclude_lines = [
-    # Have to re-enable the standard pragma
-    "pragma: no cover",
-
-    # Don't complain about missing debug-only code:
-    "def __repr__",
-    "if self.debug",
-
-    # Don't complain if tests don't hit defensive assertion code:
-    "raise AssertionError",
-    "raise NotImplementedError",
-
-    # Don't complain if non-runnable code isn't run:
-    "if 0:",
-    "if __name__ == .__main__.:",
-
-    # Don't complain about abstract methods, they aren't run:
-    "@(abc.)?abstractmethod",
-
-    # Nor complain about type checking
-    "if TYPE_CHECKING:",
-]
+report.show_missing = true

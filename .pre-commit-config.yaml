@@ -1,0 +1,51 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-added-large-files
+      - id: check-case-conflict
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-ast
+      - id: check-toml
+      - id: check-yaml
+      - id: trailing-whitespace
+      - id: debug-statements
+  - repo: https://github.com/pycontribs/mirrors-prettier
+    rev: v3.6.2
+    hooks:
+      - id: prettier
+        types_or: [json, yaml, markdown, toml]
+  - repo: https://github.com/rtts/djhtml
+    rev: 3.0.11
+    hooks:
+      - id: djhtml
+  - repo: https://github.com/zizmorcore/zizmor-pre-commit
+    rev: v1.28.0
+    hooks:
+      - id: zizmor
+        args: ["--persona=pedantic"]
+  - repo: https://github.com/tox-dev/tox-ini-fmt
+    rev: "1.8.0"
+    hooks:
+      - id: tox-ini-fmt
+        language_version: python3.14
+  - repo: https://github.com/tox-dev/pyproject-fmt
+    rev: "v2.25.3"
+    hooks:
+      - id: pyproject-fmt
+        args: ["--max-supported-python=3.14"]
+        language_version: python3.14
+  - repo: https://github.com/adamchainz/django-upgrade
+    rev: "1.31.1"
+    hooks:
+      - id: django-upgrade
+        args: [--target-version, "5.2"]
+  - repo: https://github.com/rtts/djhtml
+    rev: 3.0.11
+    hooks:
+      - id: djhtml

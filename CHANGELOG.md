@@ -9,11 +9,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-- Compatibility with Python 3.13 and 3.14.
-- Compatibility with Django 5.2 and 6.0.
-- Compatibility with Wagtail 7.0, 7.3 LTS, and 7.4.
+- Compatibility with Python 3.13, 3.14.
+- Compatibility with Django 5.2, 6.0 and 6.1.
+- Compatibility with Wagtail 7.0 LTS and 7.4 LTS
 - Switch `setup.py` to `pyproject.toml`.
-- Linting with `black`, `isort` and `flake8`.
+- Linting with `ruff`
 - Added back coverage reporting.
 
 ### Fixed

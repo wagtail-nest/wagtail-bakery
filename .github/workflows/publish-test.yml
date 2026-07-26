@@ -5,44 +5,53 @@ on:
       # Only run for tags ending with `.devN`
       # https://peps.python.org/pep-0440/#summary-of-permitted-suffixes-and-relative-ordering
       - '*\.dev\d+'
+permissions: {}
+concurrency:
+  group: "publish-test"
+  cancel-in-progress: false # Do not cancel in-progress runs, as they may be uploading to TestPyPI
 jobs:
   test:
     uses: ./.github/workflows/test.yml
 
   build:
-    needs: ['test']
+    name: Build package distributions
+    needs: ["test"]
     runs-on: ubuntu-latest
+    permissions:
+      contents: read # Mandatory for actions/checkout
     steps:
-      - uses: actions/checkout@v6
-
-      - uses: actions/setup-python@v6
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          python-version: 3.13
+          persist-credentials: false
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: 3.14
 
       - run: |
           pip install build
           python -m build .
 
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
+          name: dist
           path: ./dist
 
   # https://docs.pypi.org/trusted-publishers/using-a-publisher/
   test-pypi-publish:
-    needs: ['build']
-    environment: 'publish-test'
+    needs: ["build"]
+    environment: "publish-test"
 
     name: upload release to TestPyPI
     runs-on: ubuntu-latest
     permissions:
-      # Mandatory for trusted publishing
-      id-token: write
+      id-token: write # Mandatory for trusted publishing
     steps:
-      - uses: actions/download-artifact@v5
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: dist
 
       - name: Publish package distributions to TestPyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
+        uses: pypa/gh-action-pypi-publish@ba38be9e461d3875417946c167d0b5f3d385a247 # v1.14.1
         with:
-          packages-dir: artifact/
-          print-hash: true
           repository-url: https://test.pypi.org/legacy/
